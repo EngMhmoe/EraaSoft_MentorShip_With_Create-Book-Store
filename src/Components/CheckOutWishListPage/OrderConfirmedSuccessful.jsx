@@ -20,7 +20,7 @@ export default function OrderConfirmedSuccessful() {
             {" "}
             <div className="sm:px-35">
               <h1 className="font-bold text-[24px] text-[#d16896]">
-                Successful!
+                Order Successful!
               </h1>
 
               <p className="text-[15px] text-gray-600">
@@ -31,7 +31,7 @@ export default function OrderConfirmedSuccessful() {
             {/* //////////////////////////////////// */}
             {/* //////////////////////////////////// */}
             <div className="sm:mx-15 mx-10">
-              <Link to={"/loginIn"}>
+              <Link to={"/"}>
                 {" "}
                 <button className="font-bold text-xl capitalize btn hover:bg-[#b31157] bg-[#D9176C] text-white w-full rounded-lg py-6.25">
                   Finish

@@ -1,10 +1,13 @@
-//import Components
+//import Components UI
+import Img from "../UI/Img";
+import InputEmail from "../UI/InputEmail";
+import InputSubmit from "../UI/InputSubmit";
 
 //import react-router Links
 import { useNavigate } from "react-router-dom";
 
 //import Libraries Formik
-import { ErrorMessage, Field, Form, Formik } from "formik";
+import { Form, Formik } from "formik";
 
 //import Libraries Yup
 import * as Yup from "yup";
@@ -33,9 +36,16 @@ export default function ForgetForm() {
   return (
     <>
       {/* <div className="flex justify-center"> */}
-      <section className="pt-100 mb-40 sm:mx-0 mx-5 flex justify-center">
+      <section className="pt-95 mb-40 sm:mx-0 mx-5 flex justify-center">
         {" "}
         <div className="w-140">
+          {/* Component Img */}
+          <Img size={84.5} />
+
+          {/* /////////////////////////////////////////// */}
+          {/* /////////////////////////////////////////// */}
+          {/* /////////////////////////////////////////// */}
+
           <header className="mb-5 text-center flex flex-col gap-4">
             <h1 className="text-[#D9176C] font-semibold">Forget Password?</h1>
 
@@ -52,37 +62,15 @@ export default function ForgetForm() {
             validationSchema={ForgetSchema}
           >
             <Form className="flex flex-col gap-10 flex-wrap">
-              <div className="flex flex-col gap-2 flex-wrap">
-                <label htmlFor="Email" className="text-[18px] font-semibold">
-                  Email
-                </label>
-
-                <Field
-                  name="email"
-                  id="Email"
-                  type="text"
-                  placeholder="example@gmail.com"
-                  className="bg-white   border border-black/20 rounded-lg px-4 py-3"
-                />
-
-                {/*  */}
-                <ErrorMessage
-                  name="email"
-                  component={"p"}
-                  className="text-red-500"
-                />
-              </div>
+              {/* Component Input Email */}
+              <InputEmail />
 
               {/* /////////////////////////////////////////// */}
               {/* /////////////////////////////////////////// */}
               {/* /////////////////////////////////////////// */}
 
-              <button
-                type="submit"
-                className="btn hover:bg-[#b31157] bg-[#D9176C] text-white w-full rounded-[8px] py-[12px]"
-              >
-                Send reset Code
-              </button>
+              {/* Component Input Submit */}
+              <InputSubmit name={"Send reset Code"} />
             </Form>
           </Formik>
         </div>

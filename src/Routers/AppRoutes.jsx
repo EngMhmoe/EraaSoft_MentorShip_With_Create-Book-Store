@@ -44,7 +44,7 @@ import Forget from "../Pages/Forget";
 import RestPassword from "../Pages/RestPassword";
 //NewPassword Page
 import NewPassword from "../Pages/NewPassword";
-//PasswordSuccessful Page From CreateNewPassword
+// PasswordSuccessful Page From CreateNewPassword
 import PasswordSuccessful from "../Components/CreateNewPassword/PasswordSuccessful";
 
 //Layout Page
@@ -58,7 +58,7 @@ import NotFound from "../Components/NotFound";
 
 import { Route, Routes } from "react-router-dom";
 //import BrowserRouter
-import TestStrapi from "../ProjectTestCoding/TestStrapi(1)";
+import TestStrapiPage from "../ProjectTestCoding/TestTrapiPage/TestStrapiPage";
 
 export default function AppRoutes() {
   return (
@@ -71,9 +71,9 @@ export default function AppRoutes() {
         <Route path="Carts" element={<Carts />} />
 
         <Route path="Profile" element={<Profile />} />
-
-        <Route path="*" element={<NotFound />} />
       </Route>
+
+      <Route path="*" element={<NotFound />} />
 
       {/* /////////////////////////////////////////////////////////////////////////////////// */}
       {/* /////////////////////////////////////////////////////////////////////////////////// */}
@@ -101,7 +101,7 @@ export default function AppRoutes() {
       </Route>
 
       <Route
-        path="OrderConfirmed-Successful"
+        path="/OrderConfirmed-Successful"
         element={<OrderConfirmedSuccessful />}
       />
 
@@ -132,7 +132,7 @@ export default function AppRoutes() {
         <Route path="Create-New-Password" element={<NewPassword />} />
       </Route>
 
-      <Route path="Password-Success" element={<PasswordSuccessful />} />
+      <Route path="/Password-Success" element={<PasswordSuccessful />} />
 
       {/* /////////////////////////////////////////////////////////////////////////////////// */}
       {/* /////////////////////////////////////////////////////////////////////////////////// */}
@@ -141,7 +141,7 @@ export default function AppRoutes() {
       {/* /////////////////////////////////////////////////////////////////////////////////// */}
 
       {/* ProjectTestCoding */}
-      <Route path="/TestStrapi(1)" element={<TestStrapi />} />
+      <Route path="/TestStrapi" element={<TestStrapiPage />} />
     </Routes>
   );
 }

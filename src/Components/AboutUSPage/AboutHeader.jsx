@@ -2,7 +2,7 @@ import React from "react";
 
 export default function AboutHeader() {
   return (
-    <section className=" absolute z-2 top-[25%] w-full flex justify-center text-white">
+    <section className="bg-black/50 h-150 pt-20 absolute z-2  w-full flex justify-center items-center text-white">
       <header className="flex flex-col text-center gap-4">
         <h1 className="font-bold sm:text-[40px] text-4xl">About Bookshop</h1>
 

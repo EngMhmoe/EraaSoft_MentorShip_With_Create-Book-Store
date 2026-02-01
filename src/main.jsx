@@ -12,6 +12,8 @@ import App from "./App.jsx";
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
+    {/* <ComponentTokenProvider> */}
     <App />
+    {/* </ComponentTokenProvider> */}
   </BrowserRouter>,
 );

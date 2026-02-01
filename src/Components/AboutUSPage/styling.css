@@ -1,0 +1,9 @@
+@media screen and (max-width: 420px) {
+  .Header {
+    text-align: center;
+  }
+  .contact {
+    display: grid;
+    grid-template-columns: auto;
+  }
+}

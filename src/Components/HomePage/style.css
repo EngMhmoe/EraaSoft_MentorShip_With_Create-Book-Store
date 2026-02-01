@@ -1,0 +1,13 @@
+@media screen and (max-width: 741px) {
+  .state {
+    flex-grow: 1;
+  }
+}
+
+@media screen and (max-width: 515px) {
+  .card2 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+}

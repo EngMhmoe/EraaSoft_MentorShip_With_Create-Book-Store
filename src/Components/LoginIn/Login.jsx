@@ -1,17 +1,25 @@
 //import Components
-import LoginButton from "./LoginButton";
+import Img from "../UI/Img";
+import LinkAccountANDcode from "../UI/LinkAccountANDcode";
+import LoginFaceBookANDGoogle from "../UI/LoginFaceBookANDGoogle";
 import LoginHeader from "./LoginHeader";
 import LoginInForm from "./LoginInForm";
-
-//import react-router Links
-import { Link } from "react-router-dom";
 
 export default function Login() {
   return (
     <>
       {" "}
-      <section className="pt-100 mb-40 sm:mx-0 mx-5 flex justify-center">
+      <section className="pt-95 mb-40 sm:mx-0 mx-5 flex justify-center">
         <div className="w-140">
+          {/* Component Img */}
+          <Img size={84.5} />
+
+          {/* /////////////////////////////////// */}
+          {/* /////////////////////////////////// */}
+          {/* /////////////////////////////////// */}
+          {/* /////////////////////////////////// */}
+          {/* /////////////////////////////////// */}
+
           {/* Component LoginHeader */}
           <LoginHeader />
 
@@ -32,16 +40,19 @@ export default function Login() {
               {/* //////////////////////////////////////////////////////// */}
               {/* //////////////////////////////////////////////////////// */}
 
-              <div className="flex gap-2 justify-center">
-                <p>Don't have an account?</p>
-                <Link to="/signUp" className="text-[#D9176C]">
-                  Signup
-                </Link>
-              </div>
+              {/* Component Link Account AND code */}
+              <LinkAccountANDcode
+                des={"Don't have an account?"}
+                NameLink={"Signup"}
+                link={"/signUp"}
+              />
             </div>
 
-            {/* Component LoginInForm */}
-            <LoginButton />
+            {/* Component Login FaceBook AND Google */}
+            <LoginFaceBookANDGoogle
+              NameGoogle={"Login In Google"}
+              NameFaceBook={"Login In Facebook"}
+            />
           </div>
         </div>
       </section>

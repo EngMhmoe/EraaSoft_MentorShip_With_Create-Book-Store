@@ -1,7 +1,21 @@
+//import Component UI
+import Img from "../UI/Img";
+
 export default function BooksPage() {
   return (
-    <section className="pt-115 w-full h-dvh bg-amber-950 text-white text-center  text-5xl font-bold">
-      Books
+    <section>
+      {/* Component Img */}
+      <Img size={30} />
+
+      {/* /////////////////////////////////////////////////////////////////// */}
+      {/* /////////////////////////////////////////////////////////////////// */}
+      {/* /////////////////////////////////////////////////////////////////// */}
+      {/* /////////////////////////////////////////////////////////////////// */}
+      {/* /////////////////////////////////////////////////////////////////// */}
+
+      <div className="pt-55 w-full font-bold">
+        <h1>Books</h1>
+      </div>
     </section>
   );
 }
