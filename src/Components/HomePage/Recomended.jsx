@@ -1,40 +1,40 @@
 //import 2Img
 import img1 from "../../../public/images/img23.png";
-import img2 from "../../../public/images/img20.png";
+// import img2 from "../../../public/images/img20.png";
 
 //import React-icon
 import { FaCartArrowDown } from "react-icons/fa";
 
-export default function Recomended() {
+export default function Recommended({ DataRecommended }) {
   //Date Header
   const Title = "Recomended For You";
 
   //Date Recomended
-  const DateRecomended = [
-    {
-      img: img1,
-      title: "Rich Dad And Poor Dad",
-      Author: "Robert Y. Kiyosanki",
-      Description:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, molestiae voluptates, nihil velit dolor dolorem expedita tempora quia hic sapiente mollitia minus voluptas. Nulla, eaque dolore.?",
+  // const DateRecomended = [
+  //   {
+  //     img: img1,
+  //     title: "Rich Dad And Poor Dad",
+  //     Author: "Robert Y. Kiyosanki",
+  //     Description:
+  //       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, molestiae voluptates, nihil velit dolor dolorem expedita tempora quia hic sapiente mollitia minus voluptas. Nulla, eaque dolore.?",
 
-      Review: "(180 Review)",
-      Rate: "4.2",
-      price: "40.00",
-    },
+  //     Review: "(180 Review)",
+  //     Rate: "4.2",
+  //     price: "40.00",
+  //   },
 
-    {
-      img: img2,
-      title: "The Design Of Books",
-      Author: "Debbie Berne",
-      Description:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, molestiae voluptates, nihil velit dolor dolorem expedita tempora quia hic sapiente mollitia minus voluptas. Nulla, eaque dolore.?",
+  //   {
+  //     img: img2,
+  //     title: "The Design Of Books",
+  //     Author: "Debbie Berne",
+  //     Description:
+  //       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, molestiae voluptates, nihil velit dolor dolorem expedita tempora quia hic sapiente mollitia minus voluptas. Nulla, eaque dolore.?",
 
-      Review: "(210 Review)",
-      Rate: "4.2",
-      price: "30.00",
-    },
-  ];
+  //     Review: "(210 Review)",
+  //     Rate: "4.2",
+  //     price: "30.00",
+  //   },
+  // ];
 
   return (
     <section className="flex flex-col gap-10">
@@ -51,11 +51,14 @@ export default function Recomended() {
       {/* ////////////////////////////////////////////////////////////////////////////// */}
 
       <div className="flex sm:flex-row flex-col  justify-center items-center gap-x-6 gap-y-10">
-        {DateRecomended.map((Rec) => {
+        {DataRecommended.map((Rec) => {
           return (
-            <div className="card xl:card-side  bg-base-100 shadow-2xl shadow-black">
+            <div
+              key={Rec.bookId}
+              className="card lg:h-90 lg:w-fit  w-fit  xl:card-side  bg-base-100 shadow-2xl "
+            >
               <figure className="my-6 ml-5 xl:w-full ">
-                <img src={Rec.img} alt="Album" className=" w-80 mr-5" />
+                <img src={img1} alt="Album" className=" w-80 mr-5" />
               </figure>
 
               {/* ////////////////////////////////////////////////////////////////////////////// */}
@@ -65,7 +68,7 @@ export default function Recomended() {
               {/* ////////////////////////////////////////////////////////////////////////////// */}
 
               <div className="card-body">
-                <h2 className="card-title font-bold">{Rec.title}</h2>
+                <h2 className="card-title font-bold">{Rec.bookName}</h2>
 
                 {/* ////////////////////////////////////////////////////////////////////////////// */}
                 {/* ////////////////////////////////////////////////////////////////////////////// */}
@@ -73,16 +76,14 @@ export default function Recomended() {
                 <h3 className="font-normal text-[16px]">
                   Author:{" "}
                   <span className="font-bold text-(--color-textColor1)">
-                    {Rec.Author}
+                    {Rec.author}
                   </span>
                 </h3>
 
                 {/* ////////////////////////////////////////////////////////////////////////////// */}
                 {/* ////////////////////////////////////////////////////////////////////////////// */}
 
-                <p className="font-normal text-[14px] text-gray-800">
-                  {Rec.Description}
-                </p>
+                <p className="font-normal  text-gray-800">{Rec.description}</p>
 
                 {/* ////////////////////////////////////////////////////////////////////////////// */}
                 {/* ////////////////////////////////////////////////////////////////////////////// */}
@@ -118,14 +119,17 @@ export default function Recomended() {
                         ></div>
                       </div>
                       {/* /////////////////////// */}
-                      <p className="text-black/50">{Rec.Review}</p>
+                      <p className="text-black/50">
+                        ({Rec.countReview} Review)
+                      </p>
                     </div>
                     {/* /////////////////////// */}
                     <p>
                       <h3 className="font-normal text-[16px]">
                         Rate:{" "}
                         <span className="font-bold  text-(--color-textColor1)">
-                          {Rec.Rate}
+                          {/* {Rec.rate} */}
+                          null
                         </span>
                       </h3>
                     </p>
@@ -134,11 +138,15 @@ export default function Recomended() {
                   {/* //////////////////////// */}
                   {/* //////////////////////// */}
 
-                  <div className="ms-auto">
+                  <div className="ms-auto  my-2 flex items-center justify-end   gap-2">
+                    <h1 className="text-black/70 text-[17px]">
+                      ${Rec.discount}
+                    </h1>
+                    {/*  */}
                     <h1 className="font-bold text-[26px]">
                       $
                       <span className="text-(--color-textColor1)">
-                        {Rec.price}
+                        {Math.ceil(Rec.final_price)}
                       </span>
                     </h1>
                   </div>

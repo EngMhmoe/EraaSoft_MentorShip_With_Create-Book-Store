@@ -1,32 +1,49 @@
-//import Images
-import icon1 from "../../../public/images/img11.png";
-import icon2 from "../../../public/images/img12.png";
+import React from "react";
 
-export default function InputSearch() {
+export default function inputSearch() {
   return (
-    <section className="h-95  pt-70 absolute z-1  w-full flex justify-center items-center">
-      <div className="join ">
-        <div className="sm:w-80 w-60">
-          <label className="sm:w-100 rounded-bl-full rounded-tl-full  flex flex-row-reverse input">
-            <img src={icon1} className="w-5" />
-
-            <input id="search" type="text" className="" placeholder="Search" />
-          </label>
+    <form
+      className={`pt-70 absolute z-1   w-full flex justify-center items-center`}
+    >
+      <label
+        for="search"
+        className="block mb-2.5 text-sm font-medium text-heading sr-only "
+      >
+        Search
+      </label>
+      <div className="relative">
+        <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+          <svg
+            className="w-4 h-4 text-body"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-width="2"
+              d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"
+            />
+          </svg>
         </div>
-
-        {/* /////////////////////////////////////////////////////////////////// */}
-        {/* /////////////////////////////////////////////////////////////////// */}
-        {/* /////////////////////////////////////////////////////////////////// */}
-        {/* /////////////////////////////////////////////////////////////////// */}
-        {/* /////////////////////////////////////////////////////////////////// */}
-
+        <input
+          type="search"
+          id="search"
+          className={`block md:w-150 sm:w-100    p-3 ps-9 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body`}
+          placeholder="Search"
+          required
+        />
         <button
-          onClick={() => document.getElementById("search").focus()}
-          className="btn sm:w-33 sm:ms-auto btn-neutral bg-[#D9176C] rounded-br-full rounded-tr-full join-item"
+          type="button"
+          className="absolute end-1.5 bottom-1.5 text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded text-xs px-3 py-1.5 focus:outline-none"
         >
-          <img src={icon2} className="w-5 sm:ms-auto" />
+          Search
         </button>
       </div>
-    </section>
+    </form>
   );
 }

@@ -10,6 +10,9 @@ import "./index.css";
 //import Component App
 import App from "./App.jsx";
 
+//import flowbite
+import "flowbite";
+
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     {/* <ComponentTokenProvider> */}

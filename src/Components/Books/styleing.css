@@ -1,0 +1,24 @@
+@media screen and (max-width: 382px) {
+  .navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .Cart {
+    display: flex;
+    flex-direction: column;
+  }
+}
+/* screen col */
+@media screen and (max-width: 490px) {
+  .container-Cart {
+    display: none;
+  }
+
+  .container-Cart2 {
+    display: flex;
+  }
+}

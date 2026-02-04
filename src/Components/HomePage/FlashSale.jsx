@@ -175,7 +175,7 @@ export default function FlashSale() {
                 {/* ////////////////////////////////////////////////////////////////////////////// */}
                 {/* ////////////////////////////////////////////////////////////////////////////// */}
 
-                <div className=" w-fit ms-auto ">
+                <div className=" w-fit ms-auto cursor-pointer">
                   <div className="border ms-auto rounded-lg p-3 border-(--color-textColor1) bg-(--color-textColor1) text-(--color-textColor1)">
                     <img src={img3} alt="" />
                   </div>

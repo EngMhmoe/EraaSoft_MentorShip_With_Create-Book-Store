@@ -1,15 +1,61 @@
+//import React Hooks
+import { useEffect, useState } from "react";
+
 //import Components
 import Img from "../UI/Img";
 import BestSeller from "./BestSeller";
+import Recommended from "./Recomended";
 import FlashSale from "./FlashSale";
-import InputSearch from "./inputSearch";
-import Recomended from "./Recomended";
 import State from "./State";
+import InputSearch from "./inputSearch";
 
 //import styling css
 import "./style.css";
 
+//import axios
+import axios from "axios";
+
 export default function Home() {
+  //Data Best Seller(1)
+
+  ///\/\/\/\/\/\/\//\/\/\/\/\/\/\/\///
+  ///\/\/\/\/\/\/\//\/\/\/\/\/\/\/\///
+
+  //Data recommended(2)
+  const [DataRecommended, setDataRecommended] = useState([]);
+
+  ///\/\/\/\/\/\/\//\/\/\/\/\/\/\/\///
+  ///\/\/\/\/\/\/\//\/\/\/\/\/\/\/\///
+
+  //Data Flash Sale(3)
+
+  ///////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////
+
+  //useEffect Best Seller(1)
+
+  ///\/\/\/\/\/\/\//\/\/\/\/\/\/\/\///
+  ///\/\/\/\/\/\/\//\/\/\/\/\/\/\/\///
+
+  //useEffect Data recommended(2)
+  useEffect(() => {
+    axios
+      .get("https://bookstore.eraasoft.pro/api/home")
+      .then((res) => {
+        setDataRecommended(res.data.data.recommended);
+        console.log(res.data.data.recommended);
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
+  ///\/\/\/\/\/\/\//\/\/\/\/\/\/\/\///
+  ///\/\/\/\/\/\/\//\/\/\/\/\/\/\/\///
+
+  //useEffect Data Flash Sale(3)
+
   return (
     <>
       <section>
@@ -22,7 +68,7 @@ export default function Home() {
         {/* /////////////////////////////////////////////////////////////////// */}
         {/* /////////////////////////////////////////////////////////////////// */}
 
-        {/* Component Input-Search */}
+        {/* Component Input-Search UI */}
         <InputSearch />
 
         {/* /////////////////////////////////////////////////////////////////// */}
@@ -51,7 +97,7 @@ export default function Home() {
           {/* /////////////////////////////////////////////////////////////////// */}
 
           <section className="my-30 sm:px-15 px-5">
-            <Recomended />
+            <Recommended DataRecommended={DataRecommended} />
           </section>
 
           {/* /////////////////////////////////////////////////////////////////// */}

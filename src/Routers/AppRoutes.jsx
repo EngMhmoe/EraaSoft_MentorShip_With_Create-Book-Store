@@ -5,12 +5,14 @@ import Index from "../Pages/Index";
 
 //Books Page(2)
 import Books from "../Pages/Books";
-//ProductDetails page From Books page
-import ProductDetails from "../Components/Books/ProductDetails";
+//BooksDetailsALL page From Books page
+import BooksDetailsALL from "../Components/Books/BooksDetailsALL";
+//CustomerDetails page From Books page
+import ProductDetails from "../Components/Books/BooksDetailsPage/ProductDetails";
 //CustomerReviews page From Books page
-import CustomerReviews from "../Components/Books/CustomerReviews";
+import CustomerReviews from "../Components/Books/BooksDetailsPage/CustomerReviews";
 //RecommendedBooks page From Books page
-import RecommendedBooks from "../Components/Books/RecommendedBooks";
+import RecommendedForYou from "../Components/Books/BooksDetailsPage/RecommendedForYou";
 
 //AboutUs Page(3)
 import AboutUs from "../Pages/AboutUs";
@@ -83,9 +85,11 @@ export default function AppRoutes() {
 
       <Route path="/" element={<Layout />}>
         <Route path="Books" element={<Books />} />
-        <Route path="ProductDetails" element={<ProductDetails />} />
-        <Route path="CustomerReviews" element={<CustomerReviews />} />
-        <Route path="RecommendedBooks" element={<RecommendedBooks />} />
+
+        <Route path="BooksDetailsALL" element={<BooksDetailsALL />} />
+        {/* <Route path="BooksDetailsALL/1" element={<ProductDetails />} />
+        <Route path="BooksDetailsALL/2" element={<CustomerReviews />} />
+        <Route path="BooksDetailsALL/3" element={<RecommendedForYou />} /> */}
       </Route>
 
       {/* /////////////////////////////////////////////////////////////////////////////////// */}

@@ -4,6 +4,12 @@ Start Import Libraries
 @import "tailwindcss";
 
 @plugin "daisyui";
+
+/* choose one of the following */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+@import "flowbite/src/themes/default";
+
 /*=====================================
 Start Import Libraries
 =======================================*/
