@@ -46,6 +46,8 @@ export default function BooksDetailsALL() {
       {/* /////////////////////////////////////////////////////////////////// */}
 
       <div className="flex flex-col py-50 gap-50 mx-5 font-bold">
+        <h1>{localStorage.getItem("insertData")}</h1>
+
         <section>
           {" "}
           {/* Component CustomerDetails */}

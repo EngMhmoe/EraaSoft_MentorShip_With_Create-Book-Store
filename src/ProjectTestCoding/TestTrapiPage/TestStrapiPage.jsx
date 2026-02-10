@@ -3,7 +3,7 @@ import HeaderFiltering from "./HeaderFiltering";
 import MainBookCard from "./MainBookCard";
 
 //import Hooks react
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 //import axios
 import axios from "axios";

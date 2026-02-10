@@ -69,10 +69,6 @@ export default function AppRoutes() {
         <Route index element={<Index />} />
 
         <Route path="AboutUs" element={<AboutUs />} />
-
-        <Route path="Carts" element={<Carts />} />
-
-        <Route path="Profile" element={<Profile />} />
       </Route>
 
       <Route path="*" element={<NotFound />} />
@@ -83,13 +79,11 @@ export default function AppRoutes() {
       {/* /////////////////////////////////////////////////////////////////////////////////// */}
       {/* /////////////////////////////////////////////////////////////////////////////////// */}
 
+      {/* ALL Books */}
       <Route path="/" element={<Layout />}>
         <Route path="Books" element={<Books />} />
 
         <Route path="BooksDetailsALL" element={<BooksDetailsALL />} />
-        {/* <Route path="BooksDetailsALL/1" element={<ProductDetails />} />
-        <Route path="BooksDetailsALL/2" element={<CustomerReviews />} />
-        <Route path="BooksDetailsALL/3" element={<RecommendedForYou />} /> */}
       </Route>
 
       {/* /////////////////////////////////////////////////////////////////////////////////// */}
@@ -98,10 +92,14 @@ export default function AppRoutes() {
       {/* /////////////////////////////////////////////////////////////////////////////////// */}
       {/* /////////////////////////////////////////////////////////////////////////////////// */}
 
+      {/* All WishList OR Carts */}
       <Route path="/" element={<Layout />}>
-        <Route path="WishList" element={<WishList />} />
+        <Route path="Carts" element={<Carts />} />
 
+        <Route path="WishList" element={<WishList />} />
         <Route path="CheckOutWishList" element={<CheckOutWishList />} />
+
+        <Route path="Profile" element={<Profile />} />
       </Route>
 
       <Route

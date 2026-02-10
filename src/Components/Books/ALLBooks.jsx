@@ -1,14 +1,92 @@
 //import Imgs
 import { FaCartArrowDown } from "react-icons/fa";
-import img1 from "../../../public/images/img21.png";
+import img1 from "../../../public/images/img25.png";
 
 //import Styling css
 import "./styleing.css";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export default function ALLBooks() {
   //ALL Books
-  const Books = [1, 2, 3];
+  const Books = [
+    {
+      category: "Book1",
+      img: img1,
+      NameBook: "Rich Dad And Poor Dad",
+      DescriptionBook:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et ultricies est. Aliquam in justo varius, sagittis neque ut, malesuada leo. Aliquam in justo varius, sagittis neque ut, malesuada leo",
+      CodeDiscount: "Ne212",
+      isRating: {
+        Rating1: true,
+        Rating2: true,
+        Rating3: true,
+        Rating4: true,
+        Rating5: false,
+      },
+      Review: 210,
+      Rate: 4.2,
+      Author: "Robert T.Kiyosaki",
+      Year: 2026,
+      price: "40.00",
+      DiscountPrice: "10.00",
+    },
+
+    {
+      category: "Book2",
+      img: img1,
+      NameBook: "Rich Dad And Poor Dad",
+      DescriptionBook:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et ultricies est. Aliquam in justo varius, sagittis neque ut, malesuada leo. Aliquam in justo varius, sagittis neque ut, malesuada leo",
+      CodeDiscount: "Ne212",
+      isRating: {
+        Rating1: true,
+        Rating2: true,
+        Rating3: true,
+        Rating4: true,
+        Rating5: false,
+      },
+      Review: 210,
+      Rate: 4.2,
+      Author: "Robert T.Kiyosaki",
+      Year: 2026,
+      price: "40.00",
+      DiscountPrice: "10.00",
+    },
+
+    {
+      category: "Book3",
+      img: img1,
+      NameBook: "Rich Dad And Poor Dad",
+      DescriptionBook:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et ultricies est. Aliquam in justo varius, sagittis neque ut, malesuada leo. Aliquam in justo varius, sagittis neque ut, malesuada leo",
+      CodeDiscount: "Ne212",
+      isRating: {
+        Rating1: true,
+        Rating2: true,
+        Rating3: true,
+        Rating4: true,
+        Rating5: false,
+      },
+      Review: 210,
+      Rate: 4.2,
+      Author: "Robert T.Kiyosaki",
+      Year: 2026,
+      price: "40.00",
+      DiscountPrice: "10.00",
+    },
+  ];
+
+  // const [category, setCategory] = useState("Book3");
+
+  //function selectedBook
+  function selectedBook(selectIndex) {
+    const item = Books.map((item, i) => {
+      return item;
+    });
+
+    console.log(item);
+  }
 
   return (
     <section className="flex flex-col  lg:gap-40 gap-25 mb-30">
@@ -17,13 +95,14 @@ export default function ALLBooks() {
         {Books.map((Book, i) => {
           return (
             <Link
+              onClick={() => selectedBook(i)}
               key={i}
               to="/BooksDetailsALL"
-              class="flex border   flex-col gap-2  w-full bg-neutral-primary-soft mt-5   border-default rounded-base  lg:flex-row lg:flex-row "
+              class="flex    flex-col gap-2  w-full  mt-5  lg:flex-row lg:flex-row "
             >
               <img
                 class=" w-full  lg:m-0 m-auto rounded-base h-90 md:px-0 px-5 md:h-auto md:w-48 mb-2 md:mb-0"
-                src={img1}
+                src={Book.img}
                 alt=""
               />
 
@@ -51,32 +130,27 @@ export default function ALLBooks() {
                 <header className="flex flex-col  gap-y-4">
                   <div className="flex md:flex-row  flex-col justify-between">
                     <h5 class="mb-3 text-2xl text-(--color-textColor1) font-bold tracking-tight ">
-                      Rich Dad And Poor Dad
+                      {Book.NameBook}
                     </h5>
                     <div className="sm:hidden flex">
                       {" "}
                       <h3 className=" font-normal text-[16px]">
                         Author:{" "}
                         <span className="font-bold text-black">
-                          Robert T.Kiyosaki
+                          {Book.Author}
                         </span>
                       </h3>
                     </div>
                     {/*  */}
                     <button className="btn sm:flex hidden md:mx-0 mx-auto btn-outline cursor-auto btn-warning">
-                      25% Discount code: Ne212
+                      25% Discount code: {Book.CodeDiscount}
                     </button>
                   </div>
                   {/*  */}
-                  {/* <div className="text-[#EBC305] border border-[#EBC305] w-fit"> */}
-                  <p class="mb-6 sm:flex hidden  text-black/70 font-normal xl:mt-0 lg:mt-3 xl:w-[75%]">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Mauris et ultricies est. Aliquam in justo varius, sagittis
-                    neque ut, malesuada leo. Aliquam in justo varius, sagittis
-                    neque ut, malesuada leo.
-                  </p>
 
-                  {/* </div> */}
+                  <p class="mb-6 sm:flex hidden  text-black/70 font-normal xl:mt-0 lg:mt-3 xl:w-[75%]">
+                    {Book.DescriptionBook}
+                  </p>
                 </header>
 
                 {/* ////////////////////////////////////////////////////////////////////////////// */}
@@ -90,27 +164,31 @@ export default function ALLBooks() {
                           <div
                             className="mask mask-star bg-orange-400"
                             aria-label="1 star"
+                            aria-current={Book.isRating.Rating1}
                           ></div>
                           {/*  */}
                           <div
                             className="mask mask-star bg-orange-400"
                             aria-label="2 star"
+                            aria-current={Book.isRating.Rating2}
                           ></div>
                           {/*  */}
                           <div
                             className="mask mask-star bg-orange-400"
                             aria-label="3 star"
+                            aria-current={Book.isRating.Rating3}
                           ></div>
                           {/*  */}
                           <div
                             className="mask mask-star bg-orange-400"
                             aria-label="4 star"
-                            aria-current="true"
+                            aria-current={Book.isRating.Rating4}
                           ></div>
                           {/*  */}
                           <div
-                            className="mask mask-star"
+                            className="mask mask-star bg-orange-400"
                             aria-label="5 star"
+                            aria-current={Book.isRating.Rating5}
                           ></div>
                         </div>
                         {/* /////////////////////// */}
@@ -122,7 +200,7 @@ export default function ALLBooks() {
                           Rate:{" "}
                           <span className="font-bold  text-(--color-textColor1)">
                             {/* {Rec.rate} */}
-                            4.2
+                            {Book.Rate}
                           </span>
                         </h3>
                       </p>
@@ -132,11 +210,15 @@ export default function ALLBooks() {
                     {/* //////////////////////// */}
 
                     <div className="ms-auto sm:flex hidden  my-2   items-center justify-end   gap-2">
-                      <h1 className="text-black/50 text-[17px]">$10.00</h1>
+                      <h1 className="text-black/50 text-[17px]">
+                        ${Book.DiscountPrice}
+                      </h1>
                       {/*  */}
                       <h1 className="font-bold text-[26px]">
                         $
-                        <span className="text-(--color-textColor1)">40.00</span>
+                        <span className="text-(--color-textColor1)">
+                          {Book.price}
+                        </span>
                       </h1>
                     </div>
                   </div>
@@ -144,11 +226,16 @@ export default function ALLBooks() {
                   {/* ///////////////// */}
                   <div className="flex sm:flex-col flex-row  h-fit  justify-between ">
                     <div className="sm:hidden  my-0 flex flex-row-reverse items-center  gap-2">
-                      <h1 className="text-black/50 text-[17px]">$10.00</h1>
+                      <h1 className="text-black/50 text-[17px]">
+                        ${Book.DiscountPrice}
+                      </h1>
                       {/*  */}
                       <h1 className="font-bold text-[26px]">
                         $
-                        <span className="text-(--color-textColor1)">40.00</span>
+                        <span className="text-(--color-textColor1)">
+                          {" "}
+                          {Book.price}
+                        </span>
                       </h1>
                     </div>
 
@@ -161,7 +248,7 @@ export default function ALLBooks() {
                           <h3 className=" font-normal text-[16px]">
                             Author:{" "}
                             <div className="font-bold text-(--color-textColor1)">
-                              Robert T.Kiyosaki
+                              {Book.Author}
                             </div>
                           </h3>
                         </div>
@@ -171,7 +258,7 @@ export default function ALLBooks() {
                           <h3 className="font-normal text-[16px]">
                             Year{" "}
                             <div className="font-bold text-(--color-textColor1)">
-                              1997
+                              {Book.Year}
                             </div>
                           </h3>
                         </div>

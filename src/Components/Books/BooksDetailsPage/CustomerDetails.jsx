@@ -22,7 +22,7 @@ export default function CustomerDetails() {
   return (
     <>
       {/* Section Screen ALL  */}
-      <section className="container-Cart w-full  cursor-pointer">
+      <section className="container-Cart w-full  cursor-pointer ">
         <a
           href="#"
           class="flex Cart   w-full  bg-neutral-primary-soft border-default rounded-base  "
@@ -249,7 +249,7 @@ export default function CustomerDetails() {
 
                   <button
                     onClick={() => {
-                      Counter < 10 && setCounter(Counter + 1);
+                      Counter < 9 && setCounter(Counter + 1);
                     }}
                     className="rounded-full btn  btn-error text-white text-3xl text-center flex items-center justify-center h-8 w-5 pb-1"
                   >
