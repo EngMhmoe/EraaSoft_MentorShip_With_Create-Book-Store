@@ -95,16 +95,18 @@ export default function ALLBooks() {
         {Books.map((Book, i) => {
           return (
             <Link
-              onClick={() => selectedBook(i)}
+              // onClick={() => selectedBook(i)}
               key={i}
-              to="/BooksDetailsALL"
+              // to="/BooksDetailsALL"
               class="flex    flex-col gap-2  w-full  mt-5  lg:flex-row lg:flex-row "
             >
-              <img
-                class=" w-full  lg:m-0 m-auto rounded-base h-90 md:px-0 px-5 md:h-auto md:w-48 mb-2 md:mb-0"
-                src={Book.img}
-                alt=""
-              />
+              <Link to="/BooksDetailsALL" className="w-fit">
+                <img
+                  class=" w-full  lg:m-0 m-auto rounded-base h-90 md:px-0 px-5 md:h-auto md:w-48 mb-2 md:mb-0"
+                  src={Book.img}
+                  alt=""
+                />
+              </Link>
 
               <div className="sm:hidden flex absolute left-10 top-5 w-fit border rounded-md  bg-white p-2 border-(--color-textColor1) text-(--color-textColor1)">
                 {" "}
@@ -127,142 +129,150 @@ export default function ALLBooks() {
               {/* //////////////////////// */}
 
               <div class="flex  flex-col leading-normal">
-                <header className="flex flex-col  gap-y-4">
-                  <div className="flex md:flex-row  flex-col justify-between">
-                    <h5 class="mb-3 text-2xl text-(--color-textColor1) font-bold tracking-tight ">
-                      {Book.NameBook}
-                    </h5>
-                    <div className="sm:hidden flex">
-                      {" "}
-                      <h3 className=" font-normal text-[16px]">
-                        Author:{" "}
-                        <span className="font-bold text-black">
-                          {Book.Author}
-                        </span>
-                      </h3>
+                <Link to="/BooksDetailsALL">
+                  <header className="flex flex-col  gap-y-4">
+                    <div className="flex md:flex-row  flex-col justify-between">
+                      <h5 class="mb-3 text-2xl text-(--color-textColor1) font-bold tracking-tight ">
+                        {Book.NameBook}
+                      </h5>
+                      <div className="sm:hidden flex">
+                        {" "}
+                        <h3 className=" font-normal text-[16px]">
+                          Author:{" "}
+                          <span className="font-bold text-black">
+                            {Book.Author}
+                          </span>
+                        </h3>
+                      </div>
+                      {/*  */}
+                      <button className="btn sm:flex hidden md:mx-0 mx-auto btn-outline cursor-auto btn-warning">
+                        25% Discount code: {Book.CodeDiscount}
+                      </button>
                     </div>
                     {/*  */}
-                    <button className="btn sm:flex hidden md:mx-0 mx-auto btn-outline cursor-auto btn-warning">
-                      25% Discount code: {Book.CodeDiscount}
-                    </button>
-                  </div>
-                  {/*  */}
 
-                  <p class="mb-6 sm:flex hidden  text-black/70 font-normal xl:mt-0 lg:mt-3 xl:w-[75%]">
-                    {Book.DescriptionBook}
-                  </p>
-                </header>
+                    <p class="mb-6 sm:flex hidden  text-black/70 font-normal xl:mt-0 lg:mt-3 xl:w-[75%]">
+                      {Book.DescriptionBook}
+                    </p>
+                  </header>
+                </Link>
 
                 {/* ////////////////////////////////////////////////////////////////////////////// */}
                 {/* ////////////////////////////////////////////////////////////////////////////// */}
 
                 <div className="">
-                  <div className="flex sm:flex-none flex-wrap  items-center justify-between my-3">
-                    <div className="flex flex-col gap-2">
-                      <div className="flex items-center gap-2">
-                        <div className="rating">
-                          <div
-                            className="mask mask-star bg-orange-400"
-                            aria-label="1 star"
-                            aria-current={Book.isRating.Rating1}
-                          ></div>
-                          {/*  */}
-                          <div
-                            className="mask mask-star bg-orange-400"
-                            aria-label="2 star"
-                            aria-current={Book.isRating.Rating2}
-                          ></div>
-                          {/*  */}
-                          <div
-                            className="mask mask-star bg-orange-400"
-                            aria-label="3 star"
-                            aria-current={Book.isRating.Rating3}
-                          ></div>
-                          {/*  */}
-                          <div
-                            className="mask mask-star bg-orange-400"
-                            aria-label="4 star"
-                            aria-current={Book.isRating.Rating4}
-                          ></div>
-                          {/*  */}
-                          <div
-                            className="mask mask-star bg-orange-400"
-                            aria-label="5 star"
-                            aria-current={Book.isRating.Rating5}
-                          ></div>
+                  <Link to="/BooksDetailsALL">
+                    <div className="flex sm:flex-none flex-wrap  items-center justify-between my-3">
+                      <div className="flex flex-col gap-2">
+                        <div className="flex items-center gap-2">
+                          <div className="rating">
+                            <div
+                              className="mask mask-star bg-orange-400"
+                              aria-label="1 star"
+                              aria-current={Book.isRating.Rating1}
+                            ></div>
+                            {/*  */}
+                            <div
+                              className="mask mask-star bg-orange-400"
+                              aria-label="2 star"
+                              aria-current={Book.isRating.Rating2}
+                            ></div>
+                            {/*  */}
+                            <div
+                              className="mask mask-star bg-orange-400"
+                              aria-label="3 star"
+                              aria-current={Book.isRating.Rating3}
+                            ></div>
+                            {/*  */}
+                            <div
+                              className="mask mask-star bg-orange-400"
+                              aria-label="4 star"
+                              aria-current={Book.isRating.Rating4}
+                            ></div>
+                            {/*  */}
+                            <div
+                              className="mask mask-star bg-orange-400"
+                              aria-label="5 star"
+                              aria-current={Book.isRating.Rating5}
+                            ></div>
+                          </div>
+                          {/* /////////////////////// */}
+                          <p className="text-black/50">(210 Review)</p>
                         </div>
                         {/* /////////////////////// */}
-                        <p className="text-black/50">(210 Review)</p>
+                        <p>
+                          <h3 className="font-normal text-[16px]">
+                            Rate:{" "}
+                            <span className="font-bold  text-(--color-textColor1)">
+                              {/* {Rec.rate} */}
+                              {Book.Rate}
+                            </span>
+                          </h3>
+                        </p>
                       </div>
-                      {/* /////////////////////// */}
-                      <p>
-                        <h3 className="font-normal text-[16px]">
-                          Rate:{" "}
-                          <span className="font-bold  text-(--color-textColor1)">
-                            {/* {Rec.rate} */}
-                            {Book.Rate}
+
+                      {/* //////////////////////// */}
+                      {/* //////////////////////// */}
+
+                      <div className="ms-auto sm:flex hidden  my-2   items-center justify-end   gap-2">
+                        <h1 className="text-black/50 text-[17px]">
+                          ${Book.DiscountPrice}
+                        </h1>
+                        {/*  */}
+                        <h1 className="font-bold text-[26px]">
+                          $
+                          <span className="text-(--color-textColor1)">
+                            {Book.price}
                           </span>
-                        </h3>
-                      </p>
+                        </h1>
+                      </div>
                     </div>
-
-                    {/* //////////////////////// */}
-                    {/* //////////////////////// */}
-
-                    <div className="ms-auto sm:flex hidden  my-2   items-center justify-end   gap-2">
-                      <h1 className="text-black/50 text-[17px]">
-                        ${Book.DiscountPrice}
-                      </h1>
-                      {/*  */}
-                      <h1 className="font-bold text-[26px]">
-                        $
-                        <span className="text-(--color-textColor1)">
-                          {Book.price}
-                        </span>
-                      </h1>
-                    </div>
-                  </div>
+                  </Link>
                   {/* ///////////////// */}
                   {/* ///////////////// */}
                   <div className="flex sm:flex-col flex-row  h-fit  justify-between ">
-                    <div className="sm:hidden  my-0 flex flex-row-reverse items-center  gap-2">
-                      <h1 className="text-black/50 text-[17px]">
-                        ${Book.DiscountPrice}
-                      </h1>
-                      {/*  */}
-                      <h1 className="font-bold text-[26px]">
-                        $
-                        <span className="text-(--color-textColor1)">
-                          {" "}
-                          {Book.price}
-                        </span>
-                      </h1>
-                    </div>
+                    <Link to="/BooksDetailsALL">
+                      <div className="sm:hidden  my-0 flex flex-row-reverse items-center  gap-2">
+                        <h1 className="text-black/50 text-[17px]">
+                          ${Book.DiscountPrice}
+                        </h1>
+                        {/*  */}
+                        <h1 className="font-bold text-[26px]">
+                          $
+                          <span className="text-(--color-textColor1)">
+                            {" "}
+                            {Book.price}
+                          </span>
+                        </h1>
+                      </div>
+                    </Link>
 
                     <div className="flex sm:pb-0 pb-3 md:flex-row flex-col md:items-center gap-y-5 justify-between">
                       {" "}
-                      <div className="flex items-center justify-between gap-10">
-                        {" "}
-                        <div className="sm:flex hidden">
+                      <Link to="/BooksDetailsALL" className="">
+                        <div className="flex items-center justify-between gap-10">
                           {" "}
-                          <h3 className=" font-normal text-[16px]">
-                            Author:{" "}
-                            <div className="font-bold text-(--color-textColor1)">
-                              {Book.Author}
-                            </div>
-                          </h3>
+                          <div className="sm:flex hidden">
+                            {" "}
+                            <h3 className=" font-normal text-[16px]">
+                              Author:{" "}
+                              <div className="font-bold text-(--color-textColor1)">
+                                {Book.Author}
+                              </div>
+                            </h3>
+                          </div>
+                          {/*  */}
+                          <div className="sm:flex hidden">
+                            {" "}
+                            <h3 className="font-normal text-[16px]">
+                              Year{" "}
+                              <div className="font-bold text-(--color-textColor1)">
+                                {Book.Year}
+                              </div>
+                            </h3>
+                          </div>
                         </div>
-                        {/*  */}
-                        <div className="sm:flex hidden">
-                          {" "}
-                          <h3 className="font-normal text-[16px]">
-                            Year{" "}
-                            <div className="font-bold text-(--color-textColor1)">
-                              {Book.Year}
-                            </div>
-                          </h3>
-                        </div>
-                      </div>
+                      </Link>
                       {/*  */}
                       {/*  */}
                       <div className="card-actions flex  justify-center items-center gap-4">

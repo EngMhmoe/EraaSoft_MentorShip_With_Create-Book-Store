@@ -31,6 +31,18 @@ export default function SectionRightBooks({ Categories, Publishers, Years }) {
     "Haruki Murakami",
     "Gabriel Márquez",
     "hinua Achebe",
+
+    //Data Years(2)
+    "2017",
+    "2018",
+    "2019",
+    "2020",
+    "2021",
+    "2022",
+    "2023",
+    "2024",
+    "2025",
+    "2026",
   ];
 
   return (

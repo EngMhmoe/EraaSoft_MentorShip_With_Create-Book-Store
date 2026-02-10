@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function PaymentSummary() {
   return (
     <section className=" flex lg:flex-row flex-col justify-center lg:items-start items-center gap-39    p-10 bg-[#493b5b2a] text-black">
@@ -108,13 +110,17 @@ export default function PaymentSummary() {
         {/* \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/ */}
 
         <section className="flex flex-col gap-3">
-          <button className="py-3 h-12 btn duration-1000 rounded-[8px] bg-(--color-textColor1) text-white hover:bg-transparent hover:text-(--color-textColor1) hover:border hover:border-(--color-textColor1)   font-bold text-[16px]">
-            Check out
-          </button>
+          <Link to={"/CheckOutWishList"}>
+            <button className="py-3 h-12 w-full btn duration-1000 rounded-[8px] bg-(--color-textColor1) text-white hover:bg-transparent hover:text-(--color-textColor1) hover:border hover:border-(--color-textColor1)   font-bold text-[16px]">
+              Check out
+            </button>
+          </Link>
           {/*  */}
-          <button className="py-3 h-12 btn duration-1000 border border-(--color-textColor1) rounded-[8px] bg-transparent text-(--color-textColor1) hover:bg-(--color-textColor1) hover:text-white font-bold text-[16px]">
-            Keep Shopping
-          </button>
+          <Link to={"/Books"}>
+            <button className="py-3 w-full h-12 btn duration-1000 border border-(--color-textColor1) rounded-[8px] bg-transparent text-(--color-textColor1) hover:bg-(--color-textColor1) hover:text-white font-bold text-[16px]">
+              Keep Shopping
+            </button>
+          </Link>
         </section>
       </div>
     </section>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { MdOutlineDeleteForever } from "react-icons/md";
 
-export default function Carts({ DataCarts }) {
+export default function ProductsCardANDWishListPage({ DataCarts, counter }) {
   //State Counter
   const [Counter, setCounter] = useState(1);
 
@@ -11,7 +11,7 @@ export default function Carts({ DataCarts }) {
         return (
           <div
             key={i}
-            className="card card-side bg-base-100 shadow-lg border-2 border-black/10  p-6 flex sm:flex-row  flex-col  gap-6 "
+            className="card card-side bg-base-100 shadow-lg border-2 border-black/10  p-6 flex sm:flex-row  flex-col  gap-6"
           >
             {/* section Left */}
             <figure>
@@ -62,9 +62,11 @@ export default function Carts({ DataCarts }) {
             {/*  */}
 
             {/* section right */}
-            <div className="flex items-center justify-center flex-wra xl:gap-33 lg:gap-15 md:gap-10 sm:gap-5 gap-5 my-auto sm:ms-auto font-bold lg:text-[30px] md:text-[25px] text-[20px]">
+            <div className="flex items-center justify-center xl:gap-33 lg:gap-15 md:gap-10 sm:gap-5 gap-5 my-auto sm:ms-auto font-bold lg:text-[30px] md:text-[25px] text-[20px]">
               {/* Counter */}
-              <section className="flex py-1 px-2  rounded-xl items-center gap-3 bg-white text-black shadow lg:sticky sm:absolute bottom-3 right-15">
+              <section
+                className={`${counter} py-1 px-2  rounded-xl items-center gap-3 bg-white text-black shadow lg:sticky sm:absolute bottom-3 right-15`}
+              >
                 <button
                   onClick={() => {
                     Counter > 0 && setCounter(Counter - 1);

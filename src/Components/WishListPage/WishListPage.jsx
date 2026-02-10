@@ -1,7 +1,69 @@
+//import Component UI
+import Img from "../UI/Img";
+
+//import Component UI
+import HeaderCardANDWishListPage from "../UI/HeaderCardANDWishListPage";
+import ProductsCardANDWishListPage from "../UI/ProductsCardANDWishListPage";
+import FooterWishList from "./FooterWishList";
+
 export default function WishListPage() {
+  //Data Carts (1)
+  const DataCarts = [
+    {
+      img: "../../../public/images/img25.png",
+      NameBook: "Rich Dad And Poor Dad",
+      Author: "Robert T. Kiyosanki",
+      des: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et ultricies est. Aliquam in justo varius, sagittis neque ut,",
+      ASIN: "B09TWSRMCB",
+      Price: 40,
+      TotalPrice: 50,
+    },
+
+    {
+      img: "../../../public/images/img25.png",
+      NameBook: "Rich Dad And Poor Dad",
+      Author: "Robert T. Kiyosanki",
+      des: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et ultricies est. Aliquam in justo varius, sagittis neque ut,",
+      ASIN: "B09TWSRMCB",
+      Price: 20,
+      TotalPrice: 35,
+    },
+  ];
+
   return (
-    <section className="pt-115 w-full h-dvh bg-green-950 text-white text-center  text-5xl font-bold">
-      WishListPage
+    <section>
+      {/* Component Img */}
+      <Img size={30} />
+
+      {/* /////////////////////////////////////////////////////////////////// */}
+      {/* /////////////////////////////////////////////////////////////////// */}
+      {/* /////////////////////////////////////////////////////////////////// */}
+      {/* /////////////////////////////////////////////////////////////////// */}
+      {/* /////////////////////////////////////////////////////////////////// */}
+
+      <div className="pt-45 pb-31.75  sm:mx-10 mx-5">
+        {/* Component Cart HeaderCardANDWishListPage */}
+        <HeaderCardANDWishListPage Quantity={"hidden"} id={2} />
+
+        {/* /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\//\/\/\/\/\/\/\/\/\///\/\///\/\/\\/\/\/\//\\/\/\/\/\//\/\ */}
+        {/* /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\//\/\/\/\/\/\/\/\/\///\/\///\/\/\\/\/\/\//\\/\/\/\/\//\/\ */}
+
+        {/* Component ProductsCardANDWishListPage */}
+        <section className="my-6.5 mt-15">
+          <ProductsCardANDWishListPage
+            DataCarts={DataCarts}
+            counter={"hidden"}
+          />
+        </section>
+
+        {/* /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\//\/\/\/\/\/\/\/\/\///\/\///\/\/\\/\/\/\//\\/\/\/\/\//\/\ */}
+        {/* /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\//\/\/\/\/\/\/\/\/\///\/\///\/\/\\/\/\/\//\\/\/\/\/\//\/\ */}
+
+        {/* Component FooterWishList */}
+        <section className="mt-15">
+          <FooterWishList></FooterWishList>
+        </section>
+      </div>
     </section>
   );
 }

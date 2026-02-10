@@ -1,4 +1,5 @@
 //import Imgs
+import { Link } from "react-router-dom";
 import img1 from "../../../public/images/img17.png";
 import img2 from "../../../public/images/img18.png";
 import img3 from "../../../public/images/img19.png";
@@ -65,9 +66,11 @@ export default function BestSeller() {
       {/* ////////////////////////////////////////////////////////////////////////////// */}
       {/* ////////////////////////////////////////////////////////////////////////////// */}
 
-      <button className="bg-(--color-textColor1) text-white w-fit m-auto rounded-lg py-3 px-20 text-2xl cursor-pointer hover:scale-107 duration-1500">
-        {Data_Button}
-      </button>
+      <Link to={"/Books"} className="w-full flex justify-center">
+        <button className="bg-(--color-textColor1) text-white w-fit m-auto rounded-lg py-3 px-20 text-2xl cursor-pointer hover:scale-107 duration-1500">
+          {Data_Button}
+        </button>
+      </Link>
     </section>
   );
 }

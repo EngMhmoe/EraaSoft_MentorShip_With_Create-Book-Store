@@ -9,16 +9,19 @@ export default function OurMission() {
     {
       title: "Quality Selection",
       des: "Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet.",
+      ViewMore: "View More",
     },
 
     {
       title: "Exceptional Service",
       des: "Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet.",
+      ViewMore: "View More",
     },
 
     {
       title: "Set Up Stores",
       des: "Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet.",
+      ViewMore: "Soon",
     },
   ];
 
@@ -43,7 +46,7 @@ export default function OurMission() {
               <p className="text-black/50 font-normal max-w-90">{data.des}</p>
 
               <div className="flex items-center gap-2 text-(--color-textColor1)">
-                <span>View More</span>
+                <span>{data.ViewMore}</span>
 
                 <img src={icon} alt="" />
               </div>

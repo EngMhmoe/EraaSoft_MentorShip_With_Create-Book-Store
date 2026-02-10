@@ -2,8 +2,8 @@
 import Img from "../UI/Img";
 
 //import Components
-import CardHeader from "./CardHeader";
-import Carts from "./Carts";
+import HeaderCardANDWishListPage from "../UI/HeaderCardANDWishListPage";
+import ProductsCardANDWishListPage from "../UI/ProductsCardANDWishListPage";
 import PaymentSummary from "./PaymentSummary";
 
 //import style.css
@@ -45,15 +45,15 @@ export default function MyCartPage() {
       {/* /////////////////////////////////////////////////////////////////// */}
 
       <div className="pt-45 pb-31.75  sm:mx-10 mx-5">
-        {/* Component Cart Header */}
-        <CardHeader />
+        {/* Component Cart HeaderCardANDWishListPage */}
+        <HeaderCardANDWishListPage Quantity={"flex"} id={1} />
 
         {/* /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\//\/\/\/\/\/\/\/\/\///\/\///\/\/\\/\/\/\//\\/\/\/\/\//\/\ */}
         {/* /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\//\/\/\/\/\/\/\/\/\///\/\///\/\/\\/\/\/\//\\/\/\/\/\//\/\ */}
 
         {/* Component Carts */}
         <section className="my-6.5">
-          <Carts DataCarts={DataCarts} />
+          <ProductsCardANDWishListPage DataCarts={DataCarts} counter={"flex"} />
         </section>
 
         {/* /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\//\/\/\/\/\/\/\/\/\///\/\///\/\/\\/\/\/\//\\/\/\/\/\//\/\ */}
