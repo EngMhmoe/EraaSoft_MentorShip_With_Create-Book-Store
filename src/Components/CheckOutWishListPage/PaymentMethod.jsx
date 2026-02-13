@@ -1,9 +1,20 @@
-export default function PaymentMethod() {
+import { motion } from "motion/react";
+
+export default function PaymentMethod({ t }) {
   return (
-    <section className="padding bg-white border-2 border-black/10  rounded-[20px] shadow p-10 flex flex-col justify-center xl:items-start  lg:items-center gap-10">
+    <motion.section
+      initial={{
+        transform: "translateX(-800px)",
+      }}
+      animate={{
+        transform: "translateX(0px)",
+      }}
+      transition={{ duration: 5 }}
+      className="padding bg-white border-2 border-black/10  rounded-[20px] shadow p-10 flex flex-col justify-center xl:items-start  lg:items-center gap-10"
+    >
       {/* title */}
       <h1 className="font-semibold text-[18px] w-full text-(--color-textColor1)">
-        Payment Method
+        {t("Payment Method")}
       </h1>
 
       {/* /\/\/\/\/\/\/\/\/\/\\\/\/\/\//\/\/\/\/\/\/\/\/\\\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\ */}
@@ -29,13 +40,13 @@ export default function PaymentMethod() {
                 />
                 {/*  */}
                 <h1 className="text-[16px] font-normal group-hover:text-(--color-textColor1)">
-                  {el}
+                  {t(`${el}`)}
                 </h1>
               </label>
             );
           },
         )}
       </div>
-    </section>
+    </motion.section>
   );
 }

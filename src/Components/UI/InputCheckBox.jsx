@@ -1,7 +1,7 @@
 //import Libraries Formik
 import { Field } from "formik";
 
-export default function InputCheckBox({ name }) {
+export default function InputCheckBox({ name, t }) {
   return (
     <div className="flex items-center gap-2">
       <Field
@@ -14,7 +14,7 @@ export default function InputCheckBox({ name }) {
       {/* /////////////////////////////////////////////////////// */}
       {/* /////////////////////////////////////////////////////// */}
 
-      <label htmlFor="Remember">{name}</label>
+      <label htmlFor="Remember">{t(`${name}`)}</label>
     </div>
   );
 }

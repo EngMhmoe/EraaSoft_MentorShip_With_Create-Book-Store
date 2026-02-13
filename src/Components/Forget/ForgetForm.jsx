@@ -12,6 +12,9 @@ import { Form, Formik } from "formik";
 //import Libraries Yup
 import * as Yup from "yup";
 
+//import useTranslation i18next
+import { useTranslation } from "react-i18next";
+
 export default function ForgetForm() {
   //Navigate
   const Navigate = useNavigate();
@@ -33,24 +36,29 @@ export default function ForgetForm() {
       .required("You must fill this field!")
       .email("Please enter a valid email"),
   });
+
+  //
+  const { t } = useTranslation();
   return (
     <>
       {/* <div className="flex justify-center"> */}
-      <section className="pt-95 mb-40 sm:mx-0 mx-5 flex justify-center">
+      <section className="pt-51.5 pb-14.5 mb-40 sm:mx-0 mx-5 flex justify-center">
         {" "}
         <div className="w-140">
           {/* Component Img */}
-          <Img size={84.5} />
+          <Img size={38} />
 
           {/* /////////////////////////////////////////// */}
           {/* /////////////////////////////////////////// */}
           {/* /////////////////////////////////////////// */}
 
           <header className="mb-5 text-center flex flex-col gap-4">
-            <h1 className="text-[#D9176C] font-semibold">Forget Password?</h1>
+            <h1 className="text-[#D9176C] font-semibold">
+              {t("Forget Password")}?
+            </h1>
 
             <p className="text-[14px] text-[#2222226b]">
-              Enter your email to reset your password
+              {t("Enter your email to reset your password")}
             </p>
           </header>
           {/* /////////////////////////////////////////// */}
@@ -63,14 +71,14 @@ export default function ForgetForm() {
           >
             <Form className="flex flex-col gap-10 flex-wrap">
               {/* Component Input Email */}
-              <InputEmail />
+              <InputEmail t={t} />
 
               {/* /////////////////////////////////////////// */}
               {/* /////////////////////////////////////////// */}
               {/* /////////////////////////////////////////// */}
 
               {/* Component Input Submit */}
-              <InputSubmit name={"Send reset Code"} />
+              <InputSubmit t={t} name={"Send reset Code"} />
             </Form>
           </Formik>
         </div>

@@ -5,7 +5,12 @@ import ALLFiltersScreenCol from "./ALLFiltersScreenCol";
 
 import Sortby from "./Sortby";
 
-export default function SectionRightBooks({ Categories, Publishers, Years }) {
+export default function SectionRightBooks({
+  Categories,
+  Publishers,
+  Years,
+  t,
+}) {
   //Data AllFilters
   const AllFilters = [
     //Data Categories(1)
@@ -30,7 +35,7 @@ export default function SectionRightBooks({ Categories, Publishers, Years }) {
     "Fyodor Dostoevsky",
     "Haruki Murakami",
     "Gabriel Márquez",
-    "hinua Achebe",
+    "Chinua Achebe",
 
     //Data Years(2)
     "2017",
@@ -56,7 +61,7 @@ export default function SectionRightBooks({ Categories, Publishers, Years }) {
             for="search"
             class="block mb-2.5 text-sm font-medium text-heading sr-only "
           >
-            Search
+            {t("Search")}
           </label>
           <div class="relative">
             <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -81,14 +86,14 @@ export default function SectionRightBooks({ Categories, Publishers, Years }) {
               type="search"
               id="search"
               class="block w-full p-3 ps-9 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body"
-              placeholder="Search"
+              placeholder={t("Search")}
               required
             />
             <button
               type="button"
               class="absolute end-1.5 bottom-1.5 text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded text-xs px-3 py-1.5 focus:outline-none"
             >
-              Search
+              {t("Search")}
             </button>
           </div>
         </form>
@@ -98,17 +103,18 @@ export default function SectionRightBooks({ Categories, Publishers, Years }) {
         {/* ////////////////////////////// */}
 
         {/* Sort by */}
-        <div className="flex flex-row-reverse gap-5 items-start justify-evenly">
+        <div className="flex flex-row-reverse flex-wrap gap-5 items-start justify-evenly">
           <div className="sm:hidden flex items-center">
             <ALLFiltersScreenCol
               Categories={Categories}
               Publishers={Publishers}
               Years={Years}
+              t={t}
             />
           </div>
           {/*  */}
           <div className="sm:w-full w-30">
-            <Sortby />
+            <Sortby t={t} />
           </div>
         </div>
 
@@ -127,7 +133,7 @@ export default function SectionRightBooks({ Categories, Publishers, Years }) {
       <div>
         {" "}
         <div className=" sm:flex hidden">
-          <ALLFilters AllFilters={AllFilters} />
+          <ALLFilters AllFilters={AllFilters} t={t} />
         </div>
       </div>
 
@@ -138,7 +144,7 @@ export default function SectionRightBooks({ Categories, Publishers, Years }) {
       {/* /////////////////////////////////////////////////////////////////// */}
 
       {/* ALL Books */}
-      <ALLBooks />
+      <ALLBooks t={t} />
     </section>
   );
 }

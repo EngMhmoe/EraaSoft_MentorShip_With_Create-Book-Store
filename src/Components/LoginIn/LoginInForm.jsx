@@ -15,7 +15,7 @@ import axios from "axios";
 //import Libraries Yupreg
 import * as Yup from "yup";
 
-export default function LoginInForm() {
+export default function LoginInForm({ t }) {
   //navigate
   const navigate = useNavigate();
 
@@ -33,12 +33,13 @@ export default function LoginInForm() {
         LoginINData,
       );
 
+      localStorage.setItem("token", responsive.data.data.token);
+      localStorage.setItem("user", JSON.stringify(responsive.data.data.user));
+
       //navigate to Send Reset Coding
       navigate("/");
 
-      localStorage.setItem("token", responsive.data.data.token);
-
-      console.log(responsive.data.data.token);
+      window.location.reload();
     } catch (err) {
       console.log(err);
     }
@@ -65,13 +66,13 @@ export default function LoginInForm() {
         <Form className="flex flex-col gap-5">
           <div className="flex flex-col gap-6">
             {/* Component Input Email */}
-            <InputEmail />
+            <InputEmail t={t} />
 
             {/* /////////////////////////////////////////////////////// */}
             {/* /////////////////////////////////////////////////////// */}
 
             {/* Component Input Password */}
-            <InputPassword />
+            <InputPassword t={t} />
           </div>
 
           {/* /////////////////////////////////////////////////////// */}
@@ -79,13 +80,13 @@ export default function LoginInForm() {
 
           <div className="flex justify-between items-center mb-5">
             {/* Component Input CheckBox */}
-            <InputCheckBox name={"Remember me"} />
+            <InputCheckBox name={"Remember me"} t={t} />
 
             {/* /////////////////////////////////////////////////////// */}
             {/* /////////////////////////////////////////////////////// */}
 
             <Link to="/Forget" className="text-[#D9176C] text-[16px]">
-              Forget Password
+              {t("Forget Password")}
             </Link>
           </div>
 
@@ -93,7 +94,7 @@ export default function LoginInForm() {
           {/* /////////////////////////////////////////////////////// */}
 
           {/* Component Input Submit */}
-          <InputSubmit name={"Login in"} />
+          <InputSubmit name={"Login In"} t={t} />
         </Form>
       </Formik>
     </>

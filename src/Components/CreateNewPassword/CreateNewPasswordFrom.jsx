@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 
 // import axios from "axios";
 
-export default function CreateNewPasswordFrom() {
+export default function CreateNewPasswordFrom({ t }) {
   //Navigate
   const Navigate = useNavigate();
 
@@ -71,14 +71,14 @@ export default function CreateNewPasswordFrom() {
             {/* /////////////////////////////////////////////////////////// */}
 
             {/* Component Input Password */}
-            <InputPassword />
+            <InputPassword t={t} />
 
             {/* /////////////////////////////////////////////////////////// */}
             {/* /////////////////////////////////////////////////////////// */}
             {/* /////////////////////////////////////////////////////////// */}
 
             {/* Component  ConfirmPassword */}
-            <InputConfirmPassword />
+            <InputConfirmPassword t={t} />
           </div>
 
           {/* /////////////////////////////////////////////////////////// */}
@@ -87,7 +87,7 @@ export default function CreateNewPasswordFrom() {
 
           <div className="flex justify-between items-center mb-5">
             {/* Component Input CheckBox */}
-            <InputCheckBox name={"Remember me"} />
+            <InputCheckBox t={t} name={"Remember me"} />
           </div>
 
           {/* /////////////////////////////////////////////////////////// */}
@@ -95,7 +95,7 @@ export default function CreateNewPasswordFrom() {
           {/* /////////////////////////////////////////////////////////// */}
 
           {/* Component Input Submit */}
-          <InputSubmit name={"Reset password"} />
+          <InputSubmit t={t} name={"Reset password"} />
         </Form>
       </Formik>
     </>

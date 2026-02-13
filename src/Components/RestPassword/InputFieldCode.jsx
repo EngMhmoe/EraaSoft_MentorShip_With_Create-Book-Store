@@ -57,10 +57,9 @@ export default function InputFieldCode() {
     });
 
     inp4.addEventListener("keyup", () => {
-      submit.click();
-
       inp4.style.backgroundColor = "#aaa9a9";
       inp4.style.color = "white";
+      submit.click();
     });
   }, []);
   return (

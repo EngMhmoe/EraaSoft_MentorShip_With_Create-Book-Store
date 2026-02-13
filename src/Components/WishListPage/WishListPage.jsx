@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 //import Component UI
 import Img from "../UI/Img";
 
@@ -6,34 +8,35 @@ import HeaderCardANDWishListPage from "../UI/HeaderCardANDWishListPage";
 import ProductsCardANDWishListPage from "../UI/ProductsCardANDWishListPage";
 import FooterWishList from "./FooterWishList";
 
+//import useTranslation i18next
+import { useTranslation } from "react-i18next";
+
 export default function WishListPage() {
-  //Data Carts (1)
-  const DataCarts = [
-    {
-      img: "../../../public/images/img25.png",
-      NameBook: "Rich Dad And Poor Dad",
-      Author: "Robert T. Kiyosanki",
-      des: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et ultricies est. Aliquam in justo varius, sagittis neque ut,",
-      ASIN: "B09TWSRMCB",
-      Price: 40,
-      TotalPrice: 50,
-    },
+  const [ProductsCardANDWishList, setProductsCardANDWishList] = useState([]);
 
-    {
-      img: "../../../public/images/img25.png",
-      NameBook: "Rich Dad And Poor Dad",
-      Author: "Robert T. Kiyosanki",
-      des: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et ultricies est. Aliquam in justo varius, sagittis neque ut,",
-      ASIN: "B09TWSRMCB",
-      Price: 20,
-      TotalPrice: 35,
-    },
-  ];
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
 
+  useEffect(() => {
+    const storage = JSON.parse(localStorage.getItem("WishList")) || [];
+    setProductsCardANDWishList(storage);
+  }, []);
+
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+
+  //value ar
+  const { t } = useTranslation();
   return (
     <section>
       {/* Component Img */}
-      <Img size={30} />
+      <Img size={38} />
 
       {/* /////////////////////////////////////////////////////////////////// */}
       {/* /////////////////////////////////////////////////////////////////// */}
@@ -41,9 +44,9 @@ export default function WishListPage() {
       {/* /////////////////////////////////////////////////////////////////// */}
       {/* /////////////////////////////////////////////////////////////////// */}
 
-      <div className="pt-45 pb-31.75  sm:mx-10 mx-5">
+      <div className="pt-45  pb-109.5  sm:mx-10 mx-5">
         {/* Component Cart HeaderCardANDWishListPage */}
-        <HeaderCardANDWishListPage Quantity={"hidden"} id={2} />
+        <HeaderCardANDWishListPage Quantity={"hidden"} id={2} t={t} />
 
         {/* /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\//\/\/\/\/\/\/\/\/\///\/\///\/\/\\/\/\/\//\\/\/\/\/\//\/\ */}
         {/* /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\//\/\/\/\/\/\/\/\/\///\/\///\/\/\\/\/\/\//\\/\/\/\/\//\/\ */}
@@ -51,8 +54,11 @@ export default function WishListPage() {
         {/* Component ProductsCardANDWishListPage */}
         <section className="my-6.5 mt-15">
           <ProductsCardANDWishListPage
-            DataCarts={DataCarts}
+            ProductsCardANDWishList={ProductsCardANDWishList}
+            setProductsCardANDWishList={setProductsCardANDWishList}
             counter={"hidden"}
+            t={t}
+            storage="WishList"
           />
         </section>
 
@@ -60,8 +66,12 @@ export default function WishListPage() {
         {/* /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\//\/\/\/\/\/\/\/\/\///\/\///\/\/\\/\/\/\//\\/\/\/\/\//\/\ */}
 
         {/* Component FooterWishList */}
-        <section className="mt-15">
-          <FooterWishList></FooterWishList>
+        <section className="mt15">
+          <FooterWishList
+            ProductsCardANDWishList={ProductsCardANDWishList}
+            setProductsCardANDWishList={setProductsCardANDWishList}
+            t={t}
+          />
         </section>
       </div>
     </section>

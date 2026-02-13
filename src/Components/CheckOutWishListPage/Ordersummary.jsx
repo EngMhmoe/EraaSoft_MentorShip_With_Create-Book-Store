@@ -1,14 +1,9 @@
-import { useState } from "react";
-
-export default function OrderSummary() {
-  //State Counter
-  const [Counter, setCounter] = useState(1);
-
+export default function OrderSummary({ Order, t }) {
   return (
     <section className="flex flex-col  gap-10 w-full">
       {/* title */}
       <h1 className="font-semibold text-[18px] text-(--color-textColor1)">
-        Order Summary
+        {t("Order Summary")}
       </h1>
 
       {/* /\/\/\/\/\/\/\/\/\/\\\/\/\/\//\/\/\/\/\/\/\/\/\\\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\ */}
@@ -18,15 +13,11 @@ export default function OrderSummary() {
       {/* /\/\/\/\/\/\/\/\/\/\\\/\/\/\//\/\/\/\/\/\/\/\/\\\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\ */}
 
       <div className="flex flex-col  gap-10 w-full">
-        {[1, 2].map((item, i) => {
+        {Order.map((item, i) => {
           return (
             <div key={i} className="card card-side bg-base-100    h-60">
               <figure>
-                <img
-                  src="../../../public/images/img25.png"
-                  className="img  h-fit"
-                  alt="Movie"
-                />
+                <img src={item.bookImage} className="img  h-fit" alt="Movie" />
               </figure>
 
               {/* /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\ */}
@@ -36,32 +27,34 @@ export default function OrderSummary() {
               <div className="card-body  flex flex-col sm:flex-nowrap flex-wrap gap-7">
                 <section>
                   <h2 className="card-title font-bold">
-                    Rich Dad And Poor Dad
+                    {t(`${item.bookName}`)}
                   </h2>
 
                   {/*  */}
 
                   <p className="font-normal text-(--color-textColor1) ">
-                    Author:{" "}
+                    {t("Author")}:{" "}
                     <span className="font-semibold text-black">
-                      Robert T. Kiyosanki
+                      {t(`${item.author}`)}{" "}
                     </span>
                   </p>
                 </section>
 
                 <div className="flex flex-col gap-7">
                   <button className="btn w-fit   btn-outline cursor-auto  text-black/60">
+                    {t("Free Shipping Today")}
                     <img
                       src={"../../../../public/images/img13.png"}
                       className="w-5"
                     />
-                    Free Shipping Today
                   </button>
 
                   {/*  */}
 
                   <section className="flex justify-between items-center">
-                    <h1 className="font-bold text-[24px]">$ 40</h1>
+                    <h1 className="font-bold text-[24px]">
+                      $ {t(`${Math.ceil(item.final_price)}`)}
+                    </h1>
 
                     {/*  */}
 
@@ -70,9 +63,7 @@ export default function OrderSummary() {
                       className={`flex w-fit py-1 px-2  rounded-xl items-center gap-3 bg-white text-black shadow lg:sticky sm:absolute bottom-3 right-15`}
                     >
                       <button
-                        onClick={() => {
-                          Counter > 0 && setCounter(Counter - 1);
-                        }}
+                        disabled
                         className="rounded-full btn   btn-error text-white  text-4xl text-center flex items-center justify-center h-8 w-1 pb-2"
                       >
                         -
@@ -80,14 +71,12 @@ export default function OrderSummary() {
 
                       {/*  */}
 
-                      <h1 className=" font-bold text-xl">{Counter}</h1>
+                      <h1 className=" font-bold text-xl">{item.quantity}</h1>
 
                       {/*  */}
 
                       <button
-                        onClick={() => {
-                          Counter < 9 && setCounter(Counter + 1);
-                        }}
+                        disabled
                         className="rounded-full btn  btn-error text-white text-4xl text-center flex items-center justify-center h-8 w-5 pb-2"
                       >
                         +

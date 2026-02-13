@@ -1,15 +1,13 @@
-import React from "react";
-
-export default function inputSearch() {
+export default function inputSearch({ t }) {
   return (
     <form
-      className={`pt-70 absolute z-1   w-full flex justify-center items-center`}
+      className={`pt-79 absolute z-1 w-full flex justify-center items-center`}
     >
       <label
         for="search"
         className="block mb-2.5 text-sm font-medium text-heading sr-only "
       >
-        Search
+        {t("Search")}
       </label>
       <div className="relative">
         <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -34,14 +32,14 @@ export default function inputSearch() {
           type="search"
           id="search"
           className={`block md:w-150 sm:w-100    p-3 ps-9 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body`}
-          placeholder="Search"
+          placeholder={t("Search")}
           required
         />
         <button
           type="button"
           className="absolute end-1.5 bottom-1.5 text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded text-xs px-3 py-1.5 focus:outline-none"
         >
-          Search
+          {t("Search")}
         </button>
       </div>
     </form>

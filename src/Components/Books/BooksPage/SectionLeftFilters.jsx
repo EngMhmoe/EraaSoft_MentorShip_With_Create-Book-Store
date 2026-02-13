@@ -6,14 +6,21 @@ import FilterCategories from "./FilterCategories";
 import FilterPublishers from "./FilterPublishers";
 import FilterYears from "./FilterYears";
 
-export default function SectionLeftFilters({ Categories, Publishers, Years }) {
+export default function SectionLeftFilters({
+  Categories,
+  Publishers,
+  Years,
+  t,
+}) {
   return (
     <section className="md:w-70 w-60 mb-10 hidden sm:flex flex-col gap-8 font-normal">
       {/* Title(1) */}
       <header className=" flex flex-row items-center justify-start gap-4 font-bold">
         <img src={icon1} className="w-6 h-6" />
         {/*  */}
-        <h1 className="text-[24px] text-(--color-textColor1)">Filter</h1>
+        <h1 className="text-[24px] text-(--color-textColor1)">
+          {t("Filters")}
+        </h1>
       </header>
 
       {/* ////////////////////////////////////////////////////////////////////////////////////////// */}
@@ -26,14 +33,19 @@ export default function SectionLeftFilters({ Categories, Publishers, Years }) {
         class="flex flex-col gap-8 rounded-base border border-default overflow-hidden shadow-xs"
       >
         {/* Categories(1) */}
-        <FilterCategories name={"Categories"} id={1} Categories={Categories} />
+        <FilterCategories
+          name={"Categories"}
+          id={1}
+          Categories={Categories}
+          t={t}
+        />
         {/* /////////////////////////////////////////////////////////////////////// */}
         {/* /////////////////////////////////////////////////////////////////////// */}
         {/* /////////////////////////////////////////////////////////////////////// */}
         {/* /////////////////////////////////////////////////////////////////////// */}
         {/* /////////////////////////////////////////////////////////////////////// */}
         {/* Publishers(2) */}
-        <FilterPublishers id={2} Publishers={Publishers} />
+        <FilterPublishers id={2} Publishers={Publishers} t={t} />
 
         {/* /////////////////////////////////////////////////////////////////////// */}
         {/* /////////////////////////////////////////////////////////////////////// */}
@@ -42,7 +54,7 @@ export default function SectionLeftFilters({ Categories, Publishers, Years }) {
         {/* /////////////////////////////////////////////////////////////////////// */}
 
         {/* Years(3) */}
-        <FilterYears id={3} Years={Years} />
+        <FilterYears id={3} Years={Years} t={t} />
       </div>
     </section>
   );

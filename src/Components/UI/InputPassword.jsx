@@ -1,11 +1,11 @@
 //import Libraries Formik
 import { ErrorMessage, Field } from "formik";
 
-export default function InputPassword() {
+export default function InputPassword({ t }) {
   return (
     <div className="flex flex-col gap-3">
       <label htmlFor="Password" className="text-[18px] font-semibold">
-        Password
+        {t("Password")}
       </label>
 
       {/* /////////////////////////////////////////////////////// */}
@@ -16,7 +16,7 @@ export default function InputPassword() {
           name="password"
           id="Password"
           type="text"
-          placeholder="Enter Password"
+          placeholder={t("Enter Password")}
           className="bg-white w-full border border-black/20 rounded-lg px-4 py-3"
         />
 

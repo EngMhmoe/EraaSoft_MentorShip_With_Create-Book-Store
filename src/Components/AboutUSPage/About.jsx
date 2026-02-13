@@ -8,7 +8,12 @@ import OurMission from "./OurMission";
 //import styling css
 import "./styling.css";
 
+//import useTranslation i18next
+import { useTranslation } from "react-i18next";
+
 export default function About() {
+  const { t } = useTranslation();
+
   return (
     <section>
       {/* Component Img */}
@@ -20,7 +25,7 @@ export default function About() {
       {/* ////////////////////////////////////////// */}
       {/* ////////////////////////////////////////// */}
 
-      <AboutHeader />
+      <AboutHeader t={t} />
 
       {/* ////////////////////////////////////////// */}
       {/* ////////////////////////////////////////// */}
@@ -31,7 +36,7 @@ export default function About() {
       <div className="pt-180 w-full  font-bold">
         {/* Component OurMission */}
         <section className="sm:px-15 px-5">
-          <OurMission />
+          <OurMission t={t} />
         </section>
 
         {/* /////////////////////////////////////////////////////////////////// */}
@@ -42,7 +47,7 @@ export default function About() {
 
         {/* Component BestSeller */}
         <section className="my-30">
-          <ContactUs />
+          <ContactUs t={t} />
         </section>
 
         {/* /////////////////////////////////////////////////////////////////// */}
@@ -53,7 +58,7 @@ export default function About() {
 
         {/* Component States */}
         <section className="sm:px-15 my-30">
-          <State />
+          <State t={t} />
         </section>
       </div>
     </section>

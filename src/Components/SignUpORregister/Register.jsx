@@ -4,14 +4,20 @@ import LinkAccountANDcode from "../UI/LinkAccountANDcode";
 import LoginFaceBookANDGoogle from "../UI/LoginFaceBookANDGoogle";
 import RegisterForm from "./RegisterForm";
 
+//import useTranslation i18next
+import { useTranslation } from "react-i18next";
+
 export default function Register() {
+  //
+  const { t } = useTranslation();
+
   return (
     <>
       {" "}
-      <section className="pt-95 mb-40 sm:mx-0 mx-5 flex justify-center">
+      <section className="pt-50 mb-40 sm:mx-0 mx-5 flex justify-center">
         <div className="w-140">
           {/* Component Img */}
-          <Img size={84.5} />
+          <Img size={38} />
 
           {/* /////////////////////////////////// */}
           {/* /////////////////////////////////// */}
@@ -19,7 +25,7 @@ export default function Register() {
           <div className="mt-5 flex flex-col gap-10 flex-wrap">
             <div className="flex flex-col gap-5">
               {/* Component SignUpForm */}
-              <RegisterForm />
+              <RegisterForm t={t} />
 
               {/* //////////////////////////////////////////////////////// */}
               {/* //////////////////////////////////////////////////////// */}
@@ -29,8 +35,8 @@ export default function Register() {
 
               {/* Component Link Account AND code */}
               <LinkAccountANDcode
-                des={"Already have an Account?"}
-                NameLink={"Login"}
+                des={`${t("Already have an Account")}?`}
+                NameLink={`${t("Login In")}`}
                 link={"/loginIn"}
               />
             </div>
@@ -43,8 +49,8 @@ export default function Register() {
 
             {/* Component Login FaceBook AND Google */}
             <LoginFaceBookANDGoogle
-              NameGoogle={"Sign Up Google"}
-              NameFaceBook={"Sign up Facebook"}
+              NameGoogle={t("Sign Up Google")}
+              NameFaceBook={t("Sign Up Facebook")}
             />
           </div>
 

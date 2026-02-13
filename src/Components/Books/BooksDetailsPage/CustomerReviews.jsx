@@ -2,15 +2,15 @@
 import img1 from "../../../../public/images/myPhoto-دائره.png";
 
 // w-96
-export default function CustomerReviews() {
+export default function CustomerReviews({ t }) {
   //Data Customer Reviews
   const CustomerReviews = [
     {
       img: img1,
-      name: "John Smith (1)",
+      name: "Mohamed Alwani",
       dec: "Verified Purchases",
       Date: "28/07/2024",
-      NameBook: "Excellent Book (1)",
+      NameBook: "Excellent Book",
       Rate: "5.0",
       Reviews: (
         <div className="rating">
@@ -37,18 +37,15 @@ export default function CustomerReviews() {
           ></div>
         </div>
       ),
-      Mass: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et ultricies est. Aliquam in justo varius, sagittis neque ut,",
+      Mass: "Our customers’ trust is what drives us forward. We value every review and experience shared, and we’re committed to delivering quality and service that exceed expectations.",
     },
-
-    ///\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\\/\/\\/\\/\/\/\/\/\/\/\/\/\/
-    ///\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\\/\/\\/\\/\/\/\/\/\/\/\/\/\/
 
     {
       img: img1,
-      name: "John Smith (2)",
+      name: "Mohamed Alwani",
       dec: "Verified Purchases",
       Date: "28/07/2024",
-      NameBook: "Excellent Book (2)",
+      NameBook: "Excellent Book",
       Rate: "5.0",
       Reviews: (
         <div className="rating">
@@ -75,18 +72,15 @@ export default function CustomerReviews() {
           ></div>
         </div>
       ),
-      Mass: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et ultricies est. Aliquam in justo varius, sagittis neque ut,",
+      Mass: "Our customers’ trust is what drives us forward. We value every review and experience shared, and we’re committed to delivering quality and service that exceed expectations.",
     },
-
-    ///\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\\/\/\\/\\/\/\/\/\/\/\/\/\/\/
-    ///\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\\/\/\\/\\/\/\/\/\/\/\/\/\/\/
 
     {
       img: img1,
-      name: "John Smith (3)",
+      name: "Mohamed Alwani",
       dec: "Verified Purchases",
       Date: "28/07/2024",
-      NameBook: "Excellent Book (3)",
+      NameBook: "Excellent Book",
       Rate: "5.0",
       Reviews: (
         <div className="rating">
@@ -113,18 +107,15 @@ export default function CustomerReviews() {
           ></div>
         </div>
       ),
-      Mass: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et ultricies est. Aliquam in justo varius, sagittis neque ut,",
+      Mass: "Our customers’ trust is what drives us forward. We value every review and experience shared, and we’re committed to delivering quality and service that exceed expectations.",
     },
-
-    ///\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\\/\/\\/\\/\/\/\/\/\/\/\/\/\/
-    ///\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\\/\/\\/\\/\/\/\/\/\/\/\/\/\/
 
     {
       img: img1,
-      name: "John Smith (4)",
+      name: "Mohamed Alwani",
       dec: "Verified Purchases",
       Date: "28/07/2024",
-      NameBook: "Excellent Book (4)",
+      NameBook: "Excellent Book",
       Rate: "5.0",
       Reviews: (
         <div className="rating">
@@ -151,87 +142,8 @@ export default function CustomerReviews() {
           ></div>
         </div>
       ),
-      Mass: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et ultricies est. Aliquam in justo varius, sagittis neque ut,",
+      Mass: "Our customers’ trust is what drives us forward. We value every review and experience shared, and we’re committed to delivering quality and service that exceed expectations.",
     },
-
-    ///\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\\/\/\\/\\/\/\/\/\/\/\/\/\/\/
-    ///\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\\/\/\\/\\/\/\/\/\/\/\/\/\/\/
-
-    {
-      img: img1,
-      name: "John Smith (5)",
-      dec: "Verified Purchases",
-      Date: "28/07/2024",
-      NameBook: "Excellent Book (5)",
-      Rate: "5.0",
-      Reviews: (
-        <div className="rating">
-          <div
-            className="mask mask-star bg-yellow-500"
-            aria-label="1 star"
-          ></div>
-          <div
-            className="mask mask-star bg-yellow-500"
-            aria-label="2 star"
-          ></div>
-          <div
-            className="mask mask-star bg-yellow-500"
-            aria-label="3 star"
-          ></div>
-          <div
-            className="mask mask-star bg-yellow-500"
-            aria-label="4 star"
-          ></div>
-          <div
-            className="mask mask-star bg-yellow-500"
-            aria-label="5 star"
-            aria-current="true"
-          ></div>
-        </div>
-      ),
-      Mass: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et ultricies est. Aliquam in justo varius, sagittis neque ut,",
-    },
-
-    ///\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\\/\/\\/\\/\/\/\/\/\/\/\/\/\/
-    ///\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\\/\/\\/\\/\/\/\/\/\/\/\/\/\/
-
-    {
-      img: img1,
-      name: "John Smith (6)",
-      dec: "Verified Purchases",
-      Date: "28/07/2024",
-      NameBook: "Excellent Book (6)",
-      Rate: "5.0",
-      Reviews: (
-        <div className="rating">
-          <div
-            className="mask mask-star bg-yellow-500"
-            aria-label="1 star"
-          ></div>
-          <div
-            className="mask mask-star bg-yellow-500"
-            aria-label="2 star"
-          ></div>
-          <div
-            className="mask mask-star bg-yellow-500"
-            aria-label="3 star"
-          ></div>
-          <div
-            className="mask mask-star bg-yellow-500"
-            aria-label="4 star"
-          ></div>
-          <div
-            className="mask mask-star bg-yellow-500"
-            aria-label="5 star"
-            aria-current="true"
-          ></div>
-        </div>
-      ),
-      Mass: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et ultricies est. Aliquam in justo varius, sagittis neque ut,",
-    },
-
-    ///\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\\/\/\\/\\/\/\/\/\/\/\/\/\/\/
-    ///\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\\/\/\\/\\/\/\/\/\/\/\/\/\/\/
   ];
 
   return (
@@ -255,10 +167,12 @@ export default function CustomerReviews() {
 
               <div className="flex font-bold flex-col gap-1">
                 <h1 className=" text-[18px] group-hover:text-(--color-textColor1) duration-1000">
-                  {Review.name}
+                  {t(`${Review.name}`)}
                 </h1>
 
-                <p className="text-[14px] text-[#25D994]">{Review.dec}</p>
+                <p className="text-[14px] text-[#25D994]">
+                  {t(`${Review.dec}`)}
+                </p>
               </div>
             </div>
 
@@ -268,14 +182,14 @@ export default function CustomerReviews() {
 
             <div className="flex flex-col gap-4">
               <h2 className="text-black/60 text-[15px] font-normal">
-                Reviewed On {Review.Date}
+                {t(`Reviewed On`)} {t(`${Review.Date}`)}
               </h2>
 
               {/*  */}
 
               <section className="flex flex-row items-center gap-4">
                 <h1 className="card-title text-[20px] font-bold text-(--color-textColor1) group-hover:text-black duration-1000">
-                  {Review.NameBook}
+                  {t(`${Review.NameBook}`)}
                 </h1>
 
                 <div className="flex flex-row items-center gap-3">
@@ -311,7 +225,7 @@ export default function CustomerReviews() {
               {/*  */}
 
               <p className="text-black/60 font-normal text-[15px]">
-                {Review.Mass}
+                {t(`${Review.Mass}`)}
               </p>
             </div>
           </div>

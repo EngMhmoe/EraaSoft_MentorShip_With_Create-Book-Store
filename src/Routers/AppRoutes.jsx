@@ -7,12 +7,6 @@ import Index from "../Pages/Index";
 import Books from "../Pages/Books";
 //BooksDetailsALL page From Books page
 import BooksDetailsALL from "../Components/Books/BooksDetailsALL";
-//CustomerDetails page From Books page
-import ProductDetails from "../Components/Books/BooksDetailsPage/ProductDetails";
-//CustomerReviews page From Books page
-import CustomerReviews from "../Components/Books/BooksDetailsPage/CustomerReviews";
-//RecommendedBooks page From Books page
-import RecommendedForYou from "../Components/Books/BooksDetailsPage/RecommendedForYou";
 
 //AboutUs Page(3)
 import AboutUs from "../Pages/AboutUs";
@@ -26,15 +20,6 @@ import WishList from "../Pages/WishList";
 import CheckOutWishList from "../Pages/CheckOutWishList";
 //OrderConfirmedSuccessful Page From WishList Page
 import OrderConfirmedSuccessful from "../Components/CheckOutWishListPage/OrderConfirmedSuccessful";
-
-//HistoryAll Page
-import HistoryAll from "../Pages/HistoryAll";
-//HistoryInProgress Page From History Page
-import HistoryInProgress from "../Components/History/HistoryInProgress";
-//HistoryCompleted Page From History Page
-import HistoryCompleted from "../Components/History/HistoryCompleted";
-//HistoryCanceled Page From History Page
-import HistoryCanceled from "../Components/History/HistoryCanceled";
 
 //LoginIn Page
 import LoginIn from "../Pages/LoginIn";
@@ -54,12 +39,18 @@ import Layout from "../Layout/Layout";
 
 //Profile Page
 import Profile from "../Pages/Profile";
+//HistoryAll Page
+import HistoryAll from "../Pages/HistoryAll";
+//Address Page
+import Address from "../Pages/Address";
+//Help Page
+import Help from "../Pages/Help";
 
 //NotFound Page
 import NotFound from "../Components/NotFound";
 
-import { Route, Routes } from "react-router-dom";
 //import BrowserRouter
+import { Route, Routes } from "react-router-dom";
 import TestStrapiPage from "../ProjectTestCoding/TestTrapiPage/TestStrapiPage";
 
 export default function AppRoutes() {
@@ -98,8 +89,6 @@ export default function AppRoutes() {
 
         <Route path="WishList" element={<WishList />} />
         <Route path="CheckOutWishList" element={<CheckOutWishList />} />
-
-        <Route path="Profile" element={<Profile />} />
       </Route>
 
       <Route
@@ -114,10 +103,13 @@ export default function AppRoutes() {
       {/* /////////////////////////////////////////////////////////////////////////////////// */}
 
       <Route path="/" element={<Layout />}>
+        <Route path="Profile" element={<Profile />} />
+
         <Route path="HistoryAll" element={<HistoryAll />} />
-        <Route path="HistoryInProgress" element={<HistoryInProgress />} />
-        <Route path="HistoryCompleted" element={<HistoryCompleted />} />
-        <Route path="HistoryCanceled" element={<HistoryCanceled />} />
+
+        <Route path="Address" element={<Address />} />
+
+        <Route path="Help" element={<Help />} />
       </Route>
 
       {/* /////////////////////////////////////////////////////////////////////////////////// */}

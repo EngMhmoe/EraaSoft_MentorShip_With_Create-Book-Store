@@ -5,6 +5,9 @@ import Img from "../../UI/Img";
 import SectionLeftFilters from "./SectionLeftFilters";
 import SectionRightBooks from "./SectionRightBooks";
 
+//import useTranslation i18next
+import { useTranslation } from "react-i18next";
+
 export default function BooksPage() {
   const Categories = [
     { name: "All Categories", Count: "1450" },
@@ -24,7 +27,7 @@ export default function BooksPage() {
     { name: "Jane Austen", Count: "140" },
     { name: "Charles Dickens", Count: "309" },
     { name: "Mark Twain", Count: "102" },
-    { name: "Virginia Woolf ", Count: "204" },
+    { name: "Virginia Woolf", Count: "204" },
     { name: "Leo Tolstoy", Count: "89" },
     { name: "Fyodor Dostoevsky", Count: "47" },
     { name: "Haruki Murakami", Count: "211" },
@@ -44,10 +47,13 @@ export default function BooksPage() {
     { Year: "2018", Count: "92" },
     { Year: "2017", Count: "92" },
   ];
+
+  //value ar
+  const { t } = useTranslation();
   return (
     <section>
       {/* Component Img */}
-      <Img size={30} />
+      <Img size={38} />
 
       {/* /////////////////////////////////////////////////////////////////// */}
       {/* /////////////////////////////////////////////////////////////////// */}
@@ -62,6 +68,7 @@ export default function BooksPage() {
             Categories={Categories}
             Publishers={Publishers}
             Years={Years}
+            t={t}
           />
         </section>
 
@@ -77,6 +84,7 @@ export default function BooksPage() {
             Categories={Categories}
             Publishers={Publishers}
             Years={Years}
+            t={t}
           />
         </section>
       </div>

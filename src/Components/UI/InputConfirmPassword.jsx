@@ -1,11 +1,11 @@
 //import Libraries Formik
 import { ErrorMessage, Field } from "formik";
 
-export default function InputConfirmPassword() {
+export default function InputConfirmPassword({ t }) {
   return (
     <div className="flex flex-col gap-3">
       <label htmlFor="ConfirmPassword" className="text-[18px] font-semibold">
-        Confirm Password
+        {t("Confirm Password")}
       </label>
       {/*  */}
       <div className=" relative">
@@ -13,7 +13,7 @@ export default function InputConfirmPassword() {
           name="password_confirmation"
           id="ConfirmPassword"
           type="text"
-          placeholder="Enter Password"
+          placeholder={t("Enter Password")}
           className="bg-white w-full border border-black/20 rounded-lg px-4 py-3"
         />
 

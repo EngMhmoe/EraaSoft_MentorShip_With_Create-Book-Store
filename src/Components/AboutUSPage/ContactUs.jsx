@@ -10,15 +10,11 @@ import icon3 from "../../../public/images/img33.png";
 import Lottie from "lottie-react";
 import message from "../../../public/animations/Smartphone message.json";
 
-export default function ContactUs() {
+export default function ContactUs({ t }) {
   //Data Header
   const DataHeader = {
-    title: (
-      <h1>
-        Have a Questions? <br /> Get in Touch
-      </h1>
-    ),
-    des: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et ultricies est. Aliquam in justo varius, sagittis neque ut, malesuada leo.",
+    title: "Have a Questions? Get in Touch",
+    des: "We’d love to hear from you! Our team is always ready to answer your questions and provide the support you need. Feel free to get in touch — we’re here to help.",
   };
 
   //Data Contact
@@ -30,12 +26,12 @@ export default function ContactUs() {
 
     {
       icon: icon2,
-      data: "Example@gmail.com",
+      data: "lwanym144@gmail.com",
     },
 
     {
       icon: icon3,
-      data: <p>adipiscing elit. Mauris et ultricies</p>,
+      data: "adipiscing elit. Mauris et ultricies",
     },
   ];
 
@@ -44,17 +40,19 @@ export default function ContactUs() {
       {/* section Left is Form */}
       <div className="Header flex flex-col gap-15 w-148">
         <header className="flex flex-col gap-4">
-          <h1 className="font-bold sm:text-[40px] text-3xl text-white">
-            {DataHeader.title}
+          <h1 className="font-bold sm:text-[40px] text-3xl text-white sm:text-start text-center">
+            {t(`${DataHeader.title}`)}
           </h1>
           {/*  */}
-          <p className="text-white/60 font-normal w-fit">{DataHeader.des}</p>
+          <p className="text-white/60 font-normal w-fit sm:text-start text-center">
+            {t(`${DataHeader.des}`)}
+          </p>
         </header>
 
         {/* ////////////////////////////////////////////////////////////////////////////////////// */}
         {/* ////////////////////////////////////////////////////////////////////////////////////// */}
 
-        <FormContact />
+        <FormContact t={t} />
       </div>
 
       {/* ////////////////////////////////////////////////////////////////////////////////////// */}
@@ -78,7 +76,10 @@ export default function ContactUs() {
                   <img src={Data.icon} className="w-5 h-5" />
                 </div>
                 {/*  */}
-                <h1 className="text-white/90  font-normal">{Data.data}</h1>
+                <h1 className="text-white/90  font-normal">
+                  {" "}
+                  {t(`${Data.data}`)}
+                </h1>
               </div>
             );
           })}

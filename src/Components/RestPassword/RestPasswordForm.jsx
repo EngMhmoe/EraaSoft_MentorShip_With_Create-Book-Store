@@ -9,7 +9,7 @@ import { Form, Formik } from "formik";
 //import Libraries Formik
 import { useNavigate } from "react-router-dom";
 
-export default function RestPasswordForm() {
+export default function RestPasswordForm({ t }) {
   //navigate
   const navigate = useNavigate();
 
@@ -37,7 +37,7 @@ export default function RestPasswordForm() {
           {/* /////////////////////////////////////////////////////////////////// */}
 
           {/* Component Input Submit */}
-          <InputSubmit name={"Reset password"} />
+          <InputSubmit t={t} name={"Reset password"} />
         </div>
       </Form>
     </Formik>

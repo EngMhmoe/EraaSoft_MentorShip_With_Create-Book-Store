@@ -1,4 +1,9 @@
-export default function ALLFiltersScreenCol({ Categories, Publishers, Years }) {
+export default function ALLFiltersScreenCol({
+  Categories,
+  Publishers,
+  Years,
+  t,
+}) {
   return (
     <>
       {" "}
@@ -8,7 +13,7 @@ export default function ALLFiltersScreenCol({ Categories, Publishers, Years }) {
         class="w-30 inline-flex items-center justify-between text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-lg px-4 py-2.5 focus:outline-none"
         type="button"
       >
-        Filters
+        {t("Filters")}
         <svg
           class="w-4 h-4 ms-1.5 -me-0.5"
           aria-hidden="true"
@@ -45,7 +50,7 @@ export default function ALLFiltersScreenCol({ Categories, Publishers, Years }) {
               type="button"
               class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded"
             >
-              Categories
+              {t("Categories")}
               {/*  */}
               <svg
                 class="h-4 w-4 ms-auto rtl:rotate-180"
@@ -81,7 +86,7 @@ export default function ALLFiltersScreenCol({ Categories, Publishers, Years }) {
                         // href="#"
                         class=" cursor-pointer inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded"
                       >
-                        {cat.name}
+                        {t(`${cat.name}`)}
                       </button>
                     </li>
                   );
@@ -99,7 +104,7 @@ export default function ALLFiltersScreenCol({ Categories, Publishers, Years }) {
               type="button"
               class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded"
             >
-              Publishers
+              {t("Publishers")}
               {/*  */}
               <svg
                 class="h-4 w-4 ms-auto rtl:rotate-180"
@@ -135,7 +140,7 @@ export default function ALLFiltersScreenCol({ Categories, Publishers, Years }) {
                         // href="#"
                         class=" cursor-pointer inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded"
                       >
-                        {Publisher.name}
+                        {t(`${Publisher.name}`)}
                       </button>
                     </li>
                   );
@@ -153,7 +158,7 @@ export default function ALLFiltersScreenCol({ Categories, Publishers, Years }) {
               type="button"
               class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded"
             >
-              Years
+              {t("Years")}
               {/*  */}
               <svg
                 class="h-4 w-4 ms-auto rtl:rotate-180"
@@ -189,7 +194,7 @@ export default function ALLFiltersScreenCol({ Categories, Publishers, Years }) {
                         // href="#"
                         class=" cursor-pointer inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded"
                       >
-                        {Year.Year}
+                        {t(`${Year.Year}`)}
                       </button>
                     </li>
                   );

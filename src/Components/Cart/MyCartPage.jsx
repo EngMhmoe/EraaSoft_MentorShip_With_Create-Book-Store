@@ -1,3 +1,6 @@
+//import Hooks react js
+import { useEffect, useState } from "react";
+
 //import Component UI
 import Img from "../UI/Img";
 
@@ -9,34 +12,39 @@ import PaymentSummary from "./PaymentSummary";
 //import style.css
 import "./style.css";
 
-export default function MyCartPage() {
-  //Data Carts (1)
-  const DataCarts = [
-    {
-      img: "../../../public/images/img25.png",
-      NameBook: "Rich Dad And Poor Dad",
-      Author: "Robert T. Kiyosanki",
-      des: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et ultricies est. Aliquam in justo varius, sagittis neque ut,",
-      ASIN: "B09TWSRMCB",
-      Price: 40,
-      TotalPrice: 50,
-    },
+//import useTranslation i18next
+import { useTranslation } from "react-i18next";
 
-    {
-      img: "../../../public/images/img25.png",
-      NameBook: "Rich Dad And Poor Dad",
-      Author: "Robert T. Kiyosanki",
-      des: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et ultricies est. Aliquam in justo varius, sagittis neque ut,",
-      ASIN: "B09TWSRMCB",
-      Price: 20,
-      TotalPrice: 35,
-    },
-  ];
+// import SuccessfulDelete from "../../Components/SuccessfulDelete";
+
+export default function MyCartPage() {
+  const [ProductsCardANDWishList, setProductsCardANDWishList] = useState([]);
+
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+
+  useEffect(() => {
+    const Carts = JSON.parse(localStorage.getItem("Carts")) || [];
+
+    setProductsCardANDWishList(Carts);
+  }, []);
+
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+
+  //value ar
+  const { t } = useTranslation();
 
   return (
     <section>
       {/* Component Img */}
-      <Img size={30} />
+      <Img size={38} />
 
       {/* /////////////////////////////////////////////////////////////////// */}
       {/* /////////////////////////////////////////////////////////////////// */}
@@ -46,21 +54,27 @@ export default function MyCartPage() {
 
       <div className="pt-45 pb-31.75  sm:mx-10 mx-5">
         {/* Component Cart HeaderCardANDWishListPage */}
-        <HeaderCardANDWishListPage Quantity={"flex"} id={1} />
+        <HeaderCardANDWishListPage Quantity={"flex"} id={1} t={t} />
 
         {/* /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\//\/\/\/\/\/\/\/\/\///\/\///\/\/\\/\/\/\//\\/\/\/\/\//\/\ */}
         {/* /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\//\/\/\/\/\/\/\/\/\///\/\///\/\/\\/\/\/\//\\/\/\/\/\//\/\ */}
 
         {/* Component Carts */}
         <section className="my-6.5">
-          <ProductsCardANDWishListPage DataCarts={DataCarts} counter={"flex"} />
+          <ProductsCardANDWishListPage
+            ProductsCardANDWishList={ProductsCardANDWishList}
+            setProductsCardANDWishList={setProductsCardANDWishList}
+            counter={"flex"}
+            t={t}
+            storage="Carts"
+          />
         </section>
 
         {/* /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\//\/\/\/\/\/\/\/\/\///\/\///\/\/\\/\/\/\//\\/\/\/\/\//\/\ */}
         {/* /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\//\/\/\/\/\/\/\/\/\///\/\///\/\/\\/\/\/\//\\/\/\/\/\//\/\ */}
 
         <section className="mt-15">
-          <PaymentSummary />
+          <PaymentSummary t={t} />
         </section>
       </div>
     </section>

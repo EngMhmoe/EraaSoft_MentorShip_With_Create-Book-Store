@@ -1,11 +1,11 @@
 //import Libraries Formik
 import { ErrorMessage, Field } from "formik";
 
-export default function InputEmail() {
+export default function InputEmail({ t }) {
   return (
     <div className="flex flex-col gap-3">
       <label htmlFor="Email" className="text-[18px] font-semibold">
-        Email
+        {t("Email")}
       </label>
 
       {/* /////////////////////////////////////////////////////// */}

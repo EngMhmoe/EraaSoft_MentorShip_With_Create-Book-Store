@@ -1,143 +1,142 @@
-//import imgs
-import img1 from "../../../../public/images/img25.png";
-import img2 from "../../../../public/images/img25.png";
-import img3 from "../../../../public/images/img26.png";
+//import Hooks React js
+import { useState } from "react";
 
-{
-  /* <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
-  <img src={img1} class=" block w-full " alt="..." />
-</div>; */
-}
-export default function RecommendedForYou() {
-  //Date Recomended
-  const DateRecomended = [
+//import React-icon
+// import { FaCartArrowDown } from "react-icons/fa";
+
+//import TooltipAddToCartANDWishList
+import TooltipAddToCartANDWishList from "../../TooltipAddToCartANDWishList";
+import { FaCartArrowDown } from "react-icons/fa";
+import { UseTokenStore } from "../../../store/UseTokenStore";
+import { useNavigate } from "react-router-dom";
+
+export default function RecommendedForYou({ t }) {
+  //Data recommended (1)
+  const [DataRecommended] = useState([
     {
-      img: img1,
-      title: "Rich Dad And Poor Dad",
-      Author: "Robert Y. Kiyosanki",
-      Description:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, molestiae voluptates, nihil velit dolor dolorem expedita tempora quia hic sapiente mollitia minus voluptas. Nulla, eaque dolore.?",
-
-      Review: "(180 Review)",
-      Rate: "4.2",
-      price: "30.00",
-      dec: "45.00",
+      bookId: 1,
+      bookImage: "../../../public/images/img22.png",
+      bookName: "Vel dignissimos veritatis quae.",
+      author: "Adella Kreiger",
+      description:
+        "Harum cupiditate assumenda aut magni ut quaerat odio. Hic suscipit excepturi vel minus rerum nihil voluptatibus. Blanditiis quam repellat adipisci error sit vel. Sequi quae odio commodi et iure magnam.",
+      countReview: 0,
+      rate: null,
+      price: 979.01,
+      discount: 44,
+      final_price: 548.2456,
+      asinCode: "MSI175942",
+      bookFormat: "Hard Cover",
+      lang: "english",
+      publicationYear: 2026,
+      quantity: 1,
+      //عدد المنتج
+      stock: 61,
+      numberOfPages: 659,
+      catId: 51,
+      category_name: "Manager of Weapons Specialists",
     },
 
     {
-      img: img2,
-      title: "The Design Of Books",
-      Author: "Debbie Berne",
-      Description:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, molestiae voluptates, nihil velit dolor dolorem expedita tempora quia hic sapiente mollitia minus voluptas. Nulla, eaque dolore.?",
-
-      Review: "(210 Review)",
-      Rate: "4.2",
-      price: "25.00",
-      dec: "35.00",
+      bookId: 2,
+      bookImage: "../../../public/images/img21.png",
+      bookName: "Natus facilis eos.",
+      author: "Albina Will",
+      description:
+        "Quod et aliquam maiores hic laudantium facilis quam. Qui itaque esse asperiores excepturi totam asperiores nisi. At et impedit nam et voluptatibus ullam.",
+      countReview: 10,
+      rate: 2.2,
+      price: 775.93,
+      discount: 43,
+      final_price: 442.2801,
+      asinCode: "SLO411373",
+      bookFormat: "soft Cover",
+      lang: "Arabic",
+      publicationYear: 2025,
+      quantity: 1,
+      //عدد المنتج
+      stock: 59,
+      numberOfPages: 349,
+      catId: 52,
+      category_name: "Automotive Technician",
     },
+  ]);
 
-    {
-      img: img2,
-      title: "The Design Of Books",
-      Author: "Debbie Berne",
-      Description:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, molestiae voluptates, nihil velit dolor dolorem expedita tempora quia hic sapiente mollitia minus voluptas. Nulla, eaque dolore.?",
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
 
-      Review: "(210 Review)",
-      Rate: "4.2",
-      price: "25.00",
-      dec: "35.00",
-    },
+  //Value Token (2)
+  const Token = UseTokenStore((stets) => stets.token);
 
-    {
-      img: img2,
-      title: "The Design Of Books",
-      Author: "Debbie Berne",
-      Description:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, molestiae voluptates, nihil velit dolor dolorem expedita tempora quia hic sapiente mollitia minus voluptas. Nulla, eaque dolore.?",
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
 
-      Review: "(210 Review)",
-      Rate: "4.2",
-      price: "25.00",
-      dec: "35.00",
-    },
+  //Navigate (3)
+  const Navigate = useNavigate();
 
-    {
-      img: img2,
-      title: "The Design Of Books",
-      Author: "Debbie Berne",
-      Description:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, molestiae voluptates, nihil velit dolor dolorem expedita tempora quia hic sapiente mollitia minus voluptas. Nulla, eaque dolore.?",
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
 
-      Review: "(210 Review)",
-      Rate: "4.2",
-      price: "25.00",
-      dec: "35.00",
-    },
+  //function AddToCart (4)
+  function AddToCart(selectBookId) {
+    //Token === AddToCart
+    if (Token) {
+      //SelectBook (1)
+      const SelectBook = DataRecommended.find(
+        (item) => item.bookId === selectBookId,
+      );
 
-    {
-      img: img2,
-      title: "The Design Of Books",
-      Author: "Debbie Berne",
-      Description:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, molestiae voluptates, nihil velit dolor dolorem expedita tempora quia hic sapiente mollitia minus voluptas. Nulla, eaque dolore.?",
+      //CheckCarts in LocalStorage (2)
+      const CheckCarts = JSON.parse(localStorage.getItem("Carts")) || [];
 
-      Review: "(210 Review)",
-      Rate: "4.2",
-      price: "25.00",
-      dec: "35.00",
-    },
+      //Filter Carts In LocalStorage (5)
+      const FilterCartsInLocalStorage = CheckCarts.find(
+        (item) => item.bookId === selectBookId,
+      );
 
-    {
-      img: img2,
-      title: "The Design Of Books",
-      Author: "Debbie Berne",
-      Description:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, molestiae voluptates, nihil velit dolor dolorem expedita tempora quia hic sapiente mollitia minus voluptas. Nulla, eaque dolore.?",
+      //is Condition(6)
+      if (!FilterCartsInLocalStorage) {
+        //NewCarts (3)
+        const NewCarts = [...CheckCarts, SelectBook];
 
-      Review: "(210 Review)",
-      Rate: "4.2",
-      price: "25.00",
-      dec: "35.00",
-    },
+        //Push Carts In LocalStorage (4)
+        localStorage.setItem("Carts", JSON.stringify(NewCarts));
+        window.location.reload();
+      }
+    } else {
+      //Token !== Navigate To login (1)
+      Navigate("/loginIn");
+    }
+  }
 
-    {
-      img: img2,
-      title: "The Design Of Books",
-      Author: "Debbie Berne",
-      Description:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, molestiae voluptates, nihil velit dolor dolorem expedita tempora quia hic sapiente mollitia minus voluptas. Nulla, eaque dolore.?",
-
-      Review: "(210 Review)",
-      Rate: "4.2",
-      price: "25.00",
-      dec: "35.00",
-    },
-
-    {
-      img: img2,
-      title: "The Design Of Books",
-      Author: "Debbie Berne",
-      Description:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, molestiae voluptates, nihil velit dolor dolorem expedita tempora quia hic sapiente mollitia minus voluptas. Nulla, eaque dolore.?",
-
-      Review: "(210 Review)",
-      Rate: "4.2",
-      price: "25.00",
-      dec: "35.00",
-    },
-  ];
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
 
   return (
     <>
       <section className=" border-t border-red-500 py-20">
         <section className=" carousel carousel-center rounded-box    flex  items-center justify-center gap-5">
-          {DateRecomended.map((Rec) => {
+          {DataRecommended.map((Rec) => {
             return (
               <div className="carousel-item card2 card card-side   bg-[#3B2F4A] text-white  shadow-lg">
                 <figure>
-                  <img src={img1} alt="Movie" className="object-contain h-75" />
+                  <img
+                    src={Rec.bookImage}
+                    alt="Movie"
+                    className="object-contain h-75"
+                  />
                 </figure>
 
                 {/* //////////////////////////////////////////////// */}
@@ -146,15 +145,17 @@ export default function RecommendedForYou() {
 
                 <div className="px-4 py-5">
                   <h2 className="card-title font-bold text-(--color-textColor1)">
-                    {Rec.title}
+                    {t(`${Rec.bookName}`)}
                   </h2>
 
                   {/* ////////////////////////////////////////////////////////////////////////////// */}
                   {/* ////////////////////////////////////////////////////////////////////////////// */}
 
                   <h3 className="font-normal text-[16px] text-white/70">
-                    Author:{" "}
-                    <span className="font-bold text-white">{Rec.Author}</span>
+                    {t(`Author`)}:{" "}
+                    <span className="font-bold text-white">
+                      {t(`${Rec.author}`)}
+                    </span>
                   </h3>
 
                   {/* ////////////////////////////////////////////////////////////////////////////// */}
@@ -191,15 +192,17 @@ export default function RecommendedForYou() {
                           ></div>
                         </div>
                         {/* /////////////////////// */}
-                        <p className="text-white/70">{Rec.Review}</p>
+                        <p className="text-white/70">
+                          ({t("Review")} {Rec.countReview})
+                        </p>
                       </div>
 
                       {/*  */}
 
                       <h3 className="font-normal text-[16px] ">
-                        Rate:{" "}
+                        {t(`Rate`)}:{" "}
                         <span className="font-bold  text-(--color-textColor1)">
-                          {Rec.Rate}
+                          {t(`${Rec.rate}`)}
                         </span>
                       </h3>
                     </div>
@@ -210,9 +213,16 @@ export default function RecommendedForYou() {
                     {/* //////////////////////// */}
                   </div>
                   <div className="ms-auto  my-2 flex items-center justify-end   gap-2">
-                    <h1 className="text-white/70 text-[17px]">${Rec.dec}</h1>
+                    <h1 className="text-white/70 line-through text-[17px]">
+                      {" "}
+                      {t(`${Rec.discount}`)}
+                    </h1>
                     <h1 className="font-bold text-[26px]">
-                      $<span className="text-white">{Rec.price}</span>
+                      $
+                      <span className="text-white">
+                        {" "}
+                        {t(`${Math.ceil(Rec.final_price)}`)}
+                      </span>
                     </h1>
                   </div>
 
@@ -226,15 +236,33 @@ export default function RecommendedForYou() {
 
                     {/*  */}
 
-                    <div className="text-white/70">4 books Left</div>
+                    <div className="text-white/70">{t("books Left")} 4</div>
                   </div>
 
                   {/* ////////////////////////////////////////////////////////////////////////////// */}
                   {/* ////////////////////////////////////////////////////////////////////////////// */}
 
                   <div className=" w-fit ms-auto cursor-pointer">
-                    <div className="border ms-auto rounded-lg p-3 border-(--color-textColor1) bg-(--color-textColor1) text-(--color-textColor1)">
-                      <img src={img3} alt="" />
+                    {/* Add To Cart(1) */}
+                    <div className="tooltip">
+                      <button
+                        onClick={() => AddToCart(Rec.bookId)}
+                        className="border cursor-pointer flex gap-2.5  rounded-md border-(--color-textColor1) bg-(--color-textColor1) text-white p-2 text-xl"
+                      >
+                        {t("Add To Cart")}
+                        {/*  */}
+                        <FaCartArrowDown />
+                      </button>
+
+                      {/* ////////////////////////////////////// */}
+                      {/* ////////////////////////////////////// */}
+
+                      {Token && (
+                        <TooltipAddToCartANDWishList
+                          name={"Add To Cart"}
+                          t={t}
+                        />
+                      )}
                     </div>
                   </div>
                 </div>

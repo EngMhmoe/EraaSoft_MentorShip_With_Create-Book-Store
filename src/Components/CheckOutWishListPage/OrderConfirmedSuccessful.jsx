@@ -3,7 +3,13 @@ import Lottie from "lottie-react";
 import groovyWalkAnimation from "../../../public/animations/Check okey done.json";
 import { Link } from "react-router-dom";
 
+//import useTranslation i18next
+import { useTranslation } from "react-i18next";
+
 export default function OrderConfirmedSuccessful() {
+  //value ar
+  const { t } = useTranslation();
+
   return (
     <section>
       <div className="flex justify-center items-center h-dvh text-center bg-black">
@@ -20,11 +26,11 @@ export default function OrderConfirmedSuccessful() {
             {" "}
             <div className="sm:px-35">
               <h1 className="font-bold text-[24px] text-[#d16896]">
-                Order Successful!
+                !{t("Order Successful")}
               </h1>
 
               <p className="text-[15px] text-gray-600">
-                Your order has been confirmed
+                {t("Your order has been confirmed")}
               </p>
             </div>
             {/* //////////////////////////////////// */}
@@ -34,7 +40,7 @@ export default function OrderConfirmedSuccessful() {
               <Link to={"/"}>
                 {" "}
                 <button className="font-bold text-xl capitalize btn hover:bg-[#b31157] bg-[#D9176C] text-white w-full rounded-lg py-6.25">
-                  Finish
+                  {t("Finish")}
                 </button>
               </Link>
             </div>

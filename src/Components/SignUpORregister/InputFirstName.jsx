@@ -1,11 +1,11 @@
 //import Libraries Formik
 import { ErrorMessage, Field } from "formik";
 
-export default function InputFirstName() {
+export default function InputFirstName({ t }) {
   return (
     <div className="flex flex-col gap-3 w-full">
       <label htmlFor="FirstName" className="text-[18px] font-semibold">
-        First Name
+        {t("First Name")}
       </label>
 
       {/* /////////////////////////////////////////////////////// */}
@@ -15,7 +15,7 @@ export default function InputFirstName() {
         name="first_name"
         id="FirstName"
         type="text"
-        placeholder="John"
+        placeholder={t("mohamed")}
         className="bg-white w-full  border border-black/20 rounded-lg px-4 py-3"
       />
 

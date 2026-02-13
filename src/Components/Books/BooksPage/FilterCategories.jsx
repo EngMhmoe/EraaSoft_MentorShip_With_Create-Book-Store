@@ -1,4 +1,4 @@
-export default function FilterCategories({ name, Categories, id }) {
+export default function FilterCategories({ name, Categories, id, t }) {
   return (
     <div className=" flex flex-col gap-2  rounded-base border border-default overflow-hidden shadow-xs">
       <header id={`accordion-collapse-heading-${id}`}>
@@ -9,7 +9,7 @@ export default function FilterCategories({ name, Categories, id }) {
           aria-expanded="true"
           aria-controls={`accordion-collapse-body-${id}`}
         >
-          <span className="text-[19px] text-black">{name}</span>
+          <span className="text-[19px] text-black">{t(`${name}`)}</span>
           {/*  */}
           {/*  */}
           <svg
@@ -54,7 +54,7 @@ export default function FilterCategories({ name, Categories, id }) {
                   {/*  */}
                   {/*  */}
                   <label class="ms-2 text-sm text-[15px] font-medium text-heading">
-                    {Cat.name}
+                    {t(`${Cat.name}`)}
                   </label>
                 </div>
                 {/*  */}
@@ -69,8 +69,8 @@ export default function FilterCategories({ name, Categories, id }) {
         {/*  */}
         {/*  */}
 
-        <div className="pt-8 text-center text-[14px] font-semibold text-(--color-textColor1)">
-          Load More
+        <div className=" cursor-pointer pt-8 text-center text-[14px] font-semibold text-(--color-textColor1)">
+          {t(`Load More`)}
         </div>
       </div>
     </div>

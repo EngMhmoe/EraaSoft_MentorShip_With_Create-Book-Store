@@ -1,60 +1,25 @@
-//import React Hooks
-import { useEffect, useState } from "react";
-
 //import Components
-import Img from "../UI/Img";
 import BestSeller from "./BestSeller";
 import Recommended from "./Recomended";
 import FlashSale from "./FlashSale";
 import State from "./State";
 import InputSearch from "./inputSearch";
 
+//import Component UI
+import Img from "../UI/Img";
+
 //import styling css
 import "./style.css";
 
-//import axios
-import axios from "axios";
+//import motion
+import { motion } from "motion/react";
+
+//import useTranslation i18next
+import { useTranslation } from "react-i18next";
 
 export default function Home() {
-  //Data Best Seller(1)
-
-  ///\/\/\/\/\/\/\//\/\/\/\/\/\/\/\///
-  ///\/\/\/\/\/\/\//\/\/\/\/\/\/\/\///
-
-  //Data recommended(2)
-  const [DataRecommended, setDataRecommended] = useState([]);
-
-  ///\/\/\/\/\/\/\//\/\/\/\/\/\/\/\///
-  ///\/\/\/\/\/\/\//\/\/\/\/\/\/\/\///
-
-  //Data Flash Sale(3)
-
-  ///////////////////////////////////////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////
-
-  //useEffect Best Seller(1)
-
-  ///\/\/\/\/\/\/\//\/\/\/\/\/\/\/\///
-  ///\/\/\/\/\/\/\//\/\/\/\/\/\/\/\///
-
-  //useEffect Data recommended(2)
-  useEffect(() => {
-    axios
-      .get("https://bookstore.eraasoft.pro/api/home")
-      .then((res) => {
-        setDataRecommended(res.data.data.recommended);
-        console.log(res.data.data.recommended);
-      })
-      .catch((error) => console.log(error));
-  }, []);
-
-  ///\/\/\/\/\/\/\//\/\/\/\/\/\/\/\///
-  ///\/\/\/\/\/\/\//\/\/\/\/\/\/\/\///
-
-  //useEffect Data Flash Sale(3)
+  //value ar Lang
+  const { t } = useTranslation();
 
   return (
     <>
@@ -69,7 +34,13 @@ export default function Home() {
         {/* /////////////////////////////////////////////////////////////////// */}
 
         {/* Component Input-Search UI */}
-        <InputSearch />
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <InputSearch t={t} />
+        </motion.div>
 
         {/* /////////////////////////////////////////////////////////////////// */}
         {/* /////////////////////////////////////////////////////////////////// */}
@@ -77,29 +48,35 @@ export default function Home() {
         {/* /////////////////////////////////////////////////////////////////// */}
         {/* /////////////////////////////////////////////////////////////////// */}
 
-        <div className="pt-180 w-full  font-bold">
+        <div className="pt-170 w-full  font-bold">
           {/* Component States */}
           <section className="sm:px-15 px-5">
-            <State />
+            <State t={t} />
           </section>
 
+          {/* /////////////////////////////////////////////////////////////////// */}
+          {/* /////////////////////////////////////////////////////////////////// */}
           {/* /////////////////////////////////////////////////////////////////// */}
           {/* /////////////////////////////////////////////////////////////////// */}
           {/* /////////////////////////////////////////////////////////////////// */}
 
           {/* Component BestSeller */}
           <section className="my-30">
-            <BestSeller />
+            <BestSeller t={t} />
           </section>
 
+          {/* /////////////////////////////////////////////////////////////////// */}
+          {/* /////////////////////////////////////////////////////////////////// */}
           {/* /////////////////////////////////////////////////////////////////// */}
           {/* /////////////////////////////////////////////////////////////////// */}
           {/* /////////////////////////////////////////////////////////////////// */}
 
           <section className="my-30 sm:px-15 px-5">
-            <Recommended DataRecommended={DataRecommended} />
+            <Recommended t={t} />
           </section>
 
+          {/* /////////////////////////////////////////////////////////////////// */}
+          {/* /////////////////////////////////////////////////////////////////// */}
           {/* /////////////////////////////////////////////////////////////////// */}
           {/* /////////////////////////////////////////////////////////////////// */}
           {/* /////////////////////////////////////////////////////////////////// */}
@@ -109,9 +86,11 @@ export default function Home() {
           {/* /////////////////////////////////////////////////////////////////// */}
           {/* /////////////////////////////////////////////////////////////////// */}
           {/* /////////////////////////////////////////////////////////////////// */}
+          {/* /////////////////////////////////////////////////////////////////// */}
+          {/* /////////////////////////////////////////////////////////////////// */}
 
           <section className="my-30 sm:px-15 px-5">
-            <FlashSale />
+            <FlashSale t={t} />
           </section>
         </div>
       </section>

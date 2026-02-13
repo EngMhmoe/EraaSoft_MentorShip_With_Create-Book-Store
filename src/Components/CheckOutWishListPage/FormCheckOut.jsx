@@ -3,10 +3,9 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 //import Libraries Yupreg
 import * as Yup from "yup";
 
-//import Components UI
-// import InputEmail from "../UI/InputEmail";
+import { motion } from "motion/react";
 
-export default function FormCheckOut() {
+export default function FormCheckOut({ t }) {
   //function signUpSchema
   const signUpSchema = Yup.object({
     name: Yup.string().required("Name is required!").min(3).max(25),
@@ -21,10 +20,19 @@ export default function FormCheckOut() {
   });
 
   return (
-    <section className="padding bg-white border-2 border-black/10  rounded-[20px] shadow p-10 flex flex-col justify-center xl:items-start  lg:items-center gap-10">
+    <motion.section
+      initial={{
+        transform: "translateX(-800px)",
+      }}
+      animate={{
+        transform: "translateX(0px)",
+      }}
+      transition={{ duration: 2 }}
+      className="padding bg-white border-2 border-black/10  rounded-[20px] shadow p-10 flex flex-col justify-center xl:items-start  lg:items-center gap-10"
+    >
       {/* title */}
       <h1 className="font-semibold text-[18px] w-full text-(--color-textColor1)">
-        Shipping information
+        {t("Shipping information")}
       </h1>
 
       {/* /\/\/\/\/\/\/\/\/\/\\\/\/\/\//\/\/\/\/\/\/\/\/\\\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\ */}
@@ -52,14 +60,14 @@ export default function FormCheckOut() {
             {/* User Name */}
             <div className="flex flex-col w-full gap-2.5">
               <label htmlFor="#" className="font-normal text-[14px]">
-                Name
+                {t("Name")}
               </label>
               {/*  */}
               <Field
                 name="name"
                 id="Name"
                 type="text"
-                placeholder="user Name"
+                placeholder={t("user Name")}
                 className=" border border-black/30 outline-(--color-textColor1) rounded-[8px] h-13.5  p-4 font-normal text-[16px]"
               />
 
@@ -79,14 +87,14 @@ export default function FormCheckOut() {
             {/* Phone */}
             <div className="flex flex-col w-full gap-2.5">
               <label htmlFor="#" className="font-normal text-[14px]">
-                Phone
+                {t("Phone")}
               </label>
               {/*  */}
               <Field
                 name="Phone"
                 id="Phone"
                 type="text"
-                placeholder="Phone Number"
+                placeholder={t("Phone Number")}
                 className=" border border-black/30 outline-(--color-textColor1) rounded-[8px] h-13.5  p-4 font-normal text-[16px]"
               />
 
@@ -110,7 +118,7 @@ export default function FormCheckOut() {
             {/* Email */}
             <div className="flex flex-col w-full gap-2.5">
               <label htmlFor="#" className="font-normal text-[14px]">
-                Email
+                {t("Email")}
               </label>
               {/*  */}
               <Field
@@ -137,14 +145,14 @@ export default function FormCheckOut() {
             {/* City */}
             <div className="flex flex-col w-full gap-2.5">
               <label htmlFor="#" className="font-normal text-[14px]">
-                City
+                {t("City")}
               </label>
               {/*  */}
               <Field
                 name="City"
                 id="City"
                 type="text"
-                placeholder="City"
+                placeholder={t("City")}
                 className=" border border-black/30 outline-(--color-textColor1) rounded-[8px] h-13.5  p-4 font-normal text-[16px]"
               />
             </div>
@@ -158,14 +166,14 @@ export default function FormCheckOut() {
             {/* State */}
             <div className="flex flex-col w-full gap-2.5">
               <label htmlFor="#" className="font-normal text-[14px]">
-                State
+                {t("State")}
               </label>
               {/*  */}
               <Field
                 name="State"
                 id="State"
                 type="email"
-                placeholder="State"
+                placeholder={t("State")}
                 className=" border border-black/30 outline-(--color-textColor1) rounded-[8px] h-13.5  p-4 font-normal text-[16px]"
               />
             </div>
@@ -175,14 +183,14 @@ export default function FormCheckOut() {
             {/* Zip */}
             <div className="flex flex-col w-full gap-2.5">
               <label htmlFor="#" className="font-normal text-[14px]">
-                Zip
+                {t("Zip")}
               </label>
               {/*  */}
               <Field
                 name="ZipCode"
                 id="ZipCode"
                 type="text"
-                placeholder="Zip Code"
+                placeholder={t("Zip Code")}
                 className=" border border-black/30 outline-(--color-textColor1) rounded-[8px] h-13.5  p-4 font-normal text-[16px]"
               />
 
@@ -206,20 +214,20 @@ export default function FormCheckOut() {
             {/* Address */}
             <div className="flex flex-col  w-full gap-2.5">
               <label htmlFor="#" className="font-normal text-[14px]">
-                Address
+                {t("Address")}
               </label>
               {/*  */}
               <Field
                 name="Address"
                 id="Address"
                 type="text"
-                placeholder="Address"
+                placeholder={t("Address")}
                 className=" border border-black/30 outline-(--color-textColor1) rounded-[8px] h-13.5  p-4 font-normal text-[16px]"
               />
             </div>
           </section>
         </Form>
       </Formik>
-    </section>
+    </motion.section>
   );
 }

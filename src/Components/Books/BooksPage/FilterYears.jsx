@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function FilterYears({ Years, id }) {
+export default function FilterYears({ Years, id, t }) {
   return (
     <div className="flex flex-col gap-2  rounded-base border border-default overflow-hidden shadow-xs">
       <header id={`accordion-collapse-heading-${id}`}>
@@ -11,7 +11,7 @@ export default function FilterYears({ Years, id }) {
           aria-expanded="true"
           aria-controls={`accordion-collapse-body-${id}`}
         >
-          <span className="text-[19px] text-black">Years</span>
+          <span className="text-[19px] text-black">{t("Years")}</span>
           {/*  */}
           {/*  */}
           <svg
@@ -72,7 +72,7 @@ export default function FilterYears({ Years, id }) {
         {/*  */}
 
         <div className="pt-8 text-center text-[14px] font-semibold text-(--color-textColor1)">
-          Load More
+          {t("Load More")}
         </div>
       </div>
     </div>

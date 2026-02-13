@@ -1,9 +1,39 @@
+//import Hooks react js
+import { useEffect } from "react";
+
 //import Components
 import FootLinks from "./FootLinks";
 import FootLogo from "./FootLogo";
 import SocLinks from "./SocLinks";
 
+//import useTranslation i18next
+import { useTranslation } from "react-i18next";
+
 export default function Footer() {
+  const { t, i18n } = useTranslation();
+
+  //////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
+
+  const changeLang = (lang) => {
+    i18n.changeLanguage(lang);
+    localStorage.setItem("lang", lang);
+  };
+
+  //////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
+
+  //App dir
+  useEffect(() => {
+    document.dir = i18n.language === "ar" ? "rtl" : "ltr";
+  }, [i18n.language]);
+
   return (
     <>
       <footer className="bg-[#3B2F4A] w-full text-white sm:px-20 py-6 font-bold flex flex-col gap-4">
@@ -11,13 +41,13 @@ export default function Footer() {
           {/* section left */}
           <section className="flex sm:flex-row flex-col  sm:items-center gap-6 ">
             {/* FooterLogo Component  */}
-            <FootLogo />
+            <FootLogo t={t} />
 
             {/* //////////////////////////////////////////////////////////// */}
             {/* //////////////////////////////////////////////////////////// */}
 
             {/* FooterLinks Component  */}
-            <FootLinks />
+            <FootLinks t={t} />
           </section>
 
           {/* //////////////////////////////////////////////////////////// */}
@@ -49,7 +79,7 @@ export default function Footer() {
 
         <div className="flex lg:flex-row flex-col-reverse gap-5 items-center justify-between">
           <p className="font-normal text-center">
-            Developed By EraaSoft All Copy Rights Reserved @2024
+            {t("Developed By EraaSoft All Copy Rights Reserved @2024")}
           </p>
 
           <div className="flex items-center gap-4">
@@ -59,9 +89,16 @@ export default function Footer() {
               name=""
               id=""
               className="border rounded-lg py-1 px-5 bg-[#3B2F4A] text-[#D9176C] font-bold hover:text-violet-300"
+              onChange={(e) => {
+                if (e.target.value === "en") {
+                  changeLang("en");
+                } else {
+                  changeLang("ar");
+                }
+              }}
             >
-              <option value="en">English</option>
-              <option value="ar">Aribc</option>
+              <option value="en">{t("English")}</option>
+              <option value="ar">{t("Aribc")}</option>
             </select>
           </div>
         </div>

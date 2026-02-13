@@ -17,16 +17,13 @@ import axios from "axios";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
 
-export default function RegisterForm() {
+export default function RegisterForm({ t }) {
   //Navigate
   const Navigate = useNavigate();
 
   //Function handleSignUp
   async function handleSignUp(data) {
     try {
-      //Navigate to
-      // Navigate("/loginIn");
-
       //Data Sign Up
       const SignUpData = {
         first_name: data.first_name,
@@ -40,6 +37,9 @@ export default function RegisterForm() {
         "https://bookstore.eraasoft.pro/api/register",
         SignUpData,
       );
+
+      //Navigate to
+      Navigate("/loginIn");
 
       console.log(SignUpData);
       console.log(responsive);
@@ -82,14 +82,14 @@ export default function RegisterForm() {
             {/* First-Name AND Last-Name */}
             <div className="flex justify-between items-center gap-5">
               {/* Component  first-Name */}
-              <InputFirstName />
+              <InputFirstName t={t} />
 
               {/* /////////////////////////////////// */}
               {/* /////////////////////////////////// */}
               {/* /////////////////////////////////// */}
 
               {/* Component  Last-Name */}
-              <InputLastName />
+              <InputLastName t={t} />
             </div>
 
             {/* /////////////////////////////////////////////////////////// */}
@@ -97,21 +97,21 @@ export default function RegisterForm() {
             {/* /////////////////////////////////////////////////////////// */}
 
             {/* Component Input Email */}
-            <InputEmail />
+            <InputEmail t={t} />
 
             {/* /////////////////////////////////////////////////////////// */}
             {/* /////////////////////////////////////////////////////////// */}
             {/* /////////////////////////////////////////////////////////// */}
 
             {/* Component Input Password */}
-            <InputPassword />
+            <InputPassword t={t} />
 
             {/* /////////////////////////////////////////////////////////// */}
             {/* /////////////////////////////////////////////////////////// */}
             {/* /////////////////////////////////////////////////////////// */}
 
             {/* Component  ConfirmPassword */}
-            <InputConfirmPassword />
+            <InputConfirmPassword t={t} />
           </div>
 
           {/* /////////////////////////////////////////////////////////// */}
@@ -120,7 +120,7 @@ export default function RegisterForm() {
 
           <div className="flex justify-between items-center mb-5">
             {/* Component Input CheckBox */}
-            <InputCheckBox name={"Agree with Terms & Conditions"} />
+            <InputCheckBox t={t} name={"Agree with Terms & Conditions"} />
           </div>
 
           {/* /////////////////////////////////////////////////////////// */}
@@ -128,7 +128,7 @@ export default function RegisterForm() {
           {/* /////////////////////////////////////////////////////////// */}
 
           {/* Component Input Submit */}
-          <InputSubmit name={"Sign Up"} />
+          <InputSubmit t={t} name={"Sign Up"} />
         </Form>
       </Formik>
     </>

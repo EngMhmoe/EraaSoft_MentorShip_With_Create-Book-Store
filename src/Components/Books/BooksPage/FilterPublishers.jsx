@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function FilterPublishers({ Publishers, id }) {
+export default function FilterPublishers({ Publishers, id, t }) {
   return (
     <div className=" flex flex-col gap-2  rounded-base border border-default overflow-hidden shadow-xs">
       <header id={`accordion-collapse-heading-${id}`}>
@@ -11,7 +11,7 @@ export default function FilterPublishers({ Publishers, id }) {
           aria-expanded="true"
           aria-controls={`accordion-collapse-body-${id}`}
         >
-          <span className="text-[19px] text-black">Publishers</span>
+          <span className="text-[19px] text-black">{t("Publishers")}</span>
           {/*  */}
           {/*  */}
           <svg
@@ -56,7 +56,7 @@ export default function FilterPublishers({ Publishers, id }) {
                   {/*  */}
                   {/*  */}
                   <label class="ms-2 text-sm text-[15px] font-medium text-heading">
-                    {Publisher.name}
+                    {t(`${Publisher.name}`)}
                   </label>
                 </div>
                 {/*  */}
@@ -74,7 +74,7 @@ export default function FilterPublishers({ Publishers, id }) {
         {/*  */}
 
         <div className="pt-8 text-center text-[14px] font-semibold text-(--color-textColor1)">
-          Load More
+          {t(`Load More`)}
         </div>
       </div>
     </div>

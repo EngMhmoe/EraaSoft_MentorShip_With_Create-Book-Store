@@ -6,4 +6,3 @@ import { create } from "zustand";
 export const UseTokenStore = create(()=>({
     token: localStorage.getItem("token"),
 }))
-

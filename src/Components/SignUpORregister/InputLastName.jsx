@@ -1,18 +1,18 @@
 //import Libraries Formik
 import { ErrorMessage, Field } from "formik";
 
-export default function InputLastName() {
+export default function InputLastName({ t }) {
   return (
     <div className="flex flex-col gap-3 w-full">
       <label htmlFor="LastName" className="text-[18px] font-semibold">
-        Last Name
+        {t("Last Name")}
       </label>
 
       <Field
         name="last_name"
         id="LastName"
         type="text"
-        placeholder="Smith"
+        placeholder={t("elwani")}
         className="bg-white w-full  border border-black/20 rounded-lg px-4 py-3"
       />
 

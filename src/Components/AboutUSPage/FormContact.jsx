@@ -15,7 +15,7 @@ import doneMass from "../../../public/animations/Check okey done.json";
 // For more help visit https://formspr.ee/react-help
 import { useForm, ValidationError } from "@formspree/react";
 
-export default function FormContact() {
+export default function FormContact({ t }) {
   const [state, handleSubmit] = useForm("xbdklzvd");
 
   return (
@@ -29,7 +29,7 @@ export default function FormContact() {
             type="text"
             name="Name"
             className="grow"
-            placeholder="Name"
+            placeholder={t("Name")}
           />
 
           <ValidationError prefix="Name" field="Name" errors={state.errors} />
@@ -46,7 +46,7 @@ export default function FormContact() {
             name="email"
             type="email"
             className="grow"
-            placeholder="Email Address"
+            placeholder={t("Email Address")}
           />
 
           <ValidationError prefix="email" field="email" errors={state.errors} />
@@ -63,7 +63,7 @@ export default function FormContact() {
         <textarea
           required
           name="Massage"
-          placeholder="Your Massage"
+          placeholder={t("Your Massage")}
           className="w-full h-38 textarea textarea-secondary bg-transparent text-white ps-9"
         />
 
@@ -85,7 +85,7 @@ export default function FormContact() {
           type="submit"
           className="font-bold text-xl capitalize btn hover:bg-[#b31157] bg-[#D9176C] text-white w-full rounded-lg py-6.25"
         >
-          Send Massage
+          {t("Send Massage")}
         </button>
       </div>
 
@@ -99,7 +99,7 @@ export default function FormContact() {
         <div className="text-white flex items-center mt-10">
           <Lottie loop={false} animationData={doneMass} className="w-12" />
 
-          <p className="text-xl">The message was sent successfully</p>
+          <p className="text-xl"> {t("The message was sent successfully")}</p>
         </div>
       )}
     </form>

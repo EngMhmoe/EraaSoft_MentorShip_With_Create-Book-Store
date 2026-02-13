@@ -5,14 +5,20 @@ import LoginFaceBookANDGoogle from "../UI/LoginFaceBookANDGoogle";
 import LoginHeader from "./LoginHeader";
 import LoginInForm from "./LoginInForm";
 
+//import useTranslation i18next
+import { useTranslation } from "react-i18next";
+
 export default function Login() {
+  //
+  const { t } = useTranslation();
+
   return (
     <>
       {" "}
-      <section className="pt-95 mb-40 sm:mx-0 mx-5 flex justify-center">
+      <section className="pt-50 mb-40 sm:mx-0 mx-5 flex justify-center">
         <div className="w-140">
           {/* Component Img */}
-          <Img size={84.5} />
+          <Img size={38} />
 
           {/* /////////////////////////////////// */}
           {/* /////////////////////////////////// */}
@@ -21,7 +27,7 @@ export default function Login() {
           {/* /////////////////////////////////// */}
 
           {/* Component LoginHeader */}
-          <LoginHeader />
+          <LoginHeader t={t} />
 
           {/* /////////////////////////////////// */}
           {/* /////////////////////////////////// */}
@@ -29,10 +35,10 @@ export default function Login() {
           {/* /////////////////////////////////// */}
           {/* /////////////////////////////////// */}
 
-          <div className="mt-5 flex flex-col gap-10 flex-wrap">
+          <div className="mt-5 flex  flex-col gap-10 flex-wrap">
             <div className="flex flex-col gap-5">
               {/* Component LoginInForm */}
-              <LoginInForm />
+              <LoginInForm t={t} />
 
               {/* //////////////////////////////////////////////////////// */}
               {/* //////////////////////////////////////////////////////// */}
@@ -42,16 +48,16 @@ export default function Login() {
 
               {/* Component Link Account AND code */}
               <LinkAccountANDcode
-                des={"Don't have an account?"}
-                NameLink={"Signup"}
+                des={`${t("Don't have an account")}?`}
+                NameLink={`${t("Sign Up")}`}
                 link={"/signUp"}
               />
             </div>
 
             {/* Component Login FaceBook AND Google */}
             <LoginFaceBookANDGoogle
-              NameGoogle={"Login In Google"}
-              NameFaceBook={"Login In Facebook"}
+              NameGoogle={t("Login In Google")}
+              NameFaceBook={t("Login In Facebook")}
             />
           </div>
         </div>
