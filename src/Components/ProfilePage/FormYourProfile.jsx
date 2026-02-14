@@ -1,4 +1,5 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
+import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 
 //import Libraries Yupreg
@@ -20,9 +21,16 @@ export default function FormYourProfile({ DataUser, t }) {
       .email("Please enter a valid email"),
   });
 
+  const [Data, setData] = useState(DataUser);
+
   function CheckYourProfile() {
-    //Navigate to
-    Navigate("/");
+    const Check = confirm("هل انتا متأكد من التعديل");
+
+    if (Check === true) {
+      localStorage.setItem("user", JSON.stringify(Data));
+
+      window.location.reload();
+    }
   }
 
   return (
@@ -41,11 +49,11 @@ export default function FormYourProfile({ DataUser, t }) {
       {/* Form */}
       <Formik
         initialValues={{
-          first_name: `${t(DataUser.first_name)}`,
-          last_name: `${t(DataUser.last_name)}`,
-          email: DataUser.email,
-          Phone: `${t(DataUser.phone)}`,
-          Address: `${t(DataUser.address)}`,
+          first_name: `${t(Data.first_name)}`,
+          last_name: `${t(Data.last_name)}`,
+          email: Data.email,
+          Phone: `${t(Data.phone)}`,
+          Address: `${t(Data.address)}`,
         }}
         validationSchema={signUpSchema}
         onSubmit={CheckYourProfile}
@@ -66,7 +74,11 @@ export default function FormYourProfile({ DataUser, t }) {
                 name="first_name"
                 id="FirstName"
                 type="text"
-                placeholder={t(`${DataUser.first_name}`)}
+                value={Data.first_name}
+                onChange={(e) =>
+                  setData({ ...Data, first_name: e.target.value })
+                }
+                placeholder={t(`First Name`)}
                 className="border border-black/30 outline-(--color-textColor1) rounded-[8px] h-13.5  p-4 font-normal text-[16px]"
               />
 
@@ -93,7 +105,11 @@ export default function FormYourProfile({ DataUser, t }) {
                 name="last_name"
                 id="LastName"
                 type="text"
-                placeholder={t("elwani")}
+                value={Data.last_name}
+                onChange={(e) =>
+                  setData({ ...Data, last_name: e.target.value })
+                }
+                placeholder={t("Last Name")}
                 className="border border-black/30 outline-(--color-textColor1) rounded-[8px] h-13.5  p-4 font-normal text-[16px]"
               />
 
@@ -121,6 +137,8 @@ export default function FormYourProfile({ DataUser, t }) {
                 name="email"
                 id="Email"
                 type="email"
+                value={Data.email}
+                onChange={(e) => setData({ ...Data, email: e.target.value })}
                 placeholder="Example@gmail.com"
                 className=" border border-black/30 outline-(--color-textColor1) rounded-[8px] h-13.5  p-4 font-normal text-[16px]"
               />
@@ -152,6 +170,8 @@ export default function FormYourProfile({ DataUser, t }) {
                 name="Phone"
                 id="Phone"
                 type="text"
+                value={Data.phone}
+                onChange={(e) => setData({ ...Data, phone: e.target.value })}
                 placeholder={t("Phone Number")}
                 className=" border border-black/30 outline-(--color-textColor1) rounded-[8px] h-13.5  p-4 font-normal text-[16px]"
               />
@@ -183,6 +203,8 @@ export default function FormYourProfile({ DataUser, t }) {
                 name="Address"
                 id="Address"
                 type="text"
+                value={Data.address}
+                onChange={(e) => setData({ ...Data, address: e.target.value })}
                 placeholder={t("Address")}
                 className=" border border-black/30 outline-(--color-textColor1) rounded-[8px] h-13.5  p-4 font-normal text-[16px]"
               />
