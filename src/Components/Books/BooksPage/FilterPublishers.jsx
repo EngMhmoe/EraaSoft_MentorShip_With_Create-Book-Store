@@ -44,9 +44,9 @@ export default function FilterPublishers({ Publishers, id, t }) {
         aria-labelledby={`accordion-collapse-heading-${id}`}
       >
         <ul className="flex flex-col gap-2.5">
-          {Publishers.map((Publisher) => {
+          {Publishers.map((Publisher, i) => {
             return (
-              <li className="flex items-center justify-between">
+              <li key={i} className="flex items-center justify-between">
                 <div className="flex items-center">
                   <input
                     type="checkbox"

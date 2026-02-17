@@ -1,6 +1,19 @@
 import React from "react";
 
-export default function FilterYears({ Years, id, t }) {
+export default function FilterYears({ Years, setSelectYears, id, t }) {
+  //////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////
+
+  function FilterYears(selectYear) {
+    setSelectYears((current) => {
+      if (current.includes(selectYear)) {
+        return current.filter((Year) => Year !== selectYear);
+      }
+
+      return [...current, selectYear];
+    });
+  }
+
   return (
     <div className="flex flex-col gap-2  rounded-base border border-default overflow-hidden shadow-xs">
       <header id={`accordion-collapse-heading-${id}`}>
@@ -46,9 +59,13 @@ export default function FilterYears({ Years, id, t }) {
         <ul className="flex flex-col gap-2.5">
           {Years.map((Year) => {
             return (
-              <li className="flex items-center justify-between">
+              <li
+                key={Year.documentId}
+                className="flex items-center justify-between"
+              >
                 <div className="flex items-center">
                   <input
+                    onClick={() => FilterYears(Year.category_Year)}
                     type="checkbox"
                     // defaultChecked
                     className="checkbox checkbox-secondary rounded-xs w-4 h-4"
@@ -56,12 +73,14 @@ export default function FilterYears({ Years, id, t }) {
                   {/*  */}
                   {/*  */}
                   <label class="ms-2 text-sm text-[15px] font-medium text-heading">
-                    {Year.Year}
+                    {Year.category_Year}
                   </label>
                 </div>
                 {/*  */}
                 {/*  */}
-                <span className="text-[14px] text-black/60">({Year.Year})</span>
+                <span className="text-[14px] text-black/60">
+                  ({Year.category_Year})
+                </span>
               </li>
             );
           })}

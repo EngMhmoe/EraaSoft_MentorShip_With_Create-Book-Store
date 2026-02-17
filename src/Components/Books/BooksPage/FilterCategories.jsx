@@ -1,4 +1,25 @@
-export default function FilterCategories({ name, Categories, id, t }) {
+export default function FilterCategories({
+  Categories,
+  setSelectCategory,
+  name,
+  id,
+  t,
+}) {
+  //////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////
+
+  function FiltersCategories(selectCategory_name) {
+    setSelectCategory((current) => {
+      if (current.includes(selectCategory_name)) {
+        return current.filter((cat) => cat !== selectCategory_name);
+      }
+
+      return [...current, selectCategory_name];
+    });
+  }
+
+  ///////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////
   return (
     <div className=" flex flex-col gap-2  rounded-base border border-default overflow-hidden shadow-xs">
       <header id={`accordion-collapse-heading-${id}`}>
@@ -33,20 +54,31 @@ export default function FilterCategories({ name, Categories, id, t }) {
           </svg>
         </button>
       </header>
-      {/*  */}
-      {/*  */}
-      {/*  */}
+
+      {/* /////////////////////////////////////////////////////////////////////////////////////////////////////////////// */}
+      {/* /////////////////////////////////////////////////////////////////////////////////////////////////////////////// */}
+      {/* /////////////////////////////////////////////////////////////////////////////////////////////////////////////// */}
+      {/* /////////////////////////////////////////////////////////////////////////////////////////////////////////////// */}
+      {/* /////////////////////////////////////////////////////////////////////////////////////////////////////////////// */}
+      {/* /////////////////////////////////////////////////////////////////////////////////////////////////////////////// */}
+
       <div
         id={`accordion-collapse-body-${id}`}
         class="hidden px-5 py-3"
         aria-labelledby={`accordion-collapse-heading-${id}`}
       >
         <ul className="flex flex-col gap-2.5">
-          {Categories.map((Cat) => {
+          {Categories.map((Category_name) => {
             return (
-              <li className="flex items-center justify-between">
+              <li
+                key={Category_name.documentId}
+                className="flex items-center justify-between"
+              >
                 <div className="flex items-center">
                   <input
+                    onClick={() =>
+                      FiltersCategories(Category_name.category_name)
+                    }
                     type="checkbox"
                     // defaultChecked
                     className="checkbox checkbox-secondary rounded-xs w-4 h-4"
@@ -54,12 +86,9 @@ export default function FilterCategories({ name, Categories, id, t }) {
                   {/*  */}
                   {/*  */}
                   <label class="ms-2 text-sm text-[15px] font-medium text-heading">
-                    {t(`${Cat.name}`)}
+                    {t(`${Category_name.category_name}`)}
                   </label>
                 </div>
-                {/*  */}
-                {/*  */}
-                <span className="text-[14px] text-black/60">({Cat.Count})</span>
               </li>
             );
           })}

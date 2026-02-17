@@ -8,8 +8,11 @@ import FilterYears from "./FilterYears";
 
 export default function SectionLeftFilters({
   Categories,
-  Publishers,
   Years,
+  setSelectCategory,
+  setSelectYears,
+  //\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+  Publishers,
   t,
 }) {
   return (
@@ -34,9 +37,9 @@ export default function SectionLeftFilters({
       >
         {/* Categories(1) */}
         <FilterCategories
-          name={"Categories"}
-          id={1}
           Categories={Categories}
+          setSelectCategory={setSelectCategory}
+          name={"Categories"}
           t={t}
         />
         {/* /////////////////////////////////////////////////////////////////////// */}
@@ -54,7 +57,12 @@ export default function SectionLeftFilters({
         {/* /////////////////////////////////////////////////////////////////////// */}
 
         {/* Years(3) */}
-        <FilterYears id={3} Years={Years} t={t} />
+        <FilterYears
+          Years={Years}
+          setSelectYears={setSelectYears}
+          id={3}
+          t={t}
+        />
       </div>
     </section>
   );

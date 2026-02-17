@@ -1,4 +1,5 @@
 //import Component UI
+import { useEffect, useState } from "react";
 import Img from "../../UI/Img";
 
 //import Components
@@ -7,20 +8,169 @@ import SectionRightBooks from "./SectionRightBooks";
 
 //import useTranslation i18next
 import { useTranslation } from "react-i18next";
+import axios from "axios";
+import { UseDomainStore } from "../../../store/Domain";
 
 export default function BooksPage() {
-  const Categories = [
-    { name: "All Categories", Count: "1450" },
-    { name: "Business", Count: "140" },
-    { name: "Kids", Count: "309" },
-    { name: "Art", Count: "309" },
-    { name: "History", Count: "102" },
-    { name: "Romance", Count: "204" },
-    { name: "Fantasy", Count: "89" },
-    { name: "Self Help", Count: "47" },
-    { name: "Cooking", Count: "211" },
-    { name: "Sports", Count: "92" },
-  ];
+  //domain => (1)
+  const domain = UseDomainStore((state) => state.domain);
+
+  /////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////
+
+  //Data categories => (2)
+  const [Categories, setCategories] = useState([]);
+
+  //\/\/\/\/\/\/\/\/\/\/\/\\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+  //\/\/\/\/\/\/\/\/\/\/\/\\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+
+  //Get categories  Api Strapi => (2)
+  async function getCategories() {
+    try {
+      const responsive = await axios.get(`${domain}/api/categories`);
+
+      // console.log("categories", responsive.data.data);
+
+      setCategories(responsive.data.data);
+    } catch (error) {
+      console.log("error categories", error);
+    }
+  }
+
+  //\/\/\/\/\/\/\/\/\/\/\/\\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+  //\/\/\/\/\/\/\/\/\/\/\/\\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+
+  //useEffect With Get categories  => (2)
+  useEffect(() => {
+    getCategories();
+  }, []);
+
+  /////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////
+
+  //Data Years => (3)
+  const [Years, setYears] = useState([]);
+
+  //\/\/\/\/\/\/\/\/\/\/\/\\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+  //\/\/\/\/\/\/\/\/\/\/\/\\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+
+  //Get Years Api Strapi => (3)
+  async function getYears() {
+    try {
+      const responsive = await axios.get(`${domain}/api/category-years`);
+
+      // console.log("Years", responsive.data.data);
+
+      setYears(responsive.data.data);
+    } catch (error) {
+      console.log("error Years", error);
+    }
+  }
+
+  //\/\/\/\/\/\/\/\/\/\/\/\\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+  //\/\/\/\/\/\/\/\/\/\/\/\\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+
+  //useEffect With Get Years  => (3)
+  useEffect(() => {
+    getYears();
+  }, []);
+
+  /////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////
+
+  //Data Products => (4)
+  const [ALLBook, setALLBooks] = useState([]);
+
+  //\/\/\/\/\/\/\/\/\/\/\/\\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+  //\/\/\/\/\/\/\/\/\/\/\/\\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+
+  //pagination => (4)
+  const [Page, setPage] = useState(1);
+
+  //\/\/\/\/\/\/\/\/\/\/\/\\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+  //\/\/\/\/\/\/\/\/\/\/\/\\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+
+  //filters Categories => (4)
+  const [selectCategory, setSelectCategory] = useState([]);
+
+  //\/\/\/\/\/\/\/\/\/\/\/\\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+  //\/\/\/\/\/\/\/\/\/\/\/\\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+
+  //filters Years => (4)
+  const [selectYears, setSelectYears] = useState([]);
+
+  //\/\/\/\/\/\/\/\/\/\/\/\\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+  //\/\/\/\/\/\/\/\/\/\/\/\\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+
+  //Get Products  Api Strapi => (4)
+  async function getAllBooks() {
+    try {
+      const responsive = await axios.get(`${domain}/api/products`, {
+        params: {
+          populate: "*",
+
+          pagination: {
+            // page: 3,
+            page: Page,
+            // pageSize: `${pageSize}`,
+            pageSize: 4,
+          },
+
+          filters: {
+            $or: [
+              {
+                category: {
+                  category_name: selectCategory,
+                },
+              },
+
+              {
+                publicationYear: selectYears,
+              },
+            ],
+          },
+        },
+      });
+
+      // console.log("Products", responsive.data);
+
+      setALLBooks(responsive.data.data);
+    } catch (error) {
+      console.log("error AllBooks", error);
+    }
+  }
+
+  //\/\/\/\/\/\/\/\/\/\/\/\\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+  //\/\/\/\/\/\/\/\/\/\/\/\\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+
+  //useEffect With Get Products => (4)
+  useEffect(() => {
+    getAllBooks();
+  }, [Page, selectCategory, selectYears]);
+
+  /////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////
+
+  //value ar => (5)
+  const { t } = useTranslation();
+
+  /////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////
 
   const Publishers = [
     { name: "Paulo coelo", Count: "210" },
@@ -35,21 +185,12 @@ export default function BooksPage() {
     { name: "Chinua Achebe", Count: "92" },
   ];
 
-  const Years = [
-    { Year: "2026", Count: "210" },
-    { Year: "2025", Count: "140" },
-    { Year: "2024", Count: "309" },
-    { Year: "2023", Count: "102" },
-    { Year: "2022 ", Count: "204" },
-    { Year: "2021", Count: "89" },
-    { Year: "2020", Count: "47" },
-    { Year: "2019", Count: "211" },
-    { Year: "2018", Count: "92" },
-    { Year: "2017", Count: "92" },
-  ];
+  /////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////
 
-  //value ar
-  const { t } = useTranslation();
   return (
     <section>
       {/* Component Img */}
@@ -66,8 +207,11 @@ export default function BooksPage() {
         <section className=" hidden sm:flex  row-span-1">
           <SectionLeftFilters
             Categories={Categories}
-            Publishers={Publishers}
             Years={Years}
+            setSelectCategory={setSelectCategory}
+            setSelectYears={setSelectYears}
+            //\/\/\/\/\/\/\/\/\/\/\/\/\\/\/\/\/\
+            Publishers={Publishers}
             t={t}
           />
         </section>
@@ -81,9 +225,14 @@ export default function BooksPage() {
         {/* Section Right Component Filters */}
         <section className=" xl:w-246 w-25 mb-10 grow">
           <SectionRightBooks
+            ALLBook={ALLBook}
             Categories={Categories}
-            Publishers={Publishers}
             Years={Years}
+            setPage={setPage}
+            setSelectCategory={setSelectCategory}
+            setSelectYears={setSelectYears}
+            ///\/\/\/\/\/\/\/\/\/\/\/\/\/\
+            Publishers={Publishers}
             t={t}
           />
         </section>

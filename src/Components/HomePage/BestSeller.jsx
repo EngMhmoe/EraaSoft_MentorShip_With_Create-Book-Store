@@ -2,16 +2,6 @@ import { useEffect, useState } from "react";
 
 import { Link } from "react-router-dom";
 
-//import Imgs
-import img1 from "../../../public/images/img17.png";
-import img2 from "../../../public/images/img18.png";
-import img3 from "../../../public/images/img19.png";
-import img4 from "../../../public/images/img20.png";
-import img5 from "../../../public/images/img21.png";
-import img6 from "../../../public/images/img22.png";
-import img7 from "../../../public/images/img23.png";
-import img8 from "../../../public/images/img24.png";
-
 //import ReactBits
 import BounceCards from "../../ReactBits/BounceCards";
 
@@ -25,14 +15,28 @@ export default function BestSeller({ t }) {
 
   //Data Slide Imgs
   const Data_Slide_Imgs = [
-    { img: img3 },
-    { img: img2 },
-    { img: img7 },
-    { img: img5 },
-    { img: img4 },
-    { img: img1 },
-    { img: img6 },
-    { img: img8 },
+    { img: "../../../public/images/thumbnail_Art_fnwn_final_5efa10d796.png" },
+
+    {
+      img: "../../../public/images/thumbnail_Business_aemal_final_c5813b3cc5.png",
+    },
+    {
+      img: "../../../public/images/thumbnail_Cooking_tbkh_final_b5b16561f9.png",
+    },
+    {
+      img: "../../../public/images/thumbnail_Fantasy_khyal_final_ae1841f097.png",
+    },
+    {
+      img: "../../../public/images/thumbnail_History_tarykh_final_6e26608d98.png",
+    },
+    { img: "../../../public/images/thumbnail_Kids_atfal_final_92b5b075d4.png" },
+    {
+      img: "../../../public/images/thumbnail_Romance_rwmansy_final_b9774cb38e.png",
+    },
+
+    {
+      img: "../../../public/images/thumbnail_Sports_ryadt_final_df5449b8d6.png",
+    },
   ];
 
   //Data Button
@@ -45,14 +49,14 @@ export default function BestSeller({ t }) {
   ///////////////////////////////////////////////////////////////////////
 
   const images = [
-    "../../../public/images/img17.png",
-    "../../../public/images/img18.png",
-    "../../../public/images/img19.png",
-    "../../../public/images/img21.png",
-    "../../../public/images/img20.png",
-    "../../../public/images/img24.png",
-    "../../../public/images/img23.png",
-    "../../../public/images/img22.png",
+    "../../../public/images/thumbnail_Art_fnwn_final_5efa10d796.png",
+    "../../../public/images/thumbnail_Business_aemal_final_c5813b3cc5.png",
+    "../../../public/images/thumbnail_Cooking_tbkh_final_b5b16561f9.png",
+    "../../../public/images/thumbnail_Fantasy_khyal_final_ae1841f097.png",
+    "../../../public/images/thumbnail_History_tarykh_final_6e26608d98.png",
+    "../../../public/images/thumbnail_Kids_atfal_final_92b5b075d4.png",
+    "../../../public/images/thumbnail_Romance_rwmansy_final_b9774cb38e.png",
+    "../../../public/images/thumbnail_Sports_ryadt_final_df5449b8d6.png",
   ];
 
   const transformStyles = [

@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 //import Component UI
 import Img from "../UI/Img";
 
@@ -17,7 +19,6 @@ import { motion } from "motion/react";
 
 //import useTranslation i18next
 import { useTranslation } from "react-i18next";
-import { useEffect, useState } from "react";
 
 export default function CheckOutWishListPage() {
   const [Order, setOrder] = useState([]);
@@ -114,7 +115,7 @@ export default function CheckOutWishListPage() {
       {/* /////////////////////////////////////////////////////////////////// */}
 
       {/* gap-10 */}
-      <div className="CheckOutWishListPage pt-45 pb-31.75  sm:mx-10 mx-5 grid lg:grid-cols-12 grid-cols-1 xl:gap-10 lg:gap-5 gap-40">
+      <div className="CheckOutWishListPage pt-45 pb-31.75  sm:mx-10 mx-5 grid lg:grid-cols-12 grid-cols-1 xl:gap-10 lg:gap-5 gap-40 overflow-hidden">
         {/* section Left */}
         {/* grow  */}
         <motion.section className="xl:w-ful flex flex-col gap-6 xl:col-span-7 lg:col-span-6">

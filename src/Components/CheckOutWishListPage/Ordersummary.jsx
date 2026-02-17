@@ -1,4 +1,10 @@
+//
+import { UseDomainStore } from "../../store/Domain";
+
 export default function OrderSummary({ Order, t }) {
+  //
+  const domain = UseDomainStore((state) => state.domain);
+
   return (
     <section className="flex flex-col  gap-10 w-full">
       {/* title */}
@@ -13,11 +19,18 @@ export default function OrderSummary({ Order, t }) {
       {/* /\/\/\/\/\/\/\/\/\/\\\/\/\/\//\/\/\/\/\/\/\/\/\\\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\ */}
 
       <div className="flex flex-col  gap-10 w-full">
-        {Order.map((item, i) => {
+        {Order.map((item) => {
           return (
-            <div key={i} className="card card-side bg-base-100    h-60">
+            <div
+              key={item.documentId}
+              className="card card-side bg-base-100    h-60"
+            >
               <figure>
-                <img src={item.bookImage} className="img  h-fit" alt="Movie" />
+                <img
+                  src={domain + item?.bookImage?.url}
+                  className="img  h-fit"
+                  alt="Movie"
+                />
               </figure>
 
               {/* /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\ */}

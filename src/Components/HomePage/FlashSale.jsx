@@ -1,5 +1,5 @@
 //import Hooks React js
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 //import TooltipAddToCartANDWishList
 import TooltipAddToCartANDWishList from "../TooltipAddToCartANDWishList";
@@ -10,59 +10,39 @@ import { UseTokenStore } from "../../store/UseTokenStore";
 //import react-router-dom
 import { useNavigate } from "react-router-dom";
 
+//
+import axios from "axios";
+
+//
+import { UseDomainStore } from "../../store/Domain";
+
 export default function FlashSale({ t }) {
   //Data Flash Sale (1)
-  const [DataFlashSale] = useState([
-    {
-      bookId: 3,
-      bookImage: "../../../public/images/img17.png",
-      bookName: "Sed labore doloribus.",
-      author: "Quentin Sauer",
-      description:
-        "Sunt vitae veniam architecto minima vero. Et sunt occaecati cum possimus aspernatur omnis. Incidunt ullam fugiat omnis debitis quibusdam.",
+  const [DataFlashSale, setDataFlashSale] = useState([]);
 
-      rate: null,
-      price: 269.56,
-      discount: 13,
-      final_price: 234.5172,
+  //
+  const domain = UseDomainStore((state) => state.domain);
 
-      publicationYear: 2024,
-      quantity: 1,
-      //عدد المنتج
-      stock: 88,
+  //Get Products Api Strapi
+  async function getDataFlashSale() {
+    try {
+      const responsive = await axios.get(`${domain}/api/products`, {
+        params: {
+          populate: "*",
+        },
+      });
 
-      numberOfPages: 172,
-      countReview: 15,
+      responsive.data.data.splice(0, 7);
 
-      lang: "english",
-      asinCode: "SRW920308",
-      bookFormat: "Hard Cover",
-      catId: 53,
-      category_name: "Petroleum Pump Operator",
-    },
+      setDataFlashSale(responsive.data.data);
+    } catch (error) {
+      console.log("error AllBooks", error);
+    }
+  }
 
-    {
-      bookId: 4,
-      bookImage: "../../../public/images/img25.png",
-      bookName: "Rich Dad And Poor Dad",
-      author: "Robert Y. Kiyosanki",
-      description:
-        "Rich Dad Poor Dad is one of the world’s most influential personal finance books. Written by Robert Kiyosaki, it challenges traditional views about money, work, and wealth by comparing two different mindsets. The book guides readers toward financial independence through smart investing, financial education, and long-term thinking.",
-      countReview: 180,
-      rate: 4.2,
-      price: 500,
-      discount: 70,
-      final_price: 430,
-      asinCode: "B09TWSRMCB",
-      bookFormat: "Hard Cover",
-      lang: "Arabic",
-      publicationYear: 2023,
-      quantity: 1,
-      //عدد المنتج
-      stock: 9,
-      numberOfPages: 490,
-    },
-  ]);
+  useEffect(() => {
+    getDataFlashSale();
+  }, []);
 
   /////////////////////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -94,7 +74,7 @@ export default function FlashSale({ t }) {
     if (Token) {
       //SelectBook (1)
       const SelectBook = DataFlashSale.find(
-        (item) => item.bookId === selectBookId,
+        (item) => item.documentId === selectBookId,
       );
 
       //CheckCarts in LocalStorage (2)
@@ -102,7 +82,7 @@ export default function FlashSale({ t }) {
 
       //Filter Carts In LocalStorage (5)
       const FilterCartsInLocalStorage = CheckCarts.find(
-        (item) => item.bookId === selectBookId,
+        (item) => item.documentId === selectBookId,
       );
 
       //is Condition(6)
@@ -163,13 +143,13 @@ export default function FlashSale({ t }) {
         {DataFlashSale.map((Flash) => {
           return (
             <div
-              key={Flash.bookId}
+              key={Flash.documentId}
               className="card2 card card-side   bg-[#3B2F4A] text-white  shadow-lg"
             >
               {/* 2 Img */}
               <figure>
                 <img
-                  src={Flash.bookImage}
+                  src={domain + Flash?.bookImage?.url}
                   alt="Movie"
                   className="object-contain h-75"
                 />
@@ -325,7 +305,7 @@ export default function FlashSale({ t }) {
                 <div className="tooltip">
                   {/* Add To Cart */}
                   <div
-                    onClick={() => AddToCart(Flash.bookId)}
+                    onClick={() => AddToCart(Flash.documentId)}
                     className=" w-fit ms-auto cursor-pointer"
                   >
                     <div className="border ms-auto rounded-lg p-3 border-(--color-textColor1) bg-(--color-textColor1) text-(--color-textColor1)">

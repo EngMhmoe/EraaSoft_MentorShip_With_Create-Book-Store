@@ -19,130 +19,10 @@ import { useNavigate } from "react-router-dom";
 //import TooltipAddToCartANDWishList
 import TooltipAddToCartANDWishList from "../TooltipAddToCartANDWishList";
 
-export default function ALLBooks({ t }) {
-  //ALL Books (1)
-  const ALLBooks = [
-    {
-      bookId: 1,
-      bookImage: "../../../public/images/img22.png",
-      bookName: "Vel dignissimos veritatis quae.",
-      author: "Adella Kreiger",
-      description:
-        "Harum cupiditate assumenda aut magni ut quaerat odio. Hic suscipit excepturi vel minus rerum nihil voluptatibus. Blanditiis quam repellat adipisci error sit vel. Sequi quae odio commodi et iure magnam.",
-      countReview: 0,
-      rate: null,
-      price: 979.01,
-      discount: 44,
-      final_price: 548.2456,
-      asinCode: "MSI175942",
-      bookFormat: "Hard Cover",
-      lang: "english",
-      publicationYear: 2026,
-      quantity: 1,
-      //عدد المنتج
-      stock: 61,
-      numberOfPages: 659,
-      catId: 51,
-      category_name: "Manager of Weapons Specialists",
-    },
+//
+import { UseDomainStore } from "../../store/Domain";
 
-    {
-      bookId: 2,
-      bookImage: "../../../public/images/img21.png",
-      bookName: "Natus facilis eos.",
-      author: "Albina Will",
-      description:
-        "Quod et aliquam maiores hic laudantium facilis quam. Qui itaque esse asperiores excepturi totam asperiores nisi. At et impedit nam et voluptatibus ullam.",
-      countReview: 10,
-      rate: 2.2,
-      price: 775.93,
-      discount: 43,
-      final_price: 442.2801,
-      asinCode: "SLO411373",
-      bookFormat: "soft Cover",
-      lang: "Arabic",
-      publicationYear: 2025,
-      quantity: 1,
-      //عدد المنتج
-      stock: 59,
-      numberOfPages: 349,
-      catId: 52,
-      category_name: "Automotive Technician",
-    },
-
-    {
-      bookId: 3,
-      bookImage: "../../../public/images/img17.png",
-      bookName: "Sed labore doloribus.",
-      author: "Quentin Sauer",
-      description:
-        "Sunt vitae veniam architecto minima vero. Et sunt occaecati cum possimus aspernatur omnis. Incidunt ullam fugiat omnis debitis quibusdam.",
-
-      rate: null,
-      price: 269.56,
-      discount: 13,
-      final_price: 234.5172,
-
-      publicationYear: 2024,
-      quantity: 1,
-      //عدد المنتج
-      stock: 88,
-
-      numberOfPages: 172,
-      countReview: 15,
-
-      lang: "english",
-      asinCode: "SRW920308",
-      bookFormat: "Hard Cover",
-      catId: 53,
-      category_name: "Petroleum Pump Operator",
-    },
-
-    {
-      bookId: 4,
-      bookImage: "../../../public/images/img25.png",
-      bookName: "Rich Dad And Poor Dad",
-      author: "Robert Y. Kiyosanki",
-      description:
-        "Rich Dad Poor Dad is one of the world’s most influential personal finance books. Written by Robert Kiyosaki, it challenges traditional views about money, work, and wealth by comparing two different mindsets. The book guides readers toward financial independence through smart investing, financial education, and long-term thinking.",
-      countReview: 180,
-      rate: 4.2,
-      price: 500,
-      discount: 70,
-      final_price: 430,
-      asinCode: "B09TWSRMCB",
-      bookFormat: "Hard Cover",
-      lang: "Arabic",
-      publicationYear: 2023,
-      quantity: 1,
-      //عدد المنتج
-      stock: 9,
-      numberOfPages: 490,
-    },
-
-    {
-      bookId: 5,
-      bookImage: "../../../public/images/img20.png",
-      bookName: "The Design Of Books",
-      author: "Debbie Berne",
-      description:
-        "Explore the art of book design, where creativity meets precision. From eye-catching covers to thoughtfully crafted layouts, every visual detail is designed to enhance the reading experience and reflect the true value of the content.",
-      countReview: 180,
-      rate: 4.2,
-      price: 450,
-      discount: 35,
-      final_price: 415,
-      asinCode: "A28TejklCB",
-      bookFormat: "Hard Cover",
-      lang: "english",
-      publicationYear: 2022,
-      quantity: 1,
-      //عدد المنتج
-      stock: 15,
-      numberOfPages: 580,
-    },
-  ];
-
+export default function ALLBooks({ ALLBook, setPage, t }) {
   /////////////////////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -151,6 +31,9 @@ export default function ALLBooks({ t }) {
 
   //Value Token (2)
   const Token = UseTokenStore((stets) => stets.token);
+
+  //
+  const domain = UseDomainStore((state) => state.domain);
 
   /////////////////////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -172,14 +55,16 @@ export default function ALLBooks({ t }) {
     //Token === AddToCart
     if (Token) {
       //SelectBook (1)
-      const SelectBook = ALLBooks.find((item) => item.bookId === selectBookId);
+      const SelectBook = ALLBook.find(
+        (item) => item.documentId === selectBookId,
+      );
 
       //CheckCarts in LocalStorage (2)
       const CheckCarts = JSON.parse(localStorage.getItem("Carts")) || [];
 
       //Filter Carts In LocalStorage (5)
       const FilterCartsInLocalStorage = CheckCarts.find(
-        (item) => item.bookId === selectBookId,
+        (item) => item.documentId === selectBookId,
       );
 
       //is Condition(6)
@@ -210,14 +95,16 @@ export default function ALLBooks({ t }) {
     //Token === AddToCart
     if (Token) {
       //SelectBook (1)
-      const SelectBook = ALLBooks.find((item) => item.bookId === selectBookId);
+      const SelectBook = ALLBook.find(
+        (item) => item.documentId === selectBookId,
+      );
 
       //CheckWishList in LocalStorage (2)
       const CheckWishList = JSON.parse(localStorage.getItem("WishList")) || [];
 
       //Filter WishList In LocalStorage (5)
       const FilterWishListInLocalStorage = CheckWishList.find(
-        (item) => item.bookId === selectBookId,
+        (item) => item.documentId === selectBookId,
       );
 
       //is Condition(6)
@@ -247,7 +134,7 @@ export default function ALLBooks({ t }) {
   function isWishList(selectBookId) {
     const WishList = JSON.parse(localStorage.getItem("WishList")) || [];
 
-    return WishList.some((item) => item.bookId === selectBookId);
+    return WishList.some((item) => item.documentId === selectBookId);
   }
 
   /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -259,17 +146,23 @@ export default function ALLBooks({ t }) {
   //Function selectBook
   function selectBook(selectBookId) {
     //SelectBook (1)
-    const selectBook = ALLBooks.find((item) => item.bookId === selectBookId);
+    const selectBook = ALLBook.find((item) => item.documentId === selectBookId);
 
     //Push localStorage(2)
     localStorage.setItem("selectBookInBooksPage", JSON.stringify(selectBook));
   }
 
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+
   return (
-    <section className="flex flex-col  lg:gap-40 gap-25 mb-30  overflow-hidden">
+    <section className="flex flex-col  lg:gap-40 gap-25 mb-30  overflow-hidden w-full">
       {/* ALL Books */}
-      <div className="flex  flex-col gap-20">
-        {ALLBooks.map((Book, i) => {
+      <div className="flex  flex-col gap-20 w-full">
+        {ALLBook.map((Book) => {
           return (
             <motion.section
               initial={{
@@ -283,26 +176,26 @@ export default function ALLBooks({ t }) {
                 marginBottom: "0px",
               }}
               transition={{ duration: 1.5 }}
-              key={i}
+              key={Book.documentId}
               class="flex    flex-col gap-2  w-full  mt-5  lg:flex-row lg:flex-row "
             >
               <Link
-                onClick={() => selectBook(Book.bookId)}
+                onClick={() => selectBook(Book.documentId)}
                 to="/BooksDetailsALL"
                 className="w-fit"
               >
                 <img
                   class=" w-full  lg:m-0 m-auto rounded-base h-90 md:px-0 px-5 md:h-auto md:w-48 mb-2 md:mb-0"
-                  src={Book.bookImage}
+                  src={domain + Book?.bookImage?.url}
                   alt=""
                 />
               </Link>
 
               <div className="sm:hidden flex absolute left-10 top-5 w-fit">
                 <div
-                  onClick={() => AddToWishList(Book.bookId)}
+                  onClick={() => AddToWishList(Book.documentId)}
                   className={
-                    isWishList(Book.bookId)
+                    isWishList(Book.documentId)
                       ? "tooltip  border rounded-md p-2 cursor-pointer border-(--color-textColor1) text-white bg-(--color-textColor1) duration-5000"
                       : "tooltip  rounded-md p-2 cursor-pointer border-(--color-textColor1) text-(--color-textColor1) "
                   }
@@ -335,9 +228,9 @@ export default function ALLBooks({ t }) {
               {/* //////////////////////// */}
               {/* //////////////////////// */}
 
-              <div class="flex  flex-col leading-normal">
+              <div class="flex  flex-col leading-normal  w-full">
                 <Link
-                  onClick={() => selectBook(Book.bookId)}
+                  onClick={() => selectBook(Book.documentId)}
                   to="/BooksDetailsALL"
                 >
                   <header className="flex flex-col  gap-y-4">
@@ -372,7 +265,7 @@ export default function ALLBooks({ t }) {
 
                 <div className="">
                   <Link
-                    onClick={() => selectBook(Book.bookId)}
+                    onClick={() => selectBook(Book.documentId)}
                     to="/BooksDetailsALL"
                     className=""
                   >
@@ -448,7 +341,7 @@ export default function ALLBooks({ t }) {
                   {/* ///////////////// */}
                   <div className="flex sm:flex-col flex-row  h-fit  justify-between ">
                     <Link
-                      onClick={() => selectBook(Book.bookId)}
+                      onClick={() => selectBook(Book.documentId)}
                       to="/BooksDetailsALL"
                     >
                       <div className="sm:hidden  my-0 flex flex-row-reverse items-center  gap-2">
@@ -468,7 +361,7 @@ export default function ALLBooks({ t }) {
                     <div className="flex sm:pb-0 pb-3 md:flex-row flex-col md:items-center gap-y-5 justify-between">
                       {" "}
                       <Link
-                        onClick={() => selectBook(Book.bookId)}
+                        onClick={() => selectBook(Book.documentId)}
                         to="/BooksDetailsALL"
                         className=""
                       >
@@ -501,7 +394,7 @@ export default function ALLBooks({ t }) {
                         <div className="tooltip">
                           {/* Add To Cart */}
                           <button
-                            onClick={() => AddToCart(Book.bookId)}
+                            onClick={() => AddToCart(Book.documentId)}
                             className="flex gap-2.5  items-center bg-(--color-textColor1) text-white w-fit rounded-md py-2 px-4 text-2xl cursor-pointer hover:scale-102 duration-1500"
                           >
                             <span className="sm:flex hidden">
@@ -527,9 +420,9 @@ export default function ALLBooks({ t }) {
                         <div className="tooltip">
                           {/* Add To WishList */}
                           <div
-                            onClick={() => AddToWishList(Book.bookId)}
+                            onClick={() => AddToWishList(Book.documentId)}
                             className={
-                              isWishList(Book.bookId)
+                              isWishList(Book.documentId)
                                 ? "sm:flex hidden border rounded-md p-2 cursor-pointer border-(--color-textColor1) text-white bg-(--color-textColor1) duration-5000"
                                 : "sm:flex hidden border rounded-md p-2 cursor-pointer border-(--color-textColor1) text-(--color-textColor1) "
                             }
@@ -589,7 +482,7 @@ export default function ALLBooks({ t }) {
 
           <div className="flex -space-x-px text-sm">
             {" "}
-            <li>
+            <li onClick={() => setPage(1)}>
               <button
                 aria-current="page"
                 class="btn flex items-center justify-center text-black bg-white box-border border border-default-medium  hover:bg-(--color-textColor1) hover:text-white font-medium text-sm w-10 h-10 focus:outline-none"
@@ -597,24 +490,14 @@ export default function ALLBooks({ t }) {
                 {t("1")}
               </button>
             </li>
-            <li>
+            <li onClick={() => setPage(2)}>
               <button class="btn flex items-center justify-center text-wrap bg-white box-border border border-default-medium hover:bg-(--color-textColor1) hover:text-white font-medium text-sm w-10 h-10 focus:outline-none">
                 {t("2")}
               </button>
             </li>
-            <li>
+            <li onClick={() => setPage(3)}>
               <button class="btn flex items-center justify-center text-black bg-white box-border border border-default-medium  hover:bg-(--color-textColor1) hover:text-white font-medium text-sm w-10 h-10 focus:outline-none">
                 {t("3")}
-              </button>
-            </li>
-            <li>
-              <button class="btn flex items-center justify-center text-black bg-white box-border border border-default-medium  hover:bg-(--color-textColor1) hover:text-white font-medium text-sm w-10 h-10 focus:outline-none">
-                {t("4")}
-              </button>
-            </li>
-            <li>
-              <button class="btn flex items-center justify-center text-black bg-white box-border border border-default-medium  hover:bg-(--color-textColor1) hover:text-white font-medium text-sm w-10 h-10 focus:outline-none">
-                {t("5")}
               </button>
             </li>
           </div>

@@ -1,5 +1,5 @@
 //import Hooks React js
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 //import React-icon
 import { FaCartArrowDown } from "react-icons/fa";
@@ -13,57 +13,39 @@ import { UseTokenStore } from "../../store/UseTokenStore";
 //import react-router-dom
 import { useNavigate } from "react-router-dom";
 
+//
+import axios from "axios";
+
+//
+import { UseDomainStore } from "../../store/Domain";
+
 export default function Recommended({ t }) {
   //Data recommended (1)
-  const [DataRecommended] = useState([
-    {
-      bookId: 1,
-      bookImage: "../../../public/images/img22.png",
-      bookName: "Vel dignissimos veritatis quae.",
-      author: "Adella Kreiger",
-      description:
-        "Harum cupiditate assumenda aut magni ut quaerat odio. Hic suscipit excepturi vel minus rerum nihil voluptatibus. Blanditiis quam repellat adipisci error sit vel. Sequi quae odio commodi et iure magnam.",
-      countReview: 0,
-      rate: null,
-      price: 979.01,
-      discount: 44,
-      final_price: 548.2456,
-      asinCode: "MSI175942",
-      bookFormat: "Hard Cover",
-      lang: "english",
-      publicationYear: 2026,
-      quantity: 1,
-      //عدد المنتج
-      stock: 61,
-      numberOfPages: 659,
-      catId: 51,
-      category_name: "Manager of Weapons Specialists",
-    },
+  const [DataRecommended, setDataRecommended] = useState([]);
 
-    {
-      bookId: 2,
-      bookImage: "../../../public/images/img21.png",
-      bookName: "Natus facilis eos.",
-      author: "Albina Will",
-      description:
-        "Quod et aliquam maiores hic laudantium facilis quam. Qui itaque esse asperiores excepturi totam asperiores nisi. At et impedit nam et voluptatibus ullam.",
-      countReview: 10,
-      rate: 2.2,
-      price: 775.93,
-      discount: 43,
-      final_price: 442.2801,
-      asinCode: "SLO411373",
-      bookFormat: "soft Cover",
-      lang: "Arabic",
-      publicationYear: 2025,
-      quantity: 1,
-      //عدد المنتج
-      stock: 59,
-      numberOfPages: 349,
-      catId: 52,
-      category_name: "Automotive Technician",
-    },
-  ]);
+  //
+  const domain = UseDomainStore((state) => state.domain);
+
+  //Get Products Api Strapi
+  async function getDataRecommended() {
+    try {
+      const responsive = await axios.get(`${domain}/api/products`, {
+        params: {
+          populate: "*",
+        },
+      });
+
+      responsive.data.data.splice(2, 7);
+
+      setDataRecommended(responsive.data.data);
+    } catch (error) {
+      console.log("error AllBooks", error);
+    }
+  }
+
+  useEffect(() => {
+    getDataRecommended();
+  }, []);
 
   /////////////////////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -95,7 +77,7 @@ export default function Recommended({ t }) {
     if (Token) {
       //SelectBook (1)
       const SelectBook = DataRecommended.find(
-        (item) => item.bookId === selectBookId,
+        (item) => item.documentId === selectBookId,
       );
 
       //CheckCarts in LocalStorage (2)
@@ -103,7 +85,7 @@ export default function Recommended({ t }) {
 
       //Filter Carts In LocalStorage (5)
       const FilterCartsInLocalStorage = CheckCarts.find(
-        (item) => item.bookId === selectBookId,
+        (item) => item.documentId === selectBookId,
       );
 
       //is Condition(6)
@@ -135,7 +117,7 @@ export default function Recommended({ t }) {
     if (Token) {
       //SelectBook (1)
       const SelectBook = DataRecommended.find(
-        (item) => item.bookId === selectBookId,
+        (item) => item.documentId === selectBookId,
       );
 
       //CheckWishList in LocalStorage (2)
@@ -143,7 +125,7 @@ export default function Recommended({ t }) {
 
       //Filter WishList In LocalStorage (5)
       const FilterWishListInLocalStorage = CheckWishList.find(
-        (item) => item.bookId === selectBookId,
+        (item) => item.documentId === selectBookId,
       );
 
       //is Condition(6)
@@ -173,7 +155,7 @@ export default function Recommended({ t }) {
   function isWishList(selectBookId) {
     const WishList = JSON.parse(localStorage.getItem("WishList")) || [];
 
-    return WishList.some((item) => item.bookId === selectBookId);
+    return WishList.some((item) => item.documentId === selectBookId);
   }
 
   return (
@@ -196,12 +178,16 @@ export default function Recommended({ t }) {
         {DataRecommended.map((Rec) => {
           return (
             <div
-              key={Rec.bookId}
+              key={Rec.documentId}
               className="card xl:h-90 xl:w-fit  w-fit  xl:card-side  bg-base-100 shadow-2xl "
             >
               {/* 2 Img */}
               <figure className="my-6 ml-5 xl:w-full ">
-                <img src={Rec.bookImage} alt="Album" className=" w-80 mr-5" />
+                <img
+                  src={domain + Rec?.bookImage?.url}
+                  alt="Album"
+                  className=" w-80 mr-5"
+                />
               </figure>
 
               {/* ////////////////////////////////////////////////////////////////////////////// */}
@@ -334,8 +320,8 @@ export default function Recommended({ t }) {
                   {/* Add To Cart(1) */}
                   <div className="tooltip">
                     <button
-                      onClick={() => AddToCart(Rec.bookId)}
-                      className="flex gap-2.5  items-center bg-(--color-textColor1) text-white w-fit m-auto rounded-lg py-3 px-10 sm:text-2xl cursor-pointer hover:scale-102 duration-1500"
+                      onClick={() => AddToCart(Rec.documentId)}
+                      className="flex gap-2.5  items-center bg-(--color-textColor1) text-white w-fit m-auto rounded-lg py-3 px-7 sm:text-xl cursor-pointer hover:scale-102 duration-1500"
                     >
                       {t("Add To Cart")}
                       {/*  */}
@@ -359,11 +345,11 @@ export default function Recommended({ t }) {
                   {/* Add To WishList(2) */}
                   <div className="tooltip">
                     <div
-                      onClick={() => AddToWishList(Rec.bookId)}
+                      onClick={() => AddToWishList(Rec.documentId)}
                       className={
-                        isWishList(Rec.bookId)
-                          ? "border cursor-pointer rounded-lg p-3 border-(--color-textColor1) text-white bg-(--color-textColor1) duration-5000"
-                          : "border cursor-pointer rounded-lg p-3 border-(--color-textColor1) text-(--color-textColor1) "
+                        isWishList(Rec.documentId)
+                          ? "border cursor-pointer rounded-lg p-1.5 border-(--color-textColor1) text-white bg-(--color-textColor1) duration-5000"
+                          : "border cursor-pointer rounded-lg p-1.5 border-(--color-textColor1) text-(--color-textColor1) "
                       }
                     >
                       {" "}
@@ -371,7 +357,7 @@ export default function Recommended({ t }) {
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
-                        className="inline-block h-8 w-8 stroke-current "
+                        className="inline-block h-7 w-7 stroke-current "
                       >
                         <path
                           strokeLinecap="round"

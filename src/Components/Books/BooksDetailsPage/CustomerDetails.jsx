@@ -15,6 +15,7 @@ import { FaCartArrowDown } from "react-icons/fa";
 import { useState } from "react";
 import { UseTokenStore } from "../../../store/UseTokenStore";
 import TooltipAddToCartANDWishList from "../../TooltipAddToCartANDWishList";
+import { UseDomainStore } from "../../../store/Domain";
 
 export default function CustomerDetails({ DataCustomerDetails, t }) {
   //State Counter
@@ -53,7 +54,7 @@ export default function CustomerDetails({ DataCustomerDetails, t }) {
 
       //Filter Carts In LocalStorage (4)
       const FilterCartsInLocalStorage = CheckCarts.find(
-        (item) => item.bookId === DataCustomerDetails.bookId,
+        (item) => item.documentId === DataCustomerDetails.documentId,
       );
 
       //is Condition(5)
@@ -87,7 +88,7 @@ export default function CustomerDetails({ DataCustomerDetails, t }) {
 
       //Filter WishList In LocalStorage (5)
       const FilterWishListInLocalStorage = CheckWishList.find(
-        (item) => item.bookId === DataCustomerDetails.bookId,
+        (item) => item.documentId === DataCustomerDetails.documentId,
       );
 
       //is Condition(6)
@@ -116,8 +117,19 @@ export default function CustomerDetails({ DataCustomerDetails, t }) {
   function isWishList() {
     const WishList = JSON.parse(localStorage.getItem("WishList")) || [];
 
-    return WishList.some((item) => item.bookId === DataCustomerDetails.bookId);
+    return WishList.some(
+      (item) => item.documentId === DataCustomerDetails.documentId,
+    );
   }
+
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+
+  //
+  const domain = UseDomainStore((state) => state.domain);
 
   return (
     <>
@@ -130,7 +142,7 @@ export default function CustomerDetails({ DataCustomerDetails, t }) {
           {/* Card Imgs */}
           <img
             className="img h-auto max-w-lg md:w-90 sm:w-60 w-90 m-auto transition-all duration-300 rounded-base  hover:blur-none"
-            src={DataCustomerDetails.bookImage}
+            src={domain + DataCustomerDetails?.bookImage?.url}
             alt="image description"
           />
 
@@ -413,6 +425,7 @@ export default function CustomerDetails({ DataCustomerDetails, t }) {
                 {/* Counter */}
                 <section className="flex items-center gap-6">
                   <button
+                    disabled
                     onClick={() => {
                       Counter > 0 && setCounter(Counter - 1);
                     }}
@@ -436,6 +449,7 @@ export default function CustomerDetails({ DataCustomerDetails, t }) {
                   {/* /////////////////////////////////////////////////////////////////////////////////////////////////////////// */}
 
                   <button
+                    disabled
                     onClick={() => {
                       Counter < 9 && setCounter(Counter + 1);
                     }}
@@ -481,7 +495,7 @@ export default function CustomerDetails({ DataCustomerDetails, t }) {
                     <div
                       onClick={AddToWishList}
                       className={
-                        isWishList(DataCustomerDetails.bookId)
+                        isWishList(DataCustomerDetails.documentId)
                           ? "flex border cursor-pointer rounded-md p-1 border-(--color-textColor1) text-white bg-(--color-textColor1) duration-5000"
                           : "flex border cursor-pointer rounded-md p-1 border-(--color-textColor1) text-(--color-textColor1) "
                       }

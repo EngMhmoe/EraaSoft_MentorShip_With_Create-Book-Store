@@ -16,38 +16,11 @@ import { useState } from "react";
 import { UseTokenStore } from "../../../store/UseTokenStore";
 import TooltipAddToCartANDWishList from "../../TooltipAddToCartANDWishList";
 
+import { UseDomainStore } from "../../../store/Domain.js";
+
 export default function ScreenCOLCustmerDeatils({ DataCustomerDetails, t }) {
   //State Counter
   const [Counter, setCounter] = useState(1);
-
-  /////////////////////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////////////////////////////////////////////////////////////////////////
-
-  //DataCustomerDetails State (1)
-  // const DataCustomerDetails = {
-  //   bookId: 3,
-  //   img: "../../../public/images/img25.png",
-  //   bookName: "Rich Dad And Poor Dad",
-  //   author: "Robert Y. Kiyosanki",
-  //   description:
-  //     "Rich Dad Poor Dad is one of the world’s most influential personal finance books. Written by Robert Kiyosaki, it challenges traditional views about money, work, and wealth by comparing two different mindsets. The book guides readers toward financial independence through smart investing, financial education, and long-term thinking.",
-  //   countReview: 180,
-  //   rate: 4.2,
-  //   price: 500,
-  //   discount: 70,
-  //   final_price: 430,
-  //   asinCode: "B09TWSRMCB",
-  //   bookFormat: "Hard Cover",
-  //   lang: "english",
-  //   publicationYear: 2024,
-  //   quantity: 1,
-  //   //عدد المنتج
-  //   stock: 9,
-  //   numberOfPages: 490,
-  // };
 
   /////////////////////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -82,7 +55,7 @@ export default function ScreenCOLCustmerDeatils({ DataCustomerDetails, t }) {
 
       //Filter Carts In LocalStorage (4)
       const FilterCartsInLocalStorage = CheckCarts.find(
-        (item) => item.bookId === DataCustomerDetails.bookId,
+        (item) => item.documentId === DataCustomerDetails.documentId,
       );
 
       //is Condition(5)
@@ -116,7 +89,7 @@ export default function ScreenCOLCustmerDeatils({ DataCustomerDetails, t }) {
 
       //Filter WishList In LocalStorage (5)
       const FilterWishListInLocalStorage = CheckWishList.find(
-        (item) => item.bookId === DataCustomerDetails.bookId,
+        (item) => item.documentId === DataCustomerDetails.documentId,
       );
 
       //is Condition(6)
@@ -145,21 +118,32 @@ export default function ScreenCOLCustmerDeatils({ DataCustomerDetails, t }) {
   function isWishList() {
     const WishList = JSON.parse(localStorage.getItem("WishList")) || [];
 
-    return WishList.some((item) => item.bookId === DataCustomerDetails.bookId);
+    return WishList.some(
+      (item) => item.documentId === DataCustomerDetails.documentId,
+    );
   }
 
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+
+  //
+  const domain = UseDomainStore((state) => state.domain);
+
   return (
-    <section className="w-full shadow cursor-pointer">
+    <section className="w-full  shadow cursor-pointer overflow-scroll">
       <div
         // href="#"
-        class="flex flex-col gap-10  w-full  bg-neutral-primary-soft p-6 border-default rounded-base  "
+        class="flex flex-col gap-10  w-full  bg-neutral-primary-soft p-3  border-default rounded-base  "
       >
         <div className="flex justify-between gap-1.5 w-full">
           {/* Section Left */}
           {/* Card Imgs */}
           <img
-            className="h-auto w-60  transition-all duration-300 rounded-base  hover:blur-none"
-            src={DataCustomerDetails.bookImage}
+            className="w-48  transition-all duration-300 rounded-base  hover:blur-none"
+            src={domain + DataCustomerDetails?.bookImage?.url}
             alt="image description"
           />
 
@@ -176,7 +160,7 @@ export default function ScreenCOLCustmerDeatils({ DataCustomerDetails, t }) {
                 <div
                   onClick={AddToWishList}
                   className={
-                    isWishList(DataCustomerDetails.bookId)
+                    isWishList(DataCustomerDetails.documentId)
                       ? "flex h-fit w-fit border cursor-pointer rounded-md p-1 border-(--color-textColor1) text-white bg-(--color-textColor1) duration-5000"
                       : "flex  h-fit w-fit cursor-pointer  border rounded-md bg-black/5 p-1 border-(--color-textColor1) text-(--color-textColor1)"
                   }
@@ -205,7 +189,7 @@ export default function ScreenCOLCustmerDeatils({ DataCustomerDetails, t }) {
               {/* ///////////////////////////// */}
               {/* ///////////////////////////// */}
               {/* ///////////////////////////// */} {/* Screen Col */}
-              <div className="fab  cursor-pointer fab-flower absolute z-0 top-14 right-0">
+              <div className="fab  cursor-pointer fab-flower absolute   top-14 right-0">
                 {/* a focusable div with tabIndex is necessary to work on all browsers. role="button" is necessary for accessibility */}
                 <div
                   tabIndex={0}
@@ -215,7 +199,7 @@ export default function ScreenCOLCustmerDeatils({ DataCustomerDetails, t }) {
                   <img src={img8} className="w-7" alt="" />
                 </div>
                 {/* Main Action button replaces the original button when FAB is open */}
-                <button className="fab-main-action absolute top-0 right-0 btn btn-circle btn-lg btn-error bg-white  border-black">
+                <button className="fab-main-action absolute top-0 right-0  btn btn-circle btn-lg btn-error bg-white  border-black">
                   <img src={img7} alt="" />
                 </button>
 
@@ -281,7 +265,7 @@ export default function ScreenCOLCustmerDeatils({ DataCustomerDetails, t }) {
 
         {/* Body */}
         <div>
-          <section className="flex flex-col gap-7">
+          <section className="flex flex-col gap-7 w-full">
             <div>
               {" "}
               <header className="flex items-center justify-between">
@@ -378,6 +362,7 @@ export default function ScreenCOLCustmerDeatils({ DataCustomerDetails, t }) {
               {/* Counter */}
               <section className="flex py-1 px-2  rounded-xl items-center gap-3 bg-white text-black">
                 <button
+                  disabled
                   onClick={() => {
                     Counter > 0 && setCounter(Counter - 1);
                   }}
@@ -389,6 +374,7 @@ export default function ScreenCOLCustmerDeatils({ DataCustomerDetails, t }) {
                 <h1 className=" font-bold text-xl">{Counter}</h1>
 
                 <button
+                  disabled
                   onClick={() => {
                     Counter < 10 && setCounter(Counter + 1);
                   }}

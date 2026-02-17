@@ -51,7 +51,6 @@ import NotFound from "../Components/NotFound";
 
 //import BrowserRouter
 import { Route, Routes } from "react-router-dom";
-import TestStrapiPage from "../ProjectTestCoding/TestTrapiPage/TestStrapiPage";
 
 export default function AppRoutes() {
   return (
@@ -127,15 +126,6 @@ export default function AppRoutes() {
       </Route>
 
       <Route path="/Password-Success" element={<PasswordSuccessful />} />
-
-      {/* /////////////////////////////////////////////////////////////////////////////////// */}
-      {/* /////////////////////////////////////////////////////////////////////////////////// */}
-      {/* /////////////////////////////////////////////////////////////////////////////////// */}
-      {/* /////////////////////////////////////////////////////////////////////////////////// */}
-      {/* /////////////////////////////////////////////////////////////////////////////////// */}
-
-      {/* ProjectTestCoding */}
-      <Route path="/TestStrapi" element={<TestStrapiPage />} />
     </Routes>
   );
 }

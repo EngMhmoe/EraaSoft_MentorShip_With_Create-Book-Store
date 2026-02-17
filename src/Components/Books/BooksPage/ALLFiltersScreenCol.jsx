@@ -1,9 +1,40 @@
 export default function ALLFiltersScreenCol({
   Categories,
-  Publishers,
   Years,
+  setSelectCategory,
+  setSelectYears,
+  ///\/\/\/\/\/\/\/\/\/\/\/\
+  Publishers,
   t,
 }) {
+  //////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////
+
+  function FiltersCategories(selectCategory_name) {
+    setSelectCategory((current) => {
+      if (current.includes(selectCategory_name)) {
+        return current.filter((cat) => cat !== selectCategory_name);
+      }
+
+      return [...current, selectCategory_name];
+    });
+  }
+
+  ///////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////
+
+  function FilterYears(selectYear) {
+    setSelectYears((current) => {
+      if (current.includes(selectYear)) {
+        return current.filter((Year) => Year !== selectYear);
+      }
+
+      return [...current, selectYear];
+    });
+  }
+
+  ///////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////
   return (
     <>
       {" "}
@@ -32,6 +63,11 @@ export default function ALLFiltersScreenCol({
           />
         </svg>
       </button>
+      {/* //////////////////////////////////////////////////////////////////////////////////////////////// */}
+      {/* //////////////////////////////////////////////////////////////////////////////////////////////// */}
+      {/* //////////////////////////////////////////////////////////////////////////////////////////////// */}
+      {/* //////////////////////////////////////////////////////////////////////////////////////////////// */}
+      {/* //////////////////////////////////////////////////////////////////////////////////////////////// */}
       {/* <!-- Dropdown menu --> */}
       <div
         id="multi-dropdown"
@@ -41,7 +77,7 @@ export default function ALLFiltersScreenCol({
           class="p-2 text-sm text-body font-medium"
           aria-labelledby="multiLevelDropdownButton"
         >
-          {/*  */}
+          {/* Categories */}
           <li>
             <button
               id="doubleDropdownButton"
@@ -70,7 +106,11 @@ export default function ALLFiltersScreenCol({
                 />
               </svg>
             </button>
-            {/*  */}
+
+            {/* ///////////////////////////////////////////// */}
+            {/* ///////////////////////////////////////////// */}
+            {/* ///////////////////////////////////////////// */}
+
             <div
               id="Categories"
               class="z-10 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44"
@@ -79,14 +119,17 @@ export default function ALLFiltersScreenCol({
                 class="p-2 text-sm text-body font-medium"
                 aria-labelledby="doubleDropdownButton"
               >
-                {Categories.map((cat, i) => {
+                {Categories.map((cat) => {
                   return (
-                    <li key={i}>
+                    <li
+                      onClick={() => FiltersCategories(cat.category_name)}
+                      key={cat.documentId}
+                    >
                       <button
                         // href="#"
                         class=" cursor-pointer inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded"
                       >
-                        {t(`${cat.name}`)}
+                        {t(`${cat.category_name}`)}
                       </button>
                     </li>
                   );
@@ -94,8 +137,11 @@ export default function ALLFiltersScreenCol({
               </ul>
             </div>
           </li>
+
           {/* ////////////////////////////////////////////////////////// */}
           {/* ////////////////////////////////////////////////////////// */}
+
+          {/* Publishers */}
           <li>
             <button
               id="doubleDropdownButton"
@@ -124,7 +170,11 @@ export default function ALLFiltersScreenCol({
                 />
               </svg>
             </button>
-            {/*  */}
+
+            {/* ///////////////////////////////////////////// */}
+            {/* ///////////////////////////////////////////// */}
+            {/* ///////////////////////////////////////////// */}
+
             <div
               id="Publishers"
               class="z-10 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44"
@@ -148,8 +198,11 @@ export default function ALLFiltersScreenCol({
               </ul>
             </div>
           </li>
+
           {/* ////////////////////////////////////////////////////////// */}
           {/* ////////////////////////////////////////////////////////// */}
+
+          {/* Years */}
           <li>
             <button
               id="doubleDropdownButton"
@@ -178,7 +231,11 @@ export default function ALLFiltersScreenCol({
                 />
               </svg>
             </button>
-            {/*  */}
+
+            {/* ///////////////////////////////////////////// */}
+            {/* ///////////////////////////////////////////// */}
+            {/* ///////////////////////////////////////////// */}
+
             <div
               id="Years"
               class="z-10 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44"
@@ -187,14 +244,17 @@ export default function ALLFiltersScreenCol({
                 class="p-2 text-sm text-body font-medium"
                 aria-labelledby="doubleDropdownButton"
               >
-                {Years.map((Year, i) => {
+                {Years.map((Year) => {
                   return (
-                    <li key={i}>
+                    <li
+                      onClick={() => FilterYears(Year.category_Year)}
+                      key={Year.documentId}
+                    >
                       <button
                         // href="#"
                         class=" cursor-pointer inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded"
                       >
-                        {t(`${Year.Year}`)}
+                        {t(`${Year.category_Year}`)}
                       </button>
                     </li>
                   );

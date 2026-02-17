@@ -1,55 +1,21 @@
 //import Components
 import ALLBooks from "../ALLBooks";
-import ALLFilters from "./ALLFilters";
+
 import ALLFiltersScreenCol from "./ALLFiltersScreenCol";
 
 import Sortby from "./Sortby";
 
 export default function SectionRightBooks({
+  ALLBook,
   Categories,
-  Publishers,
   Years,
+  setSelectCategory,
+  setSelectYears,
+  setPage,
+  //\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+  Publishers,
   t,
 }) {
-  //Data AllFilters
-  const AllFilters = [
-    //Data Categories(1)
-    "Business",
-    "Kids",
-    "Kids",
-    "Art",
-    "History",
-    "Romance",
-    "Fantasy",
-    "Self Help",
-    "Cooking",
-    "Sports",
-
-    //Data Publishers(2)
-    "Paulo coelo",
-    "Jane Austen",
-    "Charles Dickens",
-    "Mark Twain",
-    "Virginia Woolf",
-    "Leo Tolstoy",
-    "Fyodor Dostoevsky",
-    "Haruki Murakami",
-    "Gabriel Márquez",
-    "Chinua Achebe",
-
-    //Data Years(2)
-    "2017",
-    "2018",
-    "2019",
-    "2020",
-    "2021",
-    "2022",
-    "2023",
-    "2024",
-    "2025",
-    "2026",
-  ];
-
   return (
     <section className="flex flex-col gap-5 ">
       {/* Header Search */}
@@ -107,8 +73,11 @@ export default function SectionRightBooks({
           <div className="sm:hidden flex items-center">
             <ALLFiltersScreenCol
               Categories={Categories}
-              Publishers={Publishers}
               Years={Years}
+              setSelectCategory={setSelectCategory}
+              setSelectYears={setSelectYears}
+              ///\\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+              Publishers={Publishers}
               t={t}
             />
           </div>
@@ -117,10 +86,6 @@ export default function SectionRightBooks({
             <Sortby t={t} />
           </div>
         </div>
-
-        {/* ////////////////////////////// */}
-        {/* ////////////////////////////// */}
-        {/* ////////////////////////////// */}
       </header>
 
       {/* /////////////////////////////////////////////////////////////////// */}
@@ -129,22 +94,8 @@ export default function SectionRightBooks({
       {/* /////////////////////////////////////////////////////////////////// */}
       {/* /////////////////////////////////////////////////////////////////// */}
 
-      {/* All Filters */}
-      <div>
-        {" "}
-        <div className=" sm:flex hidden">
-          <ALLFilters AllFilters={AllFilters} t={t} />
-        </div>
-      </div>
-
-      {/* /////////////////////////////////////////////////////////////////// */}
-      {/* /////////////////////////////////////////////////////////////////// */}
-      {/* /////////////////////////////////////////////////////////////////// */}
-      {/* /////////////////////////////////////////////////////////////////// */}
-      {/* /////////////////////////////////////////////////////////////////// */}
-
       {/* ALL Books */}
-      <ALLBooks t={t} />
+      <ALLBooks ALLBook={ALLBook} setPage={setPage} t={t} />
     </section>
   );
 }

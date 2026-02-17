@@ -2,6 +2,9 @@ import { MdOutlineDeleteForever } from "react-icons/md";
 
 import { motion } from "motion/react";
 
+//
+import { UseDomainStore } from "../../store/Domain";
+
 export default function ProductsCardANDWishListPage({
   ProductsCardANDWishList,
   setProductsCardANDWishList,
@@ -9,6 +12,8 @@ export default function ProductsCardANDWishListPage({
   t,
   storage,
 }) {
+  //
+  const domain = UseDomainStore((state) => state.domain);
   /////////////////////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -20,7 +25,7 @@ export default function ProductsCardANDWishListPage({
     const Cart = JSON.parse(localStorage.getItem("Carts"));
 
     const UpdateCart = Cart.map((item) => {
-      if (item.bookId === id) {
+      if (item.documentId === id) {
         if (item.quantity < item.stock) {
           return { ...item, quantity: item.quantity + 1 };
         } else {
@@ -41,7 +46,7 @@ export default function ProductsCardANDWishListPage({
     const Cart = JSON.parse(localStorage.getItem("Carts"));
 
     const UpdateCart = Cart.map((item) => {
-      if (item.bookId === id) {
+      if (item.documentId === id) {
         if (item.quantity > 1) {
           return { ...item, quantity: item.quantity - 1 };
         } else {
@@ -75,7 +80,7 @@ export default function ProductsCardANDWishListPage({
     } else {
       let Cart = JSON.parse(localStorage.getItem(`${storage}`)) || [];
 
-      const UpdatedCart = Cart.filter((item) => item.bookId !== id);
+      const UpdatedCart = Cart.filter((item) => item.documentId !== id);
 
       localStorage.setItem(`${storage}`, JSON.stringify(UpdatedCart));
 
@@ -88,7 +93,7 @@ export default function ProductsCardANDWishListPage({
 
   return (
     <section className="flex flex-col gap-2 ">
-      {ProductsCardANDWishList.map((item, i) => {
+      {ProductsCardANDWishList.map((item) => {
         return (
           <motion.div
             initial={{
@@ -102,13 +107,13 @@ export default function ProductsCardANDWishListPage({
               marginBottom: "0px",
             }}
             transition={{ duration: 1.5 }}
-            key={i}
+            key={item.documentId}
             className="card card-side bg-base-100 shadow-lg border-2 border-black/10  p-6 flex sm:flex-row  flex-col  gap-6"
           >
             {/* section Left */}
             <figure>
               <img
-                src={item.bookImage}
+                src={domain + item?.bookImage?.url}
                 className="w-43.25 h-63.25 object-fit-cover"
                 alt="Movie"
               />
@@ -166,7 +171,7 @@ export default function ProductsCardANDWishListPage({
                 <button
                   disabled={item.quantity === 1}
                   onClick={() => {
-                    decreaseQty(item.bookId);
+                    decreaseQty(item.documentId);
                   }}
                   className="rounded-full btn   btn-error text-white  text-4xl text-center flex items-center justify-center h-8 w-1 pb-2"
                 >
@@ -182,7 +187,7 @@ export default function ProductsCardANDWishListPage({
                 <button
                   disabled={item.quantity === item.stock}
                   onClick={() => {
-                    increaseQty(item.bookId);
+                    increaseQty(item.documentId);
                   }}
                   className="rounded-full btn  btn-error text-white text-4xl text-center flex items-center justify-center h-8 w-5 pb-2"
                 >
@@ -204,7 +209,7 @@ export default function ProductsCardANDWishListPage({
 
               {/* Delete */}
               <h3
-                onClick={() => DeleteItem(item.bookId)}
+                onClick={() => DeleteItem(item.documentId)}
                 className="text-(--color-textColor1) cursor-pointer md:sticky sm:absolute bottom-5 right-3  lg:text-[30px] md:text-[25px] text-[30px] "
               >
                 <MdOutlineDeleteForever />
